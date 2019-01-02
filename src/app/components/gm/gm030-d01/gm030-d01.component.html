@@ -1,0 +1,80 @@
+<form [formGroup]="form" class="search-form">
+  <div class="card" [@openClose]="infoAreaOpend ? 'open' : 'closed'">
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">発生日</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type='text' class="form-control width130" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-none">~</span>
+          </div>
+          <input type='text' class="form-control width130" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">デポ</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="001">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10">デポ００１</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold align-self-start">仕訳パターン</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="JournalPatternKbn" id="ContractTypeKbn1">
+              <label class="custom-control-label" for="JournalPatternKbn1">全て</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="JournalPatternKbn" id="JournalPatternKbn2">
+              <label class="custom-control-label" for="JournalPatternKbn2">棚卸</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="JournalPatternKbn" id="JournalPatternKbn3">
+              <label class="custom-control-label" for="JournalPatternKbn3">物品仕入社内振替</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="JournalPatternKbn" id="JournalPatternKbn4">
+              <label class="custom-control-label" for="JournalPatternKbn4">他勘定振替（出庫）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="JournalPatternKbn" id="JournalPatternKbn5">
+              <label class="custom-control-label" for="JournalPatternKbn5">他勘定振替（入庫）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="JournalPatternKbn" id="JournalPatternKbn6">
+              <label class="custom-control-label" for="JournalPatternKbn6">施工出し</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="JournalPatternKbn" id="JournalPatternKbn7">
+              <label class="custom-control-label" for="JournalPatternKbn7">運送費振替</label>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="btn-area">
+    <button type="button" class="btn btn-success">
+      <img src="./assets/images/icon/download.png" /> 棚卸会計データ出力
+    </button>
+  </div>
+</form>

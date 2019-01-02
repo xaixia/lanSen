@@ -1,0 +1,17 @@
+.cnt, .pageSize {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  height: 2rem;
+  align-content: center;
+  label {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+  select {
+    display: inline-block;
+    width: 56px;
+    padding: 0.03rem;
+    height: calc(1.5rem + 2px);
+  }
+}

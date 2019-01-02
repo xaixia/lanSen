@@ -1,0 +1,896 @@
+<div class="content">
+  <h3>ボタングループ</h3>
+  <div class="btn-group-area">
+    <ul>
+      <li>
+        <button type="button" class="btn btn-primary">
+          <i class="fa fa-search"></i> 検索変更
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-primary">
+          <i class="fa fa-info-circle"></i> 詳細
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-primary">
+          <i class="fa fa-arrow-circle-left"></i> 戻る
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-primary">
+          <i class="fa fa-arrow-circle-right"></i> 設定
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-primary">
+          <i class="fa fa-money"></i> 与信
+        </button>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> 新規登録
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> 新規登録（連続）
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-save"></i> 登録
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-save"></i> 更新
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> 行追加
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-copy"></i> 複製
+        </button>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <button type="button" class="btn btn-warning">
+          <i class="fa fa-remove"></i> 行削除
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-warning">
+          <i class="fa fa-remove"></i> 一括削除
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-warning">
+          <i class="fa fa-remove"></i> 削除
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-warning">
+          <i class="fa fa-eraser"></i> クリア
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-warning">
+          <i class="fa fa-window-close"></i> 閉じる
+        </button>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <button type="button" class="btn btn-success">
+          <img src="./assets/images/icon/download.png" /> Excel出力
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-success" title="アップロード">
+          <img src="./assets/images/icon/upload.png" />
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-success" title="ダウンロード">
+          <img src="./assets/images/icon/download.png" />
+        </button>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <button type="button" class="btn btn-orengered">
+          <i class="fa fa-mail-forward"></i> 承認依頼
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-orengered">
+          <i class="fa fa-check-circle"></i> 承認
+        </button>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <button type="button" class="btn btn-danger">
+          <i class="fa fa-mail-reply"></i> 引戻
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-danger">
+          <i class="fa fa-mail-reply"></i> 差戻
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-danger">
+          <i class="fa fa-times-circle"></i> 否認
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <h3>検索条件エリア</h3>
+  <div class="search-form">
+    <div class="card" [@openClose]="searchFormOpend ? 'open' : 'closed'">
+      <div class="form-inline">
+        <div class="form-group width7p required-item font-weight-bold">受注年月日</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type='text' class="form-control width120" appDatetimePicker />
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+            <div class="input-group-prepend">
+              <span class="input-group-text input-group-text-none">~</span>
+            </div>
+            <input type='text' class="form-control width120" appDatetimePicker />
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">納品希望日</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type='text' class="form-control width120" appDatetimePicker/>
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+            <div class="input-group-prepend">
+              <span class="input-group-text input-group-text-none">~</span>
+            </div>
+            <input type='text' class="form-control width120" appDatetimePicker/>
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="width7p required-item font-weight-bold">受注No.</div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control maxwid" />
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width7p font-weight-bold">受注目的</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn1">
+              <label class="custom-control-label" for="OrderPurposeKbn1">売上</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn2">
+              <label class="custom-control-label" for="OrderPurposeKbn2">施工</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn3">
+              <label class="custom-control-label" for="OrderPurposeKbn3">売上</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">発送区分</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="SendKbn" id="SendKbn1">
+              <label class="custom-control-label" for="SendKbn1">送付</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="SendKbn" id="SendKbn2">
+              <label class="custom-control-label" for="SendKbn2">持参</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="mr-15 font-weight-bold">請求・仕切書変更時備考</div>
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="ChangeBikoKbn1">
+              <label class="custom-control-label" for="ChangeBikoKbn1">変更</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="ChangeBikoKbn2">
+              <label class="custom-control-label" for="ChangeBikoKbn2">変更有</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+
+        <div class="form-group width7p font-weight-bold">納品先</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">××××株式会社</div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">支店</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">×××支店</div>
+        </div>
+
+        <div class="form-group width7p font-weight-bold">EC受注</div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="CEOrdersKbn1">
+              <label class="custom-control-label" for="CEOrdersKbn1">対象</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="CEOrdersKbn2">
+              <label class="custom-control-label" for="CEOrdersKbn2">対象外</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width7p font-weight-bold">請求先</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">××××商事</div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">デポ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">×××営業所</div>
+        </div>
+
+        <div class="form-group width7p font-weight-bold">売上計上状況</div>
+        <div class="form-group input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="SaleRecordKbn1">
+            <label class="custom-control-label" for="SaleRecordKbn1">対象外</label>
+          </div>
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="SaleRecordKbn2">
+            <label class="custom-control-label" for="SaleRecordKbn2">対象外</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width7p font-weight-bold">物品</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">××××物品</div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">技術営業担当者</div>
+        <div class="form-group width30p">
+          <div class="input-group"></div>
+          <input type="text" class="form-control width130">
+          <div class="ml-10">を含む</div>
+        </div>
+
+        <div class="form-group input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="riyoukinsi">
+            <label class="custom-control-label" for="riyoukinsi">利用禁止を含む</label>
+          </div>
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="sakujyozumi">
+            <label class="custom-control-label" for="sakujyozumi">削除済を含む</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-area">
+      <button type="button" class="btn btn-primary">
+        <i class="fa fa-search"></i> 検索
+      </button>
+      <button type="button" class="btn btn-warning">
+        <i class="fa fa-eraser"></i> クリア
+      </button>
+      <button type="button" class="btn btn-success" title="アップロード">
+        <img src="./assets/images/icon/upload.png" />
+      </button>
+      <button type="button" class="btn btn-success" title="ダウンロード">
+        <img src="./assets/images/icon/download.png" />
+      </button>
+      
+      <button type="button" class="btn btn btn-secondary" (click)="changeSearchForm()">
+        <i class="fa" [class.fa-angle-up]="searchFormOpend" [class.fa-angle-down]="!searchFormOpend"></i>
+      </button>
+    </div>
+  </div>
+  
+  <h3>情報エリア</h3>
+  <div class="card">
+    <div class="card-title">
+      <div class="text-area">仕入情報</div>
+      <div class="btn-area">        
+        <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea()">
+          <i class="fa" [class.fa-angle-up]="infoAreaOpend" [class.fa-angle-down]="!infoAreaOpend"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body" [@openClose]="infoAreaOpend ? 'open' : 'closed'">
+      <div class="form-inline">
+        <div class="form-group width7p required-item font-weight-bold">受注年月日</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type='text' class="form-control width120" appDatetimePicker />
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+            <div class="input-group-prepend">
+              <span class="input-group-text input-group-text-none">~</span>
+            </div>
+            <input type='text' class="form-control width120" appDatetimePicker />
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">納品希望日</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type='text' class="form-control width120" appDatetimePicker/>
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+            <div class="input-group-prepend">
+              <span class="input-group-text input-group-text-none">~</span>
+            </div>
+            <input type='text' class="form-control width120" appDatetimePicker/>
+            <span class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="width7p required-item font-weight-bold">受注No.</div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control maxwid" />
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width7p font-weight-bold">受注目的</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn1">
+              <label class="custom-control-label" for="OrderPurposeKbn1">売上</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn2">
+              <label class="custom-control-label" for="OrderPurposeKbn2">施工</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn3">
+              <label class="custom-control-label" for="OrderPurposeKbn3">売上</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">発送区分</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="SendKbn" id="SendKbn1">
+              <label class="custom-control-label" for="SendKbn1">送付</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="SendKbn" id="SendKbn2">
+              <label class="custom-control-label" for="SendKbn2">持参</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="mr-15 font-weight-bold">請求・仕切書変更時備考</div>
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="ChangeBikoKbn1">
+              <label class="custom-control-label" for="ChangeBikoKbn1">変更</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="ChangeBikoKbn2">
+              <label class="custom-control-label" for="ChangeBikoKbn2">変更有</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+
+        <div class="form-group width7p font-weight-bold">納品先</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">××××株式会社</div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">支店</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">×××支店</div>
+        </div>
+
+        <div class="form-group width7p font-weight-bold">EC受注</div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="CEOrdersKbn1">
+              <label class="custom-control-label" for="CEOrdersKbn1">対象</label>
+            </div>
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="CEOrdersKbn2">
+              <label class="custom-control-label" for="CEOrdersKbn2">対象外</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width7p font-weight-bold">請求先</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">××××商事</div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">デポ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">×××営業所</div>
+        </div>
+
+        <div class="form-group width7p font-weight-bold">売上計上状況</div>
+        <div class="form-group input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="SaleRecordKbn1">
+            <label class="custom-control-label" for="SaleRecordKbn1">対象外</label>
+          </div>
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="SaleRecordKbn2">
+            <label class="custom-control-label" for="SaleRecordKbn2">対象外</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width7p font-weight-bold">物品</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml-10">××××物品</div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">技術営業担当者</div>
+        <div class="form-group width30p">
+          <div class="input-group"></div>
+          <input type="text" class="form-control width130">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div class="ml-10">××　太郎</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>タブ</h3>
+  <tabset>
+    <tab heading="見積基本">
+      <div class="card">
+        <div class="card-title">
+          <div class="text-area">仕入情報</div>
+        </div>
+        <div class="card-body">
+          <div class="form-inline">
+            <div class="form-group width7p required-item font-weight-bold">受注年月日</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <input type='text' class="form-control width120" appDatetimePicker />
+                <span class="input-group-prepend">
+                  <span class="input-group-text">
+                    <span class="fa fa-calendar"></span>
+                  </span>
+                </span>
+                <div class="input-group-prepend">
+                  <span class="input-group-text input-group-text-none">~</span>
+                </div>
+                <input type='text' class="form-control width120" appDatetimePicker />
+                <span class="input-group-prepend">
+                  <span class="input-group-text">
+                    <span class="fa fa-calendar"></span>
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group width8p font-weight-bold">納品希望日</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <input type='text' class="form-control width120" appDatetimePicker/>
+                <span class="input-group-prepend">
+                  <span class="input-group-text">
+                    <span class="fa fa-calendar"></span>
+                  </span>
+                </span>
+                <div class="input-group-prepend">
+                  <span class="input-group-text input-group-text-none">~</span>
+                </div>
+                <input type='text' class="form-control width120" appDatetimePicker/>
+                <span class="input-group-prepend">
+                  <span class="input-group-text">
+                    <span class="fa fa-calendar"></span>
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="width7p required-item font-weight-bold">受注No.</div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control maxwid" />
+              </div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <div class="form-group width7p font-weight-bold">受注目的</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn1">
+                  <label class="custom-control-label" for="OrderPurposeKbn1">売上</label>
+                </div>
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn2">
+                  <label class="custom-control-label" for="OrderPurposeKbn2">施工</label>
+                </div>
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn3">
+                  <label class="custom-control-label" for="OrderPurposeKbn3">売上</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group width8p font-weight-bold">発送区分</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="SendKbn" id="SendKbn1">
+                  <label class="custom-control-label" for="SendKbn1">送付</label>
+                </div>
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="SendKbn" id="SendKbn2">
+                  <label class="custom-control-label" for="SendKbn2">持参</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="mr-15 font-weight-bold">請求・仕切書変更時備考</div>
+              <div class="input-group">
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="ChangeBikoKbn1">
+                  <label class="custom-control-label" for="ChangeBikoKbn1">変更</label>
+                </div>
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="ChangeBikoKbn2">
+                  <label class="custom-control-label" for="ChangeBikoKbn2">変更有</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-inline">
+
+            <div class="form-group width7p font-weight-bold">納品先</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <input type="text" class="form-control width130">
+                <div class="input-group-prepend">
+                  <button type="button" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="ml-10">××××株式会社</div>
+            </div>
+
+            <div class="form-group width8p font-weight-bold">支店</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <input type="text" class="form-control width130">
+                <div class="input-group-prepend">
+                  <button type="button" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="ml-10">×××支店</div>
+            </div>
+
+            <div class="form-group width7p font-weight-bold">EC受注</div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="CEOrdersKbn1">
+                  <label class="custom-control-label" for="CEOrdersKbn1">対象</label>
+                </div>
+                <div class="custom-control custom-checkbox  custom-control-inline">
+                  <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="CEOrdersKbn2">
+                  <label class="custom-control-label" for="CEOrdersKbn2">対象外</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <div class="form-group width7p font-weight-bold">請求先</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <input type="text" class="form-control width130">
+                <div class="input-group-prepend">
+                  <button type="button" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="ml-10">××××商事</div>
+            </div>
+
+            <div class="form-group width8p font-weight-bold">デポ</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <input type="text" class="form-control width130">
+                <div class="input-group-prepend">
+                  <button type="button" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="ml-10">×××営業所</div>
+            </div>
+
+            <div class="form-group width7p font-weight-bold">売上計上状況</div>
+            <div class="form-group input-group">
+              <div class="custom-control custom-checkbox  custom-control-inline">
+                <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="SaleRecordKbn1">
+                <label class="custom-control-label" for="SaleRecordKbn1">対象外</label>
+              </div>
+              <div class="custom-control custom-checkbox  custom-control-inline">
+                <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="SaleRecordKbn2">
+                <label class="custom-control-label" for="SaleRecordKbn2">対象外</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <div class="form-group width7p font-weight-bold">物品</div>
+            <div class="form-group width30p">
+              <div class="input-group">
+                <input type="text" class="form-control width130">
+                <div class="input-group-prepend">
+                  <button type="button" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="ml-10">××××物品</div>
+            </div>
+
+            <div class="form-group width8p font-weight-bold">技術営業担当者</div>
+            <div class="form-group width30p">
+              <div class="input-group"></div>
+              <input type="text" class="form-control width130">
+              <div class="input-group-prepend">
+                <button type="button" class="btn btn-default">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+              <div class="ml-10">××　太郎</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+    <tab heading="契約基本">Basic content 1</tab>
+    <tab heading="作業明細">Basic content 2</tab>
+  </tabset>
+
+  <h3>ダイアログ</h3>
+  <button class="btn" appModal [config]="defaultModalConfig" [data]="defaultModalData" (done)="done($event)">デフォルト</button>
+  <button class="btn" appModal [config]="searchModalConfig" [data]="searchModalData" (done)="done($event)">AG-GRIDがある</button>
+
+  <h3>メインメニューイメージ</h3>
+  <div class="main-menu-img">
+    <ul>
+      <li><a href="javascript:void(0);">承認待ち <span class="cnt">9件</span></a></li>
+      <li><a href="javascript:void(0);">差戻 <span class="cnt">2件</span></a></li>
+      <li><a href="javascript:void(0);">依頼中</a></li>
+      <li><a href="javascript:void(0);">完了</a></li>
+    </ul>
+  </div>
+
+  <h3>テーブル</h3>
+  <table class="app-table">
+    <tbody>
+      <tr>
+        <th>決算期</th>
+        <td>2015</td>
+        <td>2016</td>
+        <td>2017</td>
+      </tr>
+      <tr>
+        <th>売上高</th>
+        <td>4,730,480(-)</td>
+        <td>4,588,566(△3.0)</td>
+        <td>4,450,909(△3.0)</td>
+      </tr>
+      <tr>
+        <th>税引後利益</th>
+        <td>82,110(-)</td>
+        <td>76,383(△7.0)</td>
+        <td>16,151(△78.9)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="app-table mt-10">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>名称</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>名称１</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>名称２</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>名称２</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="app-table mt-10 full-width">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>名称</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>名称１</td>
+      </tr>
+      <tr>
+        <td class="text-center">2</td>
+        <td>名称２</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>
+          <div class="table-cell" style="height: 100px;">
+            名称２
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

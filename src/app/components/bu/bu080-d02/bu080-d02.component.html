@@ -1,0 +1,1206 @@
+<form [formGroup]="form" class="search-form">
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">承認状態</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type='text' class="form-control width130" readonly value="承認済" />
+      </div>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">物品コード</div>
+    <div class="form-group width30p">
+      <input type='text' class="form-control width130" />
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">物品名</div>
+    <div class="form-group width30p">
+      <input type='text' class="form-control width400" />
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">物品名カナ</div>
+    <div class="form-group width30p">
+      <input type='text' class="form-control width400" />
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">グループ会社区分</div>
+    <div class="form-group width30p">
+      <select class="form-control width240">
+        <option>大塚ホールディングス</option>
+        <option>大塚ホールディングス</option>
+        <option>大塚ホールディングス</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">在庫区分</div>
+    <div class="form-group width30p">
+      <select class="form-control width240">
+        <option>貯蔵品</option>
+        <option>貯蔵品</option>
+        <option>貯蔵品</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">振替勘定</div>
+    <div class="form-group width30p">
+      <select class="form-control width240">
+        <option>外注施工振替[PC]</option>
+        <option>外注施工振替[PC]</option>
+        <option>外注施工振替[PC]</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">取扱期間</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate
+          [validateFormControl]="form.get('OrderYmdFrom')" [endDate]="form.get('OrderYmdTo').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+        <div class="input-group-prepend">
+          <span class="input-group-text input-group-text-none">~</span>
+        </div>
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate
+          [validateFormControl]="form.get('OrderYmdTo')" [startDate]="form.get('OrderYmdFrom').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">JANコード</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type='text' class="form-control width130" />
+      </div>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">最終仕入日</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type='text' class="form-control width130" readonly value="yyyy/mm/dd" />
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="form-inline">
+    <table class="app-table">
+      <thead>
+        <tr>
+          <th class="width64">削除</th>
+          <th class="width130">物品カテゴリー</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>捕虫器</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-group width30p align-self-end">
+      &nbsp;<button type="button" class="btn btn-primary">
+        <i class="fa fa-arrow-circle-right"></i> 物品カテゴリー選択
+      </button>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width7p font-weight-bold">
+      <button type="button" class="btn btn-warning">
+        <i class="fa fa-remove"></i> 行削除
+      </button>
+    </div>
+  </div>
+  <br>
+  <div class="form-inline">
+    <table class="app-table">
+      <thead>
+        <tr>
+          <th class="width64">削除</th>
+          <th class="width130">物品カテゴリー</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>〇〇作業一式</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-group width30p align-self-end">
+      &nbsp;<button type="button" class="btn btn-primary">
+        <i class="fa fa-arrow-circle-right"></i> 物品カテゴリー選択
+      </button>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width7p font-weight-bold">
+      <button type="button" class="btn btn-warning">
+        <i class="fa fa-remove"></i> 行削除
+      </button>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-title">
+      <div class="text-area">仕入</div>
+      <div class="btn-area">
+        <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea()">
+          <i class="fa" [class.fa-angle-up]="infoAreaOpend" [class.fa-angle-down]="!infoAreaOpend"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body" [@openClose]="infoAreaOpend ? 'open' : 'closed'">
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold align-self-start">発注単位</div>
+        <div class="form-group width8p">
+          <div class="input-group">
+            <div class="custom-control custom-radio  custom-control-inline">
+              <input class="custom-control-input" type="radio" checked name="EscoAssociation" id="EscoAssociation1">
+              <label class="custom-control-label" for="EscoAssociation1">最小単位</label>
+            </div>
+            <div class="custom-control custom-radio  custom-control-inline">
+              <input class="custom-control-input" type="radio" checked name="EscoAssociation" id="EscoAssociation2">
+              <label class="custom-control-label" for="EscoAssociation2">梱包単位</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">最小単位</div>
+        <div class="form-group width30p">
+          <select class="form-control width130">
+            <option>個</option>
+            <option>個</option>
+            <option>個</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">梱包単位</div>
+        <div class="form-group width30p">
+          <select class="form-control width130">
+            <option>ダース</option>
+            <option>ダース</option>
+            <option>ダース</option>
+          </select>
+        </div>
+        <div class="form-group width10p font-weight-bold">単位率</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type='text' class="form-control width160" value="12" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">最小発注数量</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width96">
+          </div>
+          <div class="ml-10">ダース</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">SC倉庫取扱対象</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="SCPurposeKbn" id="SCPurposeKbn1">
+              <label class="custom-control-label" for="SCPurposeKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">電略</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">梱包単位重量</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width96">
+          </div>
+          <div class="ml-10">kg</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">運送費</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="700">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">計画生産品フラグ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="OrderPurposeKbn1">
+              <label class="custom-control-label" for="OrderPurposeKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">発注可能倉庫</div>
+      </div>
+      <div class="form-inline">
+        <table class="app-table">
+          <thead>
+            <tr>
+              <th class="width120">倉庫コード</th>
+              <th class="width130">倉庫名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0010</td>
+              <td>札幌倉庫</td>
+            </tr>
+            <tr>
+              <td>0020</td>
+              <td>盛岡倉庫</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-group width30p align-self-end">
+          &nbsp;<button type="button" class="btn btn-primary">
+            <i class="fa fa-arrow-circle-right"></i> 倉庫選択
+          </button>
+        </div>
+      </div>
+      <br>
+
+      <div class="form-inline">
+
+        <div class="form-group width10p font-weight-bold">仕入先</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130" disabled value="SI6711">
+          </div>
+          <div class="ml-10">仕入先A</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+
+        <div class="form-group width10p font-weight-bold">仕入単価</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="1,200">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">梱包単位</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="ダース">
+          </div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">単位率</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="12">
+          </div>
+        </div>
+
+        <div class="form-group width8p font-weight-bold">梱包単位価格</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="14,400">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <button type="button" class="btn btn-primary">
+              <i class="fa fa-arrow-circle-left"></i> 仕入価格
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <div class="text-area">売上</div>
+      <div class="btn-area">
+        <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea2()">
+          <i class="fa" [class.fa-angle-up]="infoAreaOpend2" [class.fa-angle-down]="!infoAreaOpend2"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body" [@openClose]="infoAreaOpend2 ? 'open' : 'closed'">
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+
+          </div>
+
+        </div>
+
+        <div class="form-group "></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <div class=" font-weight-bold">梱包単位</div>
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <div class=" font-weight-bold">単位率</div>
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <div class=" font-weight-bold">梱包単位価格</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+
+        <div class="form-group width10p font-weight-bold">定価</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="2,000">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="ダース">
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="12">
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"> </div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="24,400">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+
+        <div class="form-group width10p font-weight-bold">定標準価格</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="1,850">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="ダース">
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="12">
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"> </div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="22,200">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+
+        <div class="form-group width10p font-weight-bold">代行店価格</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="1,780">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="ダース">
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"></div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="12">
+          </div>
+        </div>
+
+        <div class="form-group  font-weight-bold"> </div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="21,360">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">運送費</div>
+        <div class="form-group width15p">
+          <div class="input-group">
+            <input type="text" class="form-control width96" value="700">
+          </div>
+          <div class="ml-10">円</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">価格表出力</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="PricePurposeKbn" id="PricePurposeKbn1">
+              <label class="custom-control-label" for="PricePurposeKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-area">
+        <button type="button" class="btn btn-primary" (click)="searchData()">
+          <i class="fa fa-search"></i> 販売価格
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <div class="text-area">EC設定</div>
+      <div class="btn-area">
+        <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea3()">
+          <i class="fa" [class.fa-angle-up]="infoAreaOpend3" [class.fa-angle-down]="!infoAreaOpend3"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body" [@openClose]="infoAreaOpend3 ? 'open' : 'closed'">
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">EC対象</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ECKbn" id="ECKbn1">
+              <label class="custom-control-label" for="ECKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">EC調達先</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-radio  custom-control-inline">
+              <input class="custom-control-input" type="radio" checked name="OrderGoods" id="OrderGoods1">
+              <label class="custom-control-label" for="OrderGoods1">発注</label>
+            </div>
+            <div class="custom-control custom-radio  custom-control-inline">
+              <input class="custom-control-input" type="radio" checked name="OrderGoods" id="OrderGoods2">
+              <label class="custom-control-label" for="OrderGoods2">倉庫依頼</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">EC依頼先倉庫</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+              <input type="text" class="form-control width96" value="W011">
+              <div class="input-group-prepend">
+                  <button type="button" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+          </div>
+          <div class="ml-10"> 倉庫０１</div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <div class="text-area">その他情報</div>
+      <div class="btn-area">
+        <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea4()">
+          <i class="fa" [class.fa-angle-up]="infoAreaOpend4" [class.fa-angle-down]="!infoAreaOpend4"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body" [@openClose]="infoAreaOpend4 ? 'open' : 'closed'">
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">ブランチフラグ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ECFlagKbn" id="ECFlagKbn1">
+              <label class="custom-control-label" for="ECFlagKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">ロット管理フラグ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="OEMGoodsKbn" id="OEMGoodsKbn1">
+              <label class="custom-control-label" for="OEMGoodsKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">シリアル管理フラグ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ManagementSignKbn" id="ManagementSignKbn1">
+              <label class="custom-control-label" for="ManagementSignKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">OEM商品</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="SerialSignKbn" id="SerialSignKbn1">
+              <label class="custom-control-label" for="SerialSignKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">高圧ガスフラグ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="HighPressureKbn" id="HighPressureKbn1">
+              <label class="custom-control-label" for="HighPressureKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">施工詳細記録利用フラグ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="DetailedRecordsKbn" id="DetailedRecordsKbn1">
+              <label class="custom-control-label" for="DetailedRecordsKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">施工方法</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <select class="form-control">
+              <option>散布</option>
+              <option>散布</option>
+              <option>散布</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+  <div class="form-inline">
+    <div class="form-group width10p  font-weight-bold">販売停止期間</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate
+          [validateFormControl]="form.get('OrderYmdFrom')" [endDate]="form.get('OrderYmdTo').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+        <div class="input-group-prepend">
+          <span class="input-group-text input-group-text-none">~</span>
+        </div>
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate
+          [validateFormControl]="form.get('OrderYmdTo')" [startDate]="form.get('OrderYmdFrom').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group width8p font-weight-bold">販売停止事由</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type="text" class="form-control width140">
+        <div class="input-group-prepend">
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="form-inline">
+    <div class="form-group width10p  font-weight-bold">発注停止期間</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate
+          [validateFormControl]="form.get('OrderYmdFrom')" [endDate]="form.get('OrderYmdTo').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+        <div class="input-group-prepend">
+          <span class="input-group-text input-group-text-none">~</span>
+        </div>
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate
+          [validateFormControl]="form.get('OrderYmdTo')" [startDate]="form.get('OrderYmdFrom').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group width8p font-weight-bold">発注停止事由</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type="text" class="form-control width140">
+        <div class="input-group-prepend">
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="form-inline">
+    <div class="form-group width10p  font-weight-bold">使用停止期間</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate
+          [validateFormControl]="form.get('OrderYmdFrom')" [endDate]="form.get('OrderYmdTo').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+        <div class="input-group-prepend">
+          <span class="input-group-text input-group-text-none">~</span>
+        </div>
+        <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate
+          [validateFormControl]="form.get('OrderYmdTo')" [startDate]="form.get('OrderYmdFrom').value" />
+        <span class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-calendar"></span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group width8p font-weight-bold">使用停止事由</div>
+    <div class="form-group width30p">
+      <div class="input-group">
+        <input type="text" class="form-control width140">
+        <div class="input-group-prepend">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-inline">
+      <div class="form-group width10p font-weight-bold">長期発注無しフラグ</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input class="custom-control-input" type="checkbox" name="DetailedRecordsKbn" id="DetailedRecordsKbn1">
+            <label class="custom-control-label" for="DetailedRecordsKbn1"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="card">
+    <div class="card-title">
+      <div class="text-area">薬剤</div>
+      <div class="btn-area">
+        <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea5()">
+          <i class="fa" [class.fa-angle-up]="infoAreaOpend5" [class.fa-angle-down]="!infoAreaOpend5"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body" [@openClose]="infoAreaOpend5 ? 'open' : 'closed'">
+
+      <div class="form-inline">
+
+        <div class="form-group width10p font-weight-bold">特殊物品区分</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <select class="form-control width240">
+              <option>医薬品</option>
+              <option>医薬品</option>
+              <option>医薬品</option>
+            </select>
+          </div>
+          <div class="ml-10">
+            <select class="form-control width240">
+              <option>一般第三類</option>
+              <option>一般第三類</option>
+              <option>一般第三類</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">使用回数制限</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-radio  custom-control-inline">
+              <input class="custom-control-input" type="radio" checked name="Existion" id="Existion">
+              <label class="custom-control-label" for="Existion">あり</label>
+            </div>
+            <div class="custom-control custom-radio  custom-control-inline">
+              <input class="custom-control-input" type="radio" checked name="Existion" id="Existion2">
+              <label class="custom-control-label" for="Existion2">なし</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+
+        <div class="form-group width10p font-weight-bold">毒劇区分</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <select class="form-control width130">
+              <option>劇</option>
+              <option>劇</option>
+              <option>劇</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">危険物フラグ</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="DangerMarkKbn" id="DangerMarkKbn1">
+              <label class="custom-control-label" for="DangerMarkKbn1"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">製造販売元</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width130" value="ナントカ製薬">
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">SDS</div>
+      </div>
+      <div class="form-inline">
+        <table class="app-table widthmytable">
+          <thead>
+            <tr>
+              <th class="widthmy">削除</th>
+              <th class="widthmy">SDSコード</th>
+              <th class="widthmy">削製品コード</th>
+              <th class="widthmy">製品名</th>
+              <th class="widthmy">発行・改定日</th>
+              <th class="widthmy">確認日</th>
+              <th class="widthmy">SDS</th>
+              <th class="widthmy">備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>000023</td>
+              <td>7878</td>
+              <td>XXXX</td>
+              <td>yyyy/mm/dd</td>
+              <td>yyyy/mm/dd</td>
+              <td><a href="">7878.pdf</a></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-inline pager">
+        <div class="form-group  font-weight-bold">
+          <button type="button" class="btn btn-warning">
+            <i class="fa fa-remove"></i> 行削除
+          </button>
+        </div>
+        <div class="form-group ">
+          <div class="input-group">
+            <button type="button" class="btn btn-primary">
+              <i class="fa fa-arrow-circle-right"></i> SDS選択
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">剤型</div>
+        <div class="form-group width30p">
+          <select class="form-control width130">
+            <option>粉末</option>
+            <option>粉末</option>
+            <option>粉末</option>
+          </select>
+        </div>
+        <div class="form-group width7p font-weight-bold"></div>
+        <div class="form-group width30p">
+          <div class="input-group">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">消費期限</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <input type="text" class="form-control width400" value="6カ月">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">成分</div>
+      </div>
+      <div class="form-inline">
+        <table class="app-table">
+          <thead>
+            <tr>
+              <th class="width120">削除</th>
+              <th class="width120">成分コード</th>
+              <th class="width120">成分名</th>
+              <th class="width120">CAS No.</th>
+              <th class="width120">濃度</th>
+              <th class="width120">PRTR</th>
+              <th class="width120">ポジティブ</th>
+              <th class="width120">安衛法</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>1212</td>
+              <td>XXXX</td>
+              <td>3333</td>
+              <td>0.01</td>
+              <td>対象</td>
+              <td>対象外</td>
+              <td>対象</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-group width30p align-self-end">
+          &nbsp;<button type="button" class="btn btn-primary">
+            <i class="fa fa-arrow-circle-right"></i> 成分選択
+          </button>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="form-group width10p font-weight-bold">
+          <button type="button" class="btn btn-warning">
+            <i class="fa fa-remove"></i> 行削除
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">物品備考</div>
+  </div>
+
+  <div class="form-inline">
+    <div class="form-group width30p ">
+      <input type="text" class="form-control width95p" value=""></div>
+    <div class="form-group">
+      <div class="input-group font-weight-bold">
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> 備考追加
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-inline">
+    <table class="app-table">
+      <thead>
+        <tr>
+          <th class="width120">削除</th>
+          <th class="width400">内容</th>
+          <th class="width120">登録者</th>
+          <th class="width120">登録日</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>●●個以上注文で、▲を1個サービス</td>
+          <td>山田　太郎</td>
+          <td>2018/03/14</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>総額1万円以上なら、運送費は500円固定です。</td>
+          <td>阿部　信太郎</td>
+          <td>2018/03/10</td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">
+      <button type="button" class="btn btn-warning">
+        <i class="fa fa-remove"></i> 行削除
+      </button>
+    </div>
+  </div>
+
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">添付資料</div>
+  </div>
+  <div class="form-inline">
+    <table class="app-table">
+      <thead>
+        <tr>
+          <th class="width120">削除</th>
+          <th class="width120">分類</th>
+          <th class="width140">ファイル名</th>
+          <th class="width120">登録者</th>
+          <th class="width120">登録日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td><select class="form-control">
+              <option>パンフレット類</option>
+              <option>パンフレット類</option>
+              <option>パンフレット類</option>
+            </select></td>
+          <td><a href="">XXX.pdf</a></td>
+          <td>xxx xxx</td>
+          <td>yyyy/mm/dd:hh:mi:ss</td>
+
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td><select class="form-control">
+              <option>パンフレット類</option>
+              <option>パンフレット類</option>
+              <option>パンフレット類</option>
+            </select></td>
+          <td><a href="">XXX.pdf</a></td>
+          <td>xxx xxx</td>
+          <td>yyyy/mm/dd:hh:mi:ss</td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-group width30p align-self-end">
+      &nbsp;
+      <button type="button" class="btn btn-success" title="アップロード">
+        <img src="./assets/images/icon/upload.png" /> アップロード
+      </button>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group width10p font-weight-bold">
+      <button type="button" class="btn btn-warning">
+        <i class="fa fa-remove"></i> 行削除
+      </button>
+    </div>
+  </div>
+
+  <div class="btn-area">
+    <button type="button" class="btn btn-info">
+      <i class="fa fa-save"></i> 一時保存
+    </button>
+    <button type="button" class="btn btn-orengered">
+        <i class="fa fa-mail-forward"></i>  申請
+      </button>
+    <button type="button" class="btn btn-orengered">
+      <i class="fa fa-check-circle"></i> 承認
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="fa fa-save"></i> 更新
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="fa fa-arrow-circle-left"></i> 戻る
+    </button>
+  </div>
+</form>

@@ -1,0 +1,37 @@
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-primary"(click)="select()">
+        <i class="fa fa-arrow-circle-right"></i> 選択
+      </button>
+      <button type="button" class="btn btn-warning" (click)="NoSelect()">
+        <i class="fa fa-window-close"></i> 選択しない
+      </button>
+    </div>
+  </div>
+
+  <ag-grid-angular
+    #agGrid
+    [enableColResize]="true"
+    class="ag-theme-balham ag-grid-height-400" 
+    [gridOptions]="gridOptions"
+    (gridReady)="onGridReady($event)"
+    [pagination]="true"
+    [paginationPageSize]="25"
+    [localeText]="localeText"
+    [enableFilter]="true"
+    [enableSorting]="true"
+    [suppressPaginationPanel]="true"
+    [enableRangeSelection]="true"
+  >
+  </ag-grid-angular>
+
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-primary">
+        <i class="fa fa-arrow-circle-right"></i> 選択
+      </button>
+      <button type="button" class="btn btn-warning">
+        <i class="fa fa-window-close"></i> 選択しない
+      </button>
+    </div>
+  </div>

@@ -1,0 +1,118 @@
+<form [formGroup]="form" class="search-form">
+  <div class="card" [@openClose]="opencontraction ? 'open' : 'closed'">
+    <div class="form-inline">
+
+      <div class="form-group width7p font-weight-bold">紹介元</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group width8p font-weight-bold">紹介元管轄支店</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p  font-weight-bold">支払日</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate
+            [validateFormControl]="form.get('OrderYmdFrom')" [endDate]="form.get('OrderYmdTo').value" />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-none">~</span>
+          </div>
+          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate
+            [validateFormControl]="form.get('OrderYmdTo')" [startDate]="form.get('OrderYmdFrom').value" />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group width8p font-weight-bold">売上デポ</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="form-inline">
+
+      <div class="form-group width7p font-weight-bold"></div>
+      <div class="form-group width30p">
+      </div>
+
+      <div class="form-group width8p font-weight-bold">主管ESCO担当者</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width130">
+        <div class="input-group-prepend">
+          <button type="button" class="btn btn-default">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-area">
+    <button type="button" class="btn btn-primary" (click)="searchData()">
+      <i class="fa fa-search"></i> 検索
+    </button>
+
+    <button type="button" class="btn btn btn-secondary" (click)="conditionPanelOpenOrClose()">
+      <i class="fa" [class.fa-angle-up]="opencontraction" [class.fa-angle-down]="!opencontraction"></i>
+    </button>
+  </div>
+</form>
+
+<div class="list" [class.auto-height]="gridOptions.gridAutoHeight">
+  <div class="pager form-inline">
+    <div>
+      <div><span class="font-weight-bold">発行日</span> <input type="text" class="form-control width130"></div>
+    </div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+
+  <ag-grid-angular #agGrid [enableColResize]="true" class="ag-theme-balham" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)"
+    [pagination]="true" [paginationPageSize]="25" [localeText]="localeText" [enableFilter]="false" [enableSorting]="false"
+    [suppressPaginationPanel]="true" [enableRangeSelection]="true">
+  </ag-grid-angular>
+
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-success" title="ダウンロード">
+        <img src="./assets/images/icon/download.png" /> 紹介売上明細データダウンロード
+      </button>
+    </div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+</div>

@@ -1,0 +1,186 @@
+<form [formGroup]="form">
+  <div class="search-form">
+    <div class="form-inline">
+      <div class="font-weight-bold width8p">作業大分類</div>
+      <div class="form-group">
+        <div class="input-group">
+          <select
+            class="width13p"
+            formControlName="WorkMajorClassificationId"
+            appValidate
+            [validateFormControl]="form.get('WorkMajorClassificationId')"
+          >
+            <option value="1">調査</option>
+            <option value="">調査</option>
+            <option value="">調査</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="font-weight-bold width8p">作業大分類</div>
+      <div class="form-group">
+        <div class="input-group">
+          <select
+            class="width13p"
+            formControlName="WorkClassificationId"
+            appValidate
+            [validateFormControl]="form.get('WorkClassificationId')"
+          >
+            <option value="1">サンプリング</option>
+            <option value="">サンプリング</option>
+            <option value="">サンプリング</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="font-weight-bold width8p">作業コード</div>
+      <div class="form-group">
+        <div class="input-group">
+          <input
+            type="text"
+            formControlName="WorkCode"
+            class="form-control width7r"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="font-weight-bold width8p">作業名</div>
+      <div class="form-group">
+        <div class="input-group">
+          <input
+            type="text"
+            style="width:20rem"
+            formControlName="WorkName"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="font-weight-bold width8p">実施間隔</div>
+      <div class="form-group">
+        <div class="input-group">
+          <select
+            class="width7r"
+            formControlName="Interval"
+            appValidate
+            [validateFormControl]="form.get('Interval')"
+          >
+            <option value="1">定期</option>
+            <option value="">定期</option>
+            <option value="">定期</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group  font-weight-bold width8p">従量制フラグ</div>
+      <div class="form-group ">
+        <div class="input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input
+              class="custom-control-input"
+              type="checkbox"
+              name="QuotaFlag"
+              id="QuotaFlag"
+            />
+            <label class="custom-control-label" for="QuotaFlag"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group  font-weight-bold width8p">作業名変更フラグ</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline">
+            <input
+              class="custom-control-input"
+              type="checkbox"
+              name="WorkNameChangeFlg"
+              id="WorkNameChangeFlg"
+            />
+            <label class="custom-control-label" for="WorkNameChangeFlg"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="font-weight-bold width8p">主担当</div>
+      <div class="form-group">
+        <div class="input-group">
+          <select
+            class="width7r"
+            formControlName="Chiefcharge"
+            appValidate
+            [validateFormControl]="form.get('Chiefcharge')"
+          >
+            <option value="1">代行店</option>
+            <option value="">代行店</option>
+            <option value="">代行店</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="font-weight-bold align-self-start width8p">作業内訳</div>
+      <div class="form-group">
+        <div class="input-group">
+          <textarea
+            cols="70"
+            rows="3"
+            formControlName="WorkBreakdown"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="font-weight-bold width8p">備考</div>
+      <div class="form-group">
+        <div class="input-group">
+          <input
+            type="text"
+            style="width:40rem"
+            formControlName="Remarks"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div>
+  <button type="button" class="btn btn-info" (click)="rowInsert()">
+    <i class="fa fa-plus"></i> 行追加
+  </button>
+</div>
+<ag-grid-angular
+  #agGrid
+  [enableColResize]="true"
+  class="ag-theme-balham ag-grid-height-400"
+  [gridOptions]="gridOptions"
+  (gridReady)="onGridReady($event)"
+  [pagination]="true"
+  [paginationPageSize]="25"
+  [localeText]="localeText"
+  [enableFilter]="true"
+  [enableSorting]="true"
+  [suppressPaginationPanel]="true"
+  [enableRangeSelection]="true"
+>
+</ag-grid-angular>
+
+<div class="btn-toolbar justify-content-between">
+  <div></div>
+  <div>
+    <button type="button" class="btn btn-primary" (click)="backBtn()">
+      <i class="fa fa-arrow-circle-left"></i> キャンセル
+    </button>
+    <button type="button" class="btn btn-info" (click)="InsertBtn()">
+        <i class="fa fa-plus"></i> 新規登録
+      </button>
+  </div>
+</div>

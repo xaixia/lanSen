@@ -1,0 +1,168 @@
+<form [formGroup]="form" class="search-form">
+  <div class="card" [@openClose]="opencontraction ? 'open' : 'closed'">
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">作成元会社コード</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="YYY">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10">{{myvalue1}}</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">作成元会社名</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width60">
+        <div class="ml-10">を含む</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">作成元会社カナ</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width60">
+        <div class="ml-10">を含む</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">作成元取引先コード</div>
+      <div class="form-group width30p">
+        <div class="input-group ">
+          <input type="text" class="form-control width130">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10" >{{myvalue2}}</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">作成元取引先名</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width60">
+        <div class="ml-10">を含む</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">作成元取引先カナ</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width60">
+        <div class="ml-10">を含む</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">送付先会社名</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width60">
+        <div class="ml-10">を含む</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">送付先取引先名</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width60">
+        <div class="ml-10">を含む</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">請求書送付先略称</div>
+      <div class="form-group width30p">
+        <div class="input-group"></div>
+        <input type="text" class="form-control width60">
+        <div class="ml-10">を含む</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">請求管轄組織</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10">{{myvalue3}}</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">入金口座</div>
+      <div class="form-group width30p">
+        <select class="width71 form-control">
+          <option *ngFor="let item of items1">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width8p font-weight-bold ">請求発行形態</div>
+      <div class="form-group width30p">
+        <select class="width30p form-control">
+          <option *ngFor="let item of items2">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <br>
+  </div>
+  <div class="btn-area">
+    <button type="button" class="btn btn-primary" (click)="searchData()">
+      <i class="fa fa-search"></i> 検索
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="fa fa-eraser"></i> クリア
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="fa fa-arrow-circle-right"></i> 設定
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="fa fa-window-close"></i> 閉じる
+    </button>
+    <button type="button" class="btn btn btn-secondary" (click)="conditionPanelOpenOrClose()">
+      <i class="fa" [class.fa-angle-up]="opencontraction" [class.fa-angle-down]="!opencontraction"></i>
+    </button>
+  </div>
+</form>
+<div class="list" [class.auto-height]="gridOptions.gridAutoHeight">
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-info">
+        <i class="fa fa-plus"></i> 新規登録
+      </button>
+    </div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+  <ag-grid-angular 
+   #agGrid 
+    [enableColResize]="true" 
+    class="ag-theme-balham" 
+    [gridOptions]="gridOptions" 
+    (gridReady)="onGridReady($event)"
+    [pagination]="true" 
+    [paginationPageSize]="25" 
+    [localeText]="localeText"
+    [enableFilter]="false"
+    [enableSorting]="false" 
+    [suppressPaginationPanel]="true"
+    [enableRangeSelection]="true">
+  </ag-grid-angular>
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-info">
+        <i class="fa fa-plus"></i> 新規登録
+      </button>
+    </div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+</div>

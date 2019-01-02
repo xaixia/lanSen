@@ -1,3 +1,146 @@
-<h1>
-  {{title}}
-</h1>
+<div class="header">
+  <div class="title-menu">
+    <ul>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">登录</a>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">框架</a>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">首页</a>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">系统管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP010D01')">用户管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">角色管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">权限列表</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">网站设置</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">系统配置</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">核心配置</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">模块管理</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">日志管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN010D17')">登录日志</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN010D19')">操作日志</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN020D01')">数据库日志</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN020D04')">用户端日志</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">查询模块</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/OP010D02')">查询</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">用户管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/RF010D01')">用户列表</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/RF010D01')">雇工列表</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu ">
+        <a href="javascript:void(0);" class="active">业务管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);">工单列表</a>
+          <a class="dropdown-item" href="javascript:void(0);">订单单位</a>
+          <a class="dropdown-item" href="javascript:void(0);">价格方式</a>
+          <a class="dropdown-item" href="javascript:void(0);">标签属性</a>
+          <a class="dropdown-item" href="javascript:void(0);">开单管理</a>
+          <a class="dropdown-item" href="javascript:void(0);">开单模板管理</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu ">
+        <a href="javascript:void(0);">新闻公告广告</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM010D01')">新闻管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM020D01')">公告管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM030D01')">广告管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM010D02')">合同管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM020D02')">协议管理</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">财务管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AR010D01')">业务概览</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AR0010D02')">提现处理</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">卡券管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);">卡券管理</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">消息信息管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);">客户留言</a>
+          <a class="dropdown-item" href="javascript:void(0);">意见反馈</a>
+        </div>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">评价等级管理</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/BU010D01')">订单评价</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/BU040D01')">用户等级</a>
+        </div>
+      </li>
+    </ul>
+    <div class="header-info">
+      <ul class="user-info">
+        <li>admin</li>
+        <li>2018/12/04 12:50:56</li>
+      </ul>
+      <div class="header-mark"><i class="fa fa-arrow-left"></i></div>
+      <div class="header-mark"><i class="fa fa-question-circle"></i></div>
+    </div>
+  </div>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">系统管理</li>
+    <li class="breadcrumb-item">用户管理</li>
+  </ol>
+</div>
+
+<div class="main">
+  <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+
+  <div class="footer">
+    <div class="copy-right">Copyright (c) Earth Environmental Service Co., Ltd. All Right Reserved.</div>
+  </div>
+</div>
+
+<ng4-loading-spinner></ng4-loading-spinner>
+
+<ng-template #loginModalTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">ログイン</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="UserCd">ユーザCD</label>
+        <input type="text" class="form-control" id="UserCd" placeholder="ユーザCD" formControlName="NiceTanCd" appValidate
+          [validateFormControl]="loginForm.get('NiceTanCd')" [readonly]="loginStep == 1">
+      </div>
+      <div class="form-group" style="display:none;height:0px;opacity:0;" [@openClose]="loginStep == 1  ? 'open' : 'closed'">
+        <label for="Pass">パスワード</label>
+        <input type="password" class="form-control" id="Pass" placeholder="パスワード" formControlName="PwdWeb" appValidate
+          [validateFormControl]="loginForm.get('PwdWeb')">
+        <small class="form-text text-danger" *ngIf="isResetPass">初回ログインのため、パスワードを設定してください。</small>
+      </div>
+      <div class="btn-toolbar justify-content-between">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" (click)="backForLogin()" *ngIf="loginStep == 1">戻る</button>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="login()">{{loginButtonText}}</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

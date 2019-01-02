@@ -1,0 +1,576 @@
+<form [formGroup]="form" class="search-form">
+  <div class="card p15">
+    <div class="form-inline">
+      <div class="form-group width7p searchTitle required-item">受注年月日</div>
+      <div class="form-group width30p mr5">
+        <div class="input-group">
+          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate
+            [validateFormControl]="form.get('OrderYmdFrom')" [endDate]="form.get('OrderYmdTo').value" />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-none">~</span>
+          </div>
+          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate
+            [validateFormControl]="form.get('OrderYmdTo')" [startDate]="form.get('OrderYmdFrom').value" />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group width8p searchTitle">納品希望日</div>
+      <div class="form-group width30p mr5">
+        <div class="input-group">
+          <input type='text' class="form-control width120" appDatetimePicker/>
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-none">~</span>
+          </div>
+          <input type='text' class="form-control width120" appDatetimePicker/>
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="width7p searchTitle required-item">受注No.</div>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control maxwid" formControlName="OrderNumber" appValidate
+            [validateFormControl]="form.get('OrderNumber')" />
+        </div>
+      </div>
+    </div>
+
+    <div #conditonPanel>
+      <div class="form-inline mt10">
+        <div class="form-group width7p searchTitle">受注目的</div>
+        <div class="form-group width30p mr5">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of OrderPurposeKbnList; let i = index;">
+              <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="{{'OrderPurposeKbn'+i}}"
+                [value]="item.Kbn" [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+              <label class="custom-control-label" for="{{'OrderPurposeKbn'+i}}">{{item.KbnVal}}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group width8p searchTitle">発送区分</div>
+        <div class="form-group width30p mr5">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of SendKbnList; let i = index;">
+              <input class="custom-control-input" type="checkbox" name="SendKbn" id="{{'SendKbn'+i}}" [value]="item.Kbn"
+                [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+              <label class="custom-control-label" for="{{'SendKbn'+i}}">{{item.KbnVal}}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="mr15 searchTitle">請求・仕切書変更時備考</div>
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of ChangeBikoKbnList; let i = index;">
+              <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="{{'ChangeBikoKbn'+i}}"
+                [value]="item.Kbn" [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+              <label class="custom-control-label" for="{{'ChangeBikoKbn'+i}}">{{item.KbnVal}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline mt10">
+
+        <div class="form-group width7p searchTitle">納品先</div>
+        <div class="form-group width30p mr5">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml10">××××株式会社</div>
+        </div>
+
+        <div class="form-group width8p searchTitle">支店</div>
+        <div class="form-group width30p mr5">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml10">×××支店</div>
+        </div>
+
+        <div class="form-group width7p searchTitle">EC受注</div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of CEOrdersKbnList; let i = index;">
+              <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="{{'CEOrdersKbn'+i}}" [value]="item.Kbn"
+                [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+              <label class="custom-control-label" for="{{'CEOrdersKbn'+i}}">{{item.KbnVal}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline mt10">
+        <div class="form-group width7p searchTitle">請求先</div>
+        <div class="form-group width30p mr5">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml10">××××商事</div>
+        </div>
+
+        <div class="form-group width8p searchTitle">デポ</div>
+        <div class="form-group width30p mr5">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml10">×××営業所</div>
+        </div>
+
+        <div class="form-group width7p searchTitle">売上計上状況</div>
+        <div class="form-group input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of SaleRecordKbnList; let i = index;">
+            <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="{{'SaleRecordKbn'+i}}" [value]="item.Kbn"
+              [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+            <label class="custom-control-label" for="{{'SaleRecordKbn'+i}}">{{item.KbnVal}}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline mt10">
+        <div class="form-group width7p searchTitle">物品</div>
+        <div class="form-group width30p mr5">
+          <div class="input-group">
+            <input type="text" class="form-control width130">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="ml10">××××物品</div>
+        </div>
+
+        <div class="form-group width8p searchTitle">技術営業担当者</div>
+        <div class="form-group width30p">
+          <div class="input-group"></div>
+          <input type="text" class="form-control width130">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div class="ml10">××　太郎</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-inline mt10">
+    <div class="form-group" style="width: 100%;">
+      <div class="alignRight">
+        <button type="button" class="btn btn-orange" (click)="conditionPanelOpenOrClose()">
+            検索条件
+          <i class="fa fa-minus" *ngIf="opencontraction"></i>
+          <i class="fa fa-plus" *ngIf="!opencontraction"></i>
+        </button>
+        <button type="button" class="btn btn-orange" (click)="searchData()">
+          <i class="fa fa-search"></i>
+          検索
+        </button>
+        <button type="button" class="btn btn-outline-blue">クリア</button>
+        <button type="button" class="btn btn-outline-blue">インポート</button>
+        <button type="button" class="btn btn-outline-blue">エクスポート</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="list" [class.auto-height]="gridOptions.gridAutoHeight" >
+  <!-- <ag-grid-angular 
+  #agGrid 
+  [enableColResize]="true" 
+  class="ag-theme-balham" 
+  [gridOptions]="gridOptions"
+  (gridReady)="onGridReady($event)"
+  [pagination]="true"
+  [paginationPageSize]="10"
+  [localeText]="localeText"
+  [enableFilter]="true"
+  [enableSorting]="true"
+  [suppressPaginationPanel]="true"
+  [enableRangeSelection]="true"
+  >
+  </ag-grid-angular> -->
+
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-orengered">
+          <i class="fa fa-plus"></i>
+          新規登録
+      </button>
+      <button type="button" class="btn btn-outline-blue ml10">受注リスト出力</button>
+    </div>
+    <app-pagination [paginationApi]="paginationApi"></app-pagination>
+  </div>
+
+  <table class="table fix-header" *ngIf="!gridOptions.gridAutoHeight">
+    <thead>
+      <tr>
+        <th scope="col" width="67px" rowspan="2" class="text-align-center">選択</th>
+        <th scope="col" width="104px">受注目的</th>
+        <th scope="col" width="120px">受注No. </th>
+        <th scope="col" width="131px">納品先</th>
+        <th scope="col" width="176px" colspan="2">デポ</th>
+        <th scope="col" width="123px" rowspan="2">受注合計金額</th>
+        <th scope="col" width="142px" rowspan="2">受注残合計金額</th>
+        <th scope="col" width="248px" rowspan="2">社内連絡事項</th>
+        <th scope="col" width="129px" rowspan="2">物品名</th>
+        <th scope="col" width="97px" rowspan="2"></th>
+      </tr>
+      <tr>
+        <th scope="col">EC受注</th>
+        <th scope="col">受注年月日</th>
+        <th scope="col">請求先</th>
+        <th scope="col" colspan="2">技術営業担当者</th>
+      </tr>
+    </thead>
+  </table>
+  
+  <div class="scroll">
+  <table class="table">
+    <thead [hidden]="!gridOptions.gridAutoHeight">
+      <tr>
+        <th scope="col" width="67px" rowspan="2" class="text-align-center">選択</th>
+        <th scope="col" width="104px">受注目的</th>
+        <th scope="col" width="120px">受注No. </th>
+        <th scope="col" width="131px">納品先</th>
+        <th scope="col" width="176px" colspan="2">デポ</th>
+        <th scope="col" width="123px" rowspan="2">受注合計金額</th>
+        <th scope="col" width="142px" rowspan="2">受注残合計金額</th>
+        <th scope="col" width="248px" rowspan="2">社内連絡事項</th>
+        <th scope="col" width="129px" rowspan="2">物品名</th>
+        <th scope="col" width="97px" rowspan="2"></th>
+      </tr>
+      <tr>
+        <th scope="col">EC受注</th>
+        <th scope="col">受注年月日</th>
+        <th scope="col">請求先</th>
+        <th scope="col" colspan="2">技術営業担当者</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2" width="67px" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100001">
+            <label class="custom-control-label" for="100001"></label>
+          </div>
+        </td>
+        <td width="104px">売上・送付</td>
+        <td width="120px"><a href="javascript:void(0);">100001</a></td>
+        <td width="131px">×××株式会社</td>
+        <td width="76px">123</td>
+        <td width="100px">×××支店</td>
+        <td width="123px"  rowspan="2">9,876,543</td>
+        <td width="142px" rowspan="2">9,876,543</td>
+        <td width="248px" rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td width="129px" rowspan="2">物品A　他3品</td>
+        <td width="81px" rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td>〇</td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100002">
+            <label class="custom-control-label" for="100002"></label>
+          </div>
+        </td>
+        <td>施工・持参</td>
+        <td><a href="javascript:void(0);">100002</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td>〇</td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100003">
+            <label class="custom-control-label" for="100003"></label>
+          </div>
+        </td>
+        <td>見本・持参</td>
+        <td><a href="javascript:void(0);">100003</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle text-align-center">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100004">
+            <label class="custom-control-label" for="100004"></label>
+          </div>
+        </td>
+        <td>倉庫補充</td>
+        <td><a href="javascript:void(0);">100004</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100005">
+            <label class="custom-control-label" for="100005"></label>
+          </div>
+        </td>
+        <td>売上・送付</td>
+        <td><a href="javascript:void(0);">100005</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100006">
+            <label class="custom-control-label" for="100006"></label>
+          </div>
+        </td>
+        <td>売上・送付</td>
+        <td><a href="javascript:void(0);">100006</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100007">
+            <label class="custom-control-label" for="100007"></label>
+          </div>
+        </td>
+        <td>売上・送付</td>
+        <td><a href="javascript:void(0);">100007</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100008">
+            <label class="custom-control-label" for="100008"></label>
+          </div>
+        </td>
+        <td>売上・送付</td>
+        <td><a href="javascript:void(0);">100008</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100009">
+            <label class="custom-control-label" for="100009"></label>
+          </div>
+        </td>
+        <td>売上・送付</td>
+        <td><a href="javascript:void(0);">100009</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="vertical-align-middle">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="100010">
+            <label class="custom-control-label" for="100010"></label>
+          </div>
+        </td>
+        <td>売上・送付</td>
+        <td><a href="javascript:void(0);">100010</a></td>
+        <td>×××株式会社</td>
+        <td>123</td>
+        <td>×××支店</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">9,876,543</td>
+        <td rowspan="2">社内連絡事項XXXXXXXXXX</td>
+        <td rowspan="2">物品A　他3品</td>
+        <td rowspan="2" class="vertical-align-middle">
+          <button type="button" class="btn btn-default">複製</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2999/12/31</td>
+        <td>×××商事</td>
+        <td>123456</td>
+        <td>××　太郎</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-orengered">
+          <i class="fa fa-plus"></i>
+          新規登録
+        </button>
+      <button type="button" class="btn btn-outline-blue ml10">受注リスト出力</button>
+    </div>
+    <app-pagination [paginationApi]="paginationApi"></app-pagination>
+  </div>
+</div>

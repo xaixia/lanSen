@@ -1,0 +1,151 @@
+<div class="search-form">
+<div class="btn-area">
+    <button type="button" class="btn btn-primary">
+        <i class="fa fa-arrow-circle-left"></i> 戻る
+      </button>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="form-inline">
+      <div class="form-group width5p font-weight-bold">契約</div>
+      <div class="form-group width25p">
+        <div class="mr-10">12345678－12</div>
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="総合衛生管理">
+        </div>
+      </div>
+  
+      <div class="form-group width5p font-weight-bold">施工先</div>
+      <div class="form-group width20p">
+        <div class="input-group">
+    <input type="text" value="○○食品株式会社　横浜工場" class="form-control width130"/>
+        </div>
+      </div>
+  
+      <div class="width7p  font-weight-bold">請求先</div>
+      <div class="form-group width20p">
+        <div class="input-group">
+          <input type="text" value="○○食品株式会社　横浜工場　加食ライン" class="form-control width130"/>
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-inline">
+      <div class="form-group width5p font-weight-bold">商品区分</div>
+      <div class="form-group width15p">
+        <div class="input-group">
+          <input type="text" value="○○食品株式会社　横浜工場　加食ライン" class="form-control width130"/>    
+          </div>
+      </div>
+      <div class="form-group width5p font-weight-bold">契約期間</div>
+      <div class="form-group width25p">
+        <div class="input-group">
+          <input type='text' class="form-control width120" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-none">~</span>
+          </div>
+          <input type='text' class="form-control width120" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-group width5p font-weight-bold">契約開始</div>
+      <div class="form-group width25p">
+
+          <div>翌月</div>
+        <div class="input-group">
+          <input type='text' class="form-control width120" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-none">~</span>
+          </div>
+          <input type='text' class="form-control width120" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+      </div>
+      </div>
+      <div class="form-group width7p font-weight-bold">契約有効開始</div>
+      <div class="form-group width10p">
+          <div class="input-group">
+          <input type='text' class="form-control width120" appDatetimePicker />
+      </div>
+  </div>
+    </div>
+    <div class="form-inline">
+  
+      <div class="form-group width5p font-weight-bold">事業部</div>
+      <div class="form-group width15p">
+        <div class="input-group">
+         <input type="text" value="関東支店" class="form-control width130" />
+        </div>
+      </div>
+  
+      <div class="form-group width5p font-weight-bold">部門</div>
+      <div class="form-group width15p">
+        <div class="input-group ">
+            <input type="text" value="横浜営業所" class="form-control width130" />        
+        </div>
+      </div>
+      <div class="form-group width7p font-weight-bold">ESCO担当者</div>
+      <div class="form-group width15p">
+          <div class="input-group ">
+              <input type="text" value="エスコ　一郎" class="form-control width130" />        
+          </div>
+      </div>
+      <div class="form-group width7p font-weight-bold">実務担当者</div>
+      <div class="form-group width15p">
+          <div class="input-group ">
+              <input type="text" value="エスコ　一郎" class="form-control width130" />        
+          </div>
+      </div>
+    </div>
+    <div class="form-inline">
+  
+      <div class="form-group width5p font-weight-bold">契約金額</div>
+      <div class="form-group width15p">
+          <div class="input-group ">
+              <input type="text" value="￥1,400,000" class="form-control width130" />        
+          </div>
+      </div>
+      <div class="form-group width5p font-weight-bold">原価金額</div>
+      <div class="form-group width15p">
+          <div class="input-group ">
+              <input type="text" value="￥2,300,000" class="form-control width130" />        
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+      <ag-grid-angular 
+      #agGrid 
+      [enableColResize]="true" 
+      class="ag-theme-balham ag-grid-height-400" 
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+      [localeText]="localeText"
+      [enableFilter]="true"
+      [enableSorting]="true"
+      [pinnedBottomRowData]="pinnedBottomRowData"
+      [suppressPaginationPanel]="true"
+      [enableRangeSelection]="true"
+      >
+      </ag-grid-angular>
+
+  
+  

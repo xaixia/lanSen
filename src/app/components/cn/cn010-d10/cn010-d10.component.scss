@@ -1,0 +1,67 @@
+.width40p{
+    width: 40%;
+  }
+  .width5p{
+    width: 5%;
+  }
+  .width7p{
+    width: 7%;
+  }
+  .width8p{
+    width: 8%;
+  }
+
+  .width10p{
+    width: 10%;
+  }
+  
+  .width16p{
+    width: 16%;
+  }
+  .width20p{
+    width: 20%;
+  }
+  .width30p{
+    width: 30%;
+  }
+  .width80p{
+    width: 80%;
+  }
+  .width12r{
+    width: 12rem
+  }
+  .width63r{
+    width: 63rem
+  }
+  .width480{
+    width: 30rem;
+  }
+  .tableborder {
+    border: none;
+    tbody {
+        tr {
+            border-top: none;
+            font-weight: 700!important;
+            &:nth-child(2n) {
+              background-color: transparent;
+              }
+            td:not(:first-child) {
+                border-left: none;
+            }
+        }
+    }
+}
+
+.app-table {
+  th{
+    background-color: white;
+    font-weight: 700!important
+  }
+  tbody {
+      tr {
+          &:nth-child(2n) {
+              background-color: transparent;
+            }
+      }
+  }
+}

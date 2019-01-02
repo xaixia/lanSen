@@ -1,0 +1,27 @@
+<div class="content">
+  <div class="card">
+    <div class="card-body">
+      <div class="list">
+        <div class="pager">
+          <div>
+            <button type="button" class="btn btn-warning">
+              <i class="fa fa-remove"></i> 削除
+            </button>
+            <button type="button" class="btn btn-info">
+              <i class="fa fa-plus"></i> 追加
+            </button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-info">
+              <i class="fa fa-save"></i> 紹介元変更申請
+            </button>
+          </div>
+        </div>
+      </div>
+      <ag-grid-angular #agGrid [enableColResize]="true" class="ag-theme-balham ag-grid-height-400 mt-10" [gridOptions]="gridOptions"
+        (gridReady)="onGridReady($event)" [localeText]="localeText" [enableFilter]="true" [enableSorting]="true"
+        [suppressPaginationPanel]="true" [enableRangeSelection]="true">
+      </ag-grid-angular>
+    </div>
+  </div>
+</div>

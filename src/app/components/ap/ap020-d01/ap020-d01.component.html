@@ -1,0 +1,88 @@
+<div class="search-form">
+  <div class="card" [@openClose]="searchFormOpend ? 'open' : 'closed'">
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">ルートID</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130">
+        </div>
+      </div>
+      <div class="form-group width8p font-weight-bold">承認区分</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <select name="" class="form-control width120" id="">
+            <option value="">特価申請</option>
+            <option value="">値引き</option>
+            <option value="">見積申請</option>
+            <option value="">契約申請</option>
+            <option value="">売上・原価変更申請</option>
+            <option value="">解約申請</option>
+            <option value="">減額申請</option>
+            <option value="">代行店変更申請</option>
+            <option value="">紹介元変更申請</option>
+            <option value="">契約書未回収売上申請</option>
+            <option value="">注文書未回収売上申請</option>
+            <option value="">物品登録申請</option>
+            <option value="">与信取得申請</option>
+            <option value="">棚卸結果申請</option>
+            <option value="">セミナー売上申請</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group width7p font-weight-bold">備考</div>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control width130">
+          <div class="ml-10">を含む</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="btn-area pr-2 pt-2">
+    <button type="button" class="btn btn-primary" (click)="searchData()">
+      <i class="fa fa-search"></i> 検索
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="fa fa-eraser"></i> クリア
+    </button>
+    <button type="button" class="btn btn-success">
+      <img src="./assets/images/icon/download.png" /> Excel出力
+    </button>
+    <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea()">
+      <i class="fa" [class.fa-angle-up]="infoAreaOpend" [class.fa-angle-down]="!infoAreaOpend"></i>
+    </button>
+  </div>
+</div>
+<div class="list" [class.auto-height]="gridOptions.gridAutoHeight">
+  <div class="pager">
+    <div class="form-group">
+      <button type="button" class="btn btn-info">
+        <i class="fa fa-plus"></i> 新規登録
+      </button>
+    </div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+  <ag-grid-angular 
+  #agGrid 
+  [enableColResize]="true" 
+  class="ag-theme-balham ag-grid-height-500" 
+  [gridOptions]="gridOptions"
+  (gridReady)="onGridReady($event)" 
+  [pagination]="true" 
+  [paginationPageSize]="25" 
+  [localeText]="localeText"
+  [enableFilter]="true" 
+  [suppressPaginationPanel]="true" 
+  [enableRangeSelection]="true">
+  </ag-grid-angular>
+  <div class="pager">
+    <div class="form-group">
+      <button type="button" class="btn btn-info">
+        <i class="fa fa-plus"></i> 新規登録
+      </button>
+    </div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+</div>

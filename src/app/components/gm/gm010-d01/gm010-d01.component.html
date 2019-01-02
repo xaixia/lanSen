@@ -1,0 +1,235 @@
+<form [formGroup]="form" class="search-form">
+  <div class="card" [@openClose]="opencontraction ? 'open' : 'closed'">
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">入力画面区分</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="InputSectionKbn" id="InputSectionKbn1">
+              <label class="custom-control-label" for="InputSectionKbn1">物販</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="InputSectionKbn" id="InputSectionKbn2">
+              <label class="custom-control-label" for="InputSectionKbn2">サービス</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="InputSectionKbn" id="InputSectionKbn3">
+              <label class="custom-control-label" for="InputSectionKbn3">汎用</label>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">債権種別</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="CreditTypeKbn" id="CreditTypeKbn1">
+              <label class="custom-control-label" for="CreditTypeKbn1">売上</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="CreditTypeKbn" id="CreditTypeKbn2">
+              <label class="custom-control-label" for="CreditTypeKbn2">未収入金</label>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold align-self-start">契約型区分</div>
+        <div class="form-group width30p">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn1">
+              <label class="custom-control-label" for="ContractTypeKbn1">年契（THC）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn2">
+              <label class="custom-control-label" for="ContractTypeKbn2">年契（PC）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn3">
+              <label class="custom-control-label" for="ContractTypeKbn3">年契（BM）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn4">
+              <label class="custom-control-label" for="ContractTypeKbn4">SPOT（THC）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn5">
+              <label class="custom-control-label" for="ContractTypeKbn5">SPOT（PC）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn6">
+              <label class="custom-control-label" for="ContractTypeKbn6">SPOT（BM）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn7">
+              <label class="custom-control-label" for="ContractTypeKbn7">SPOT（検査）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn8">
+              <label class="custom-control-label" for="ContractTypeKbn8">SPOT（セミナー）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn9">
+              <label class="custom-control-label" for="ContractTypeKbn9">SPOT（建設工事）</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ContractTypeKbn" id="ContractTypeKbn10">
+              <label class="custom-control-label" for="ContractTypeKbn10">SPOT（物品販売）</label>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">計上日</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type='text' class="form-control width130" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-none">~</span>
+          </div>
+          <input type='text' class="form-control width130" appDatetimePicker />
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-group width150 font-weight-bold">セミナー売上承認ステータス</div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ApprovalStatusKbn" id="ApprovalStatusKbn1">
+              <label class="custom-control-label" for="ApprovalStatusKbn1">承認済</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input class="custom-control-input" type="checkbox" name="ApprovalStatusKbn" id="ApprovalStatusKbn2">
+              <label class="custom-control-label" for="ApprovalStatusKbn2">申請中</label>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">デポ</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="001">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10">デポ００１</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">技術営業担当者</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="00001">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10">担当者００００１</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">施工先／納品先</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="0001">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10">施工先０００１</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">請求先</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="0001">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-10">得意先０００１</div>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="form-group width7p font-weight-bold">伝票番号</div>
+      <div class="form-group width30p">
+        <div class="input-group">
+          <input type="text" class="form-control width130" value="00000001">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-area">
+    <button type="button" class="btn btn-primary" (click)="searchData()">
+      <i class="fa fa-search"></i> 検索
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="fa fa-eraser"></i> クリア
+    </button>
+    <button type="button" class="btn btn-success">
+      <img src="./assets/images/icon/download.png" /> 会計用売上データダウンロード
+    </button>
+    <button type="button" class="btn btn-success">
+      <img src="./assets/images/icon/download.png" /> 会計用請求データダウンロード
+    </button>
+    <button type="button" class="btn btn-success">
+      <img src="./assets/images/icon/download.png" /> Excel出力
+    </button>
+    <button type="button" class="btn btn btn-secondary" (click)="conditionPanelOpenOrClose()">
+      <i class="fa" [class.fa-angle-up]="opencontraction" [class.fa-angle-down]="!opencontraction"></i>
+    </button>
+  </div>
+</form>
+
+<div class="list" [class.auto-height]="gridOptions.gridAutoHeight" >
+  <div class="pager">
+    <div>
+      <button type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> 汎用債権新規登録
+      </button>
+    </div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+
+  <ag-grid-angular 
+  #agGrid 
+  [enableColResize]="true" 
+  class="ag-theme-balham" 
+  [gridOptions]="gridOptions"
+  (gridReady)="onGridReady($event)"
+  [pagination]="true"
+  [paginationPageSize]="25"
+  [localeText]="localeText"
+  [enableFilter]="true"
+  [suppressPaginationPanel]="true"
+  [enableRangeSelection]="true"
+  >
+  </ag-grid-angular>
+
+  <div class="pager">
+    <div></div>
+    <app-pagination [gridApi]="gridApi"></app-pagination>
+  </div>
+</div>
