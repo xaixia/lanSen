@@ -150,9 +150,10 @@ import { Op020D04Component } from './components/op/op020-d04/op020-d04.component
 import { Op020D05Component } from './components/op/op020-d05/op020-d05.component';
 import { UserComponent } from './components/systemManagement/user/userComponent';
 import { IndexComponent } from './components/index/indexComponent';
+import { RegisterComponent } from './components/register/registerComponent';
 
 const appRoutes: Routes = [
-  { path: 'BU010D01', component: Bu010D01Component},
+  { path: 'BU010D01', component: Bu010D01Component },
   { path: 'RF010D01', component: Rf010D01Component },
   { path: 'BU120D01', component: Bu120D01Component },
   { path: 'BU110D02', component: Bu110D02Component },
@@ -164,7 +165,7 @@ const appRoutes: Routes = [
   { path: 'GM010D02', component: Gm010D02Component },
   { path: 'AP010D01', component: Ap010D01Component },
   { path: 'AP010D02', component: Ap010D02Component },
-  { path: '', redirectTo: '/SD010D07', pathMatch: 'full' },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'CN010D01', component: Cn010D01Component },
   { path: 'CN010D04', component: Cn010D04Component },
   { path: 'CN010D05', component: Cn010D05Component },
@@ -267,6 +268,7 @@ const appRoutes: Routes = [
   { path: 'OP020D05', component: Op020D05Component },
   { path: 'user', component: UserComponent },
   { path: 'index', component: IndexComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -399,7 +401,8 @@ const appRoutes: Routes = [
     Op020D04Component,
     Op020D05Component,
     UserComponent,
-    IndexComponent
+    IndexComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
