@@ -148,6 +148,8 @@ import { Op020D02Component } from './components/op/op020-d02/op020-d02.component
 import { Op020D03Component } from './components/op/op020-d03/op020-d03.component';
 import { Op020D04Component } from './components/op/op020-d04/op020-d04.component';
 import { Op020D05Component } from './components/op/op020-d05/op020-d05.component';
+import { UserComponent } from './components/systemManagement/user/userComponent';
+import { IndexComponent } from './components/index/indexComponent';
 
 const appRoutes: Routes = [
   { path: 'BU010D01', component: Bu010D01Component},
@@ -263,6 +265,8 @@ const appRoutes: Routes = [
   { path: 'OP020D03', component: Op020D03Component },
   { path: 'OP020D04', component: Op020D04Component },
   { path: 'OP020D05', component: Op020D05Component },
+  { path: 'user', component: UserComponent },
+  { path: 'index', component: IndexComponent },
 ];
 
 @NgModule({
@@ -394,6 +398,8 @@ const appRoutes: Routes = [
     Op020D03Component,
     Op020D04Component,
     Op020D05Component,
+    UserComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

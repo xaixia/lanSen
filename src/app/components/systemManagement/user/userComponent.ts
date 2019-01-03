@@ -12,18 +12,18 @@ import { PopwindowComponent } from '../../design/popwindow/popwindow.component';
 declare let $: any;
 
 @Component({
-  selector: 'user',
+  selector: 'app-user',
   templateUrl: './userComponent.html',
   styleUrls: ['./userComponent.scss'],
   animations: [AppAnimations.openClose],
 })
-export class user implements OnInit {
+export class UserComponent implements OnInit {
 
   searchFormOpend = true;
   status = 1;
   infoAreaOpend = true;
   tabContentArea = false;
- 
+
 
   public form: FormGroup;
   // 受注目的
