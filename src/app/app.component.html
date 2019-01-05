@@ -2,13 +2,13 @@
   <div class="title-menu">
     <ul>
       <li class="dropdown-submenu">
-        <a href="register">登录</a>
+        <a href="components/register">登录</a>
       </li>
       <li class="dropdown-submenu">
         <a href="javascript:void(0);">框架</a>
       </li>
       <li class="dropdown-submenu">
-        <a href="index">首页</a>
+        <a href="components/index">首页</a>
       </li>
       <li class="dropdown-submenu">
         <a href="javascript:void(0);">系统管理</a>
@@ -127,12 +127,12 @@
       <div class="form-group">
         <label for="UserCd">ユーザCD</label>
         <input type="text" class="form-control" id="UserCd" placeholder="ユーザCD" formControlName="NiceTanCd" appValidate
-          [validateFormControl]="loginForm.get('NiceTanCd')" [readonly]="loginStep == 1">
+               [validateFormControl]="loginForm.get('NiceTanCd')" [readonly]="loginStep == 1">
       </div>
       <div class="form-group" style="display:none;height:0px;opacity:0;" [@openClose]="loginStep == 1  ? 'open' : 'closed'">
         <label for="Pass">パスワード</label>
         <input type="password" class="form-control" id="Pass" placeholder="パスワード" formControlName="PwdWeb" appValidate
-          [validateFormControl]="loginForm.get('PwdWeb')">
+               [validateFormControl]="loginForm.get('PwdWeb')">
         <small class="form-text text-danger" *ngIf="isResetPass">初回ログインのため、パスワードを設定してください。</small>
       </div>
       <div class="btn-toolbar justify-content-between">

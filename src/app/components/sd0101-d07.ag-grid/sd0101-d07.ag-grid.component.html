@@ -1,11 +1,21 @@
 <form [formGroup]="form" class="search-form">
   <div class="card" [@openClose]="opencontraction ? 'open' : 'closed'">
     <div class="form-inline">
-      <div class="form-group width7p required-item font-weight-bold">受注年月日</div>
+      <div class="form-group width7p font-weight-bold">受注目的</div>
+      <div class="form-group width25p">
+        <div class="input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of OrderPurposeKbnList; let i = index;">
+            <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="{{'OrderPurposeKbn'+i}}" [value]="item.Kbn"
+              [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+            <label class="custom-control-label" for="{{'OrderPurposeKbn'+i}}">{{item.KbnVal}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group width8p required-item font-weight-bold">受注年月日</div>
       <div class="form-group width30p">
         <div class="input-group">
-          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate
-            [validateFormControl]="form.get('OrderYmdFrom')" [endDate]="form.get('OrderYmdTo').value" />
+          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdFrom" appValidate [validateFormControl]="form.get('OrderYmdFrom')"
+            [endDate]="form.get('OrderYmdTo').value" />
           <span class="input-group-prepend">
             <span class="input-group-text">
               <span class="fa fa-calendar"></span>
@@ -14,8 +24,8 @@
           <div class="input-group-prepend">
             <span class="input-group-text input-group-text-none">~</span>
           </div>
-          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate
-            [validateFormControl]="form.get('OrderYmdTo')" [startDate]="form.get('OrderYmdFrom').value" />
+          <input type='text' class="form-control width120" appDatetimePicker formControlName="OrderYmdTo" appValidate [validateFormControl]="form.get('OrderYmdTo')"
+            [startDate]="form.get('OrderYmdFrom').value" />
           <span class="input-group-prepend">
             <span class="input-group-text">
               <span class="fa fa-calendar"></span>
@@ -24,6 +34,28 @@
         </div>
       </div>
 
+
+
+      <div class="width12p required-item font-weight-bold">受注No.</div>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control maxwid" formControlName="OrderNumber" appValidate [validateFormControl]="form.get('OrderNumber')"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-inline">
+
+      <div class="form-group width7p font-weight-bold">発送区分</div>
+      <div class="form-group width25p">
+        <div class="input-group">
+          <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of SendKbnList; let i = index;">
+            <input class="custom-control-input" type="checkbox" name="SendKbn" id="{{'SendKbn'+i}}" [value]="item.Kbn" [checked]="item.ValidFlg==1"
+              (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+            <label class="custom-control-label" for="{{'SendKbn'+i}}">{{item.KbnVal}}</label>
+          </div>
+        </div>
+      </div>
       <div class="form-group width8p font-weight-bold">納品希望日</div>
       <div class="form-group width30p">
         <div class="input-group">
@@ -44,44 +76,12 @@
           </span>
         </div>
       </div>
-
-      <div class="width7p required-item font-weight-bold">受注No.</div>
+      <div class="form-group width12p font-weight-bold">請求・仕切書変更時備考</div>
       <div class="form-group">
-        <div class="input-group">
-          <input type="text" class="form-control maxwid" formControlName="OrderNumber" appValidate
-            [validateFormControl]="form.get('OrderNumber')" />
-        </div>
-      </div>
-    </div>
-    <div class="form-inline">
-      <div class="form-group width7p font-weight-bold">受注目的</div>
-      <div class="form-group width30p">
-        <div class="input-group">
-          <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of OrderPurposeKbnList; let i = index;">
-            <input class="custom-control-input" type="checkbox" name="OrderPurposeKbn" id="{{'OrderPurposeKbn'+i}}"
-              [value]="item.Kbn" [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
-            <label class="custom-control-label" for="{{'OrderPurposeKbn'+i}}">{{item.KbnVal}}</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group width8p font-weight-bold">発送区分</div>
-      <div class="form-group width30p">
-        <div class="input-group">
-          <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of SendKbnList; let i = index;">
-            <input class="custom-control-input" type="checkbox" name="SendKbn" id="{{'SendKbn'+i}}" [value]="item.Kbn"
-              [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
-            <label class="custom-control-label" for="{{'SendKbn'+i}}">{{item.KbnVal}}</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="mr-15 font-weight-bold">請求・仕切書変更時備考</div>
         <div class="input-group">
           <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of ChangeBikoKbnList; let i = index;">
-            <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="{{'ChangeBikoKbn'+i}}"
-              [value]="item.Kbn" [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+            <input class="custom-control-input" type="checkbox" name="ChangeBikoKbn" id="{{'ChangeBikoKbn'+i}}" [value]="item.Kbn" [checked]="item.ValidFlg==1"
+              (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
             <label class="custom-control-label" for="{{'ChangeBikoKbn'+i}}">{{item.KbnVal}}</label>
           </div>
         </div>
@@ -90,7 +90,7 @@
     <div class="form-inline">
 
       <div class="form-group width7p font-weight-bold">納品先</div>
-      <div class="form-group width30p">
+      <div class="form-group width25p">
         <div class="input-group">
           <input type="text" class="form-control width130">
           <div class="input-group-prepend">
@@ -115,12 +115,12 @@
         <div class="ml-10">×××支店</div>
       </div>
 
-      <div class="form-group width7p font-weight-bold">EC受注</div>
+      <div class="form-group width12p font-weight-bold">EC受注</div>
       <div class="form-group">
         <div class="input-group">
           <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of CEOrdersKbnList; let i = index;">
-            <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="{{'CEOrdersKbn'+i}}" [value]="item.Kbn"
-              [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+            <input class="custom-control-input" type="checkbox" name="CEOrdersKbn" id="{{'CEOrdersKbn'+i}}" [value]="item.Kbn" [checked]="item.ValidFlg==1"
+              (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
             <label class="custom-control-label" for="{{'CEOrdersKbn'+i}}">{{item.KbnVal}}</label>
           </div>
         </div>
@@ -128,7 +128,7 @@
     </div>
     <div class="form-inline">
       <div class="form-group width7p font-weight-bold">請求先</div>
-      <div class="form-group width30p">
+      <div class="form-group width25p">
         <div class="input-group">
           <input type="text" class="form-control width130">
           <div class="input-group-prepend">
@@ -153,18 +153,18 @@
         <div class="ml-10">×××営業所</div>
       </div>
 
-      <div class="form-group width7p font-weight-bold">売上計上状況</div>
+      <div class="form-group width12p font-weight-bold">売上計上状況</div>
       <div class="form-group input-group">
         <div class="custom-control custom-checkbox  custom-control-inline " *ngFor="let item of SaleRecordKbnList; let i = index;">
-          <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="{{'SaleRecordKbn'+i}}" [value]="item.Kbn"
-            [checked]="item.ValidFlg==1" (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
+          <input class="custom-control-input" type="checkbox" name="SaleRecordKbn" id="{{'SaleRecordKbn'+i}}" [value]="item.Kbn" [checked]="item.ValidFlg==1"
+            (change)="$event.target.checked ? item.ValidFlg = 1 : item.ValidFlg = 0">
           <label class="custom-control-label" for="{{'SaleRecordKbn'+i}}">{{item.KbnVal}}</label>
         </div>
       </div>
     </div>
     <div class="form-inline">
       <div class="form-group width7p font-weight-bold">物品</div>
-      <div class="form-group width30p">
+      <div class="form-group width25p">
         <div class="input-group">
           <input type="text" class="form-control width130">
           <div class="input-group-prepend">
@@ -196,24 +196,24 @@
     <button type="button" class="btn btn-warning">
       <i class="fa fa-eraser"></i> クリア
     </button>
-    <button type="button" class="btn btn-success" title="アップロード">
+    <button type="button" class="btn btn-success" title="インポート">
       <img src="./assets/images/icon/upload.png" />
     </button>
-    <button type="button" class="btn btn-success" title="ダウンロード">
+    <button type="button" class="btn btn-success" title="エクスポート">
       <img src="./assets/images/icon/download.png" />
     </button>
-    
+
     <button type="button" class="btn btn btn-secondary" (click)="conditionPanelOpenOrClose()">
       <i class="fa" [class.fa-angle-up]="opencontraction" [class.fa-angle-down]="!opencontraction"></i>
     </button>
   </div>
 </form>
 
-<div class="list" [class.auto-height]="gridOptions.gridAutoHeight" >
+<div class="list" [class.auto-height]="gridOptions.gridAutoHeight">
   <div class="pager">
     <div>
       <button type="button" class="btn btn-info">
-          <i class="fa fa-plus"></i> 新規登録
+        <i class="fa fa-plus"></i> 新規登録
       </button>
       <button type="button" class="btn btn-success">
         <img src="./assets/images/icon/download.png" /> 受注リスト出力
@@ -222,26 +222,15 @@
     <app-pagination [gridApi]="gridApi"></app-pagination>
   </div>
 
-  <ag-grid-angular 
-  #agGrid 
-  [enableColResize]="true" 
-  class="ag-theme-balham" 
-  [gridOptions]="gridOptions"
-  (gridReady)="onGridReady($event)"
-  [pagination]="true"
-  [paginationPageSize]="25"
-  [localeText]="localeText"
-  [enableFilter]="true"
-  [enableSorting]="true"
-  [suppressPaginationPanel]="true"
-  [enableRangeSelection]="true"
-  >
+  <ag-grid-angular #agGrid [enableColResize]="true" class="ag-theme-balham" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)"
+    [pagination]="true" [paginationPageSize]="25" [localeText]="localeText" [enableFilter]="true" [enableSorting]="true" [suppressPaginationPanel]="true"
+    [enableRangeSelection]="true">
   </ag-grid-angular>
 
   <div class="pager">
     <div>
       <button type="button" class="btn btn-info">
-          <i class="fa fa-plus"></i> 新規登録
+        <i class="fa fa-plus"></i> 新規登録
       </button>
       <button type="button" class="btn btn-success">
         <img src="./assets/images/icon/download.png" /> 受注リスト出力

@@ -30,7 +30,7 @@ export class AppErrorHandler implements ErrorHandler {
         alert(MESSAGE_UTIL.getMessage(result.MessageId, result.ParamList || []));
       }
     }).fail(() => {
-      alert('出错啦！');
+      alert('エラー情報をアップロードする際にエラーが発生しました。');
     });
   }
 

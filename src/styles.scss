@@ -180,6 +180,12 @@ html {
           ag-grid-angular {
             height: calc(100% - 4.5rem);
           }
+          &.auto-height {
+            height: max-content;
+            ag-grid-angular {
+              height: max-content;
+            }
+          }
         }
         .content {
           min-height: 100%;
@@ -231,6 +237,14 @@ html {
   }
   .ag-grid-height-#{$var * 100} {
     height: #{$var * 100}px;
+  }
+
+  .ag-grid-min-height-#{$var * 100} {
+    min-height: #{$var * 100}px;
+    overflow:auto;
+    .ag-body-container {
+      min-height: #{$var * 100}px;
+    }
   }
 }
 .search-form, .card {
@@ -303,12 +317,18 @@ html {
     border-color: $background-color;
     border-width: 1px;
     .nav-item {
+      margin-left: 1px;
+      &:first-child {
+        margin-left: 0px;
+      }
       .nav-link {
+        color: #16181b;
         display: flex;
         flex: 1 1 auto;
         padding: 0 1rem;
         height: 100%;
         align-items: center;
+        border-color: #BDC3C7 #BDC3C7 $background-color;
         &:hover, &:active, &.active {
           color: #16181b;
           text-decoration: none;
@@ -324,7 +344,7 @@ html {
     border-bottom: $background-color solid 1px;
     background-color: #fff;
     &>tab {
-      &>.search-form, &>.card{
+      .no-border{
         border-width: 0;
       }
     }
@@ -642,41 +662,37 @@ input,select,textarea {
       }
     }
   }
-}
 
-.ag-header-cell-label {
-  .ag-header-cell-text,.ag-header-icon{
+  .ag-body-viewport.ag-layout-auto-height {
+    overflow-y: hidden;
+  }
+
+  .ag-header-cell-label {
+    .ag-header-cell-text,.ag-header-icon{
+      display: flex;
+      align-items: center;
+    }  
+  }
+  
+  .ag-menu {
+    line-height: 20px;
+    font-size: 12px;
+  }
+  
+  .ag-cell {
     display: flex;
     align-items: center;
-  }  
+    &.row-spanning {
+      background: #fff;
+      border-left: 1px solid #d9dcde;
+      border-right: 1px solid #d9dcde;
+      border-bottom: 1px solid #d9dcde;
+      &+.row-spanning {
+        border-left-width: 0;
+      }
+    }
+  }
 }
-
-.ag-menu {
-  line-height: 20px;
-  font-size: 12px;
-}
-
-// .ag-grid-top {
-//   width: 100%;
-//   height: 100%;
-//   ag-grid-angular {
-//     height: calc(100% - 50px);
-//     width: 100%;
-//   }
-//   ag-grid-angular.has-button {
-//     height: calc(100% - 132px);
-//     width: 100%;
-//   }
-// }
-
-.ag-cell {
-  display: flex;
-  align-items: center;
-}
-
-// .ag-body-viewport.ag-layout-auto-height {
-//   overflow: hidden;
-// }
 
 input[appdatetimepicker]+.input-group-prepend {
   cursor: pointer;
@@ -728,4 +744,18 @@ input[appdatetimepicker]+.input-group-prepend {
 .table-condensed > tbody > tr > td,
 .table-condensed > tfoot > tr > td {
   padding: 5px;
+}
+
+
+.width7{
+  width:7rem;
+}
+.width10{
+  width:10rem;
+}
+.width13{
+  width:13rem;
+}
+.width15{
+  width:15rem;
 }

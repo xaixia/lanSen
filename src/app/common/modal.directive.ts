@@ -54,7 +54,7 @@ export class ModalDirective {
 }
 
 export class AppModalConfig {
-  modalOptions: ModalOptions;
+  modalOptions?: ModalOptions;
   component: any;
 }
 

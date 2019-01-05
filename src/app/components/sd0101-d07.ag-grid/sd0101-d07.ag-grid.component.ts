@@ -227,16 +227,16 @@ export class Sd0101D07AgGridComponent implements OnInit {
         field: 'DepoNm',
       },
       {
+        headerName: '技術営業担当者',
+        width: 150,
+        field: 'TntNm',
+      },
+      {
         headerName: '受注合計金額',
         width: 150,
         field: 'JuchuSum',
         cellClass: 'justify-content-md-end',
         cellRenderer: (param) => param.value ? (param.value || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') : '0'
-      },
-      {
-        headerName: '技術営業担当者',
-        width: 150,
-        field: 'TntNm',
       },
       {
         headerName: '受注残合計金額',

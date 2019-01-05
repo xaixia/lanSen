@@ -29,12 +29,12 @@ export class AppComponent implements OnInit {
   isResetPass: boolean;
   get loginButtonText() {
     if (this.loginStep === 0) {
-      return '下一页';
+      return '次へ';
     } else {
       if (this.isResetPass) {
-        return '参数设置';
+        return 'パスワード設定';
       } else {
-        return '登录';
+        return 'ログイン';
       }
     }
   }
@@ -50,6 +50,16 @@ export class AppComponent implements OnInit {
     }
     return 0;
   }
+
+  get breadcrumbArray(): string[] {
+    const url = this.router.routerState.snapshot.url;
+    if (url.length > 1) {
+      return url.substring(1).split('/');
+    }
+    return [];
+  }
+
+  lastBreadcrumb: string;
 
   constructor(
     public baseService: BaseService,
@@ -76,9 +86,18 @@ export class AppComponent implements OnInit {
 
   }
 
+  isActive(cls: string): boolean {
+    const url = this.router.routerState.snapshot.url;
+    return cls === url.substring(1, 3);
+  }
+
   onRouterOutletActivate(event: any) {
     if (event) {
       this.subComponent = event;
+      this.lastBreadcrumb = null;
+      this.subComponent.changeLastBreadcrumb = (text) => {
+        this.lastBreadcrumb = text;
+      };
     }
   }
 

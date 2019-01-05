@@ -24,22 +24,24 @@ import { GridApi, ColumnApi } from 'ag-grid-community';
 import { isFunction, isNullOrUndefined } from 'util';
 import { BsModalService } from 'ngx-bootstrap';
 import { CodeConstant } from './code-constant';
+import { AppLocales } from '../configuration/app-locales';
+import { AppModalConfig, AppModalResult, ModalDirective } from './modal.directive';
 
 const STORAGE_KEY_PAGE = 'STORAGE_KEY_PAGE';
 const STORAGE_KEY_NAVIGATE = 'STORAGE_KEY_NAVIGATE';
 @Injectable()
 export class BaseService {
 
-  // 服务器路径
+  // サーバーURL
   private server_url: string = environment.server;
 
-  // HTTP  header
+  // HTTPヘッダ
   private headers = new Headers();
 
-  // 画面跳转数据
+  // 遷移用パラメータを保持
   private navigateData: PageData;
 
-  // 画面数据
+  // 画面のデータを保持
   private pageData: PageData;
 
   private spinnerCnt = 0;
@@ -62,7 +64,8 @@ export class BaseService {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     public location: Location,
     private spinnerService: Ng4LoadingSpinnerService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private appLocales: AppLocales,
   ) {
     this.navigateData = new PageData(STORAGE_KEY_NAVIGATE, storage);
     this.pageData = new PageData(STORAGE_KEY_PAGE, storage);
@@ -130,6 +133,18 @@ export class BaseService {
     this.pageData.saveToSessionStorage();
   }
 
+  public getKarteUrl(url): string {
+    let origin = location.origin;
+    if (environment.production) {
+      origin = origin + location.pathname.substring(0, location.pathname.indexOf('/', 1));
+    }
+    return origin + url;
+  }
+
+  public WindowsOpen(url) {
+    window.open(this.getKarteUrl(url));
+  }
+
   clearAllData(): void {
     this.navigateData.clear();
     this.pageData.clear();
@@ -171,7 +186,7 @@ export class BaseService {
 
     if (result) {
       this.showConfirm({
-        title: '错误',
+        title: 'エラー',
         messages: messages,
         buttons: [{ name: 'OK', css: 'btn btn-primary' }]
       });
@@ -183,6 +198,18 @@ export class BaseService {
   private getValidationErrorMessage(errors: ValidationErrors): Array<string> {
     return Object.keys(errors).map((val) => {
       return errors[val].message;
+    });
+  }
+
+  showModal(config: AppModalConfig, data?: any): Promise<AppModalResult> {
+    return new Promise<AppModalResult>(resolve => {
+      const directive = new ModalDirective(this.modalService);
+      directive.config = config;
+      directive.data = data;
+      directive.done.asObservable().subscribe((result) => {
+        resolve(result);
+      });
+      directive.onClick();
     });
   }
 
@@ -212,6 +239,7 @@ export class BaseService {
     return `${this.server_url}/${action}`;
   }
 
+  // サーバーに通信
   post(action: string, data?: any | PostInfo): Promise<any> {
     const url = this.getPostUrl(action);
     if (data && data.isUpload && (<PostInfo>data).isUpload()) {
@@ -302,7 +330,32 @@ export class BaseService {
     return MESSAGE_UTIL.getMessage(messageId, params);
   }
 
-  // Grid 表格文字设置
+  getLocaleText(key: string): string {
+    if (!key) {
+      return key;
+    }
+
+    const path = key.split('.');
+    let result = key;
+    let val: any = this.appLocales.ja;
+
+    for (let index = 0; index < path.length; index++) {
+      const p = path[index];
+      if (val && val[p]) {
+        val = val[p];
+      } else {
+        val = null;
+        break;
+      }
+    }
+
+    if (val) {
+      result = `${val}`;
+    }
+    return result;
+  }
+
+  // Gridの表示文字列
   getGridLocaleText() {
     return {
       // for filter panel
