@@ -8,6 +8,7 @@ declare let $: any;
 export class AppErrorHandler implements ErrorHandler {
   // サーバーURL
   private server_url: string = environment.server;
+  private baseService: BaseService;
 
   handleError(error: Error) {
     if (confirm(MESSAGE_UTIL.getMessage('E9996', []))) {
@@ -27,10 +28,10 @@ export class AppErrorHandler implements ErrorHandler {
       cache: false,
     }).done((result) => {
       if (result.MessageId.length > 0) {
-        alert(MESSAGE_UTIL.getMessage(result.MessageId, result.ParamList || []));
+        this.baseService.showMessage(MESSAGE_UTIL.getMessage(result.MessageId, result.ParamList || []), '错误');
       }
     }).fail(() => {
-      alert('エラー情報をアップロードする際にエラーが発生しました。');
+      this.baseService.showMessage('出错啦', '错误');
     });
   }
 

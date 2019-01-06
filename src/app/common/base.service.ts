@@ -186,7 +186,7 @@ export class BaseService {
 
     if (result) {
       this.showConfirm({
-        title: 'エラー',
+        title: '错误',
         messages: messages,
         buttons: [{ name: 'OK', css: 'btn btn-primary' }]
       });
@@ -239,7 +239,6 @@ export class BaseService {
     return `${this.server_url}/${action}`;
   }
 
-  // サーバーに通信
   post(action: string, data?: any | PostInfo): Promise<any> {
     const url = this.getPostUrl(action);
     if (data && data.isUpload && (<PostInfo>data).isUpload()) {
@@ -355,7 +354,7 @@ export class BaseService {
     return result;
   }
 
-  // Gridの表示文字列
+  // Grid 文字列
   getGridLocaleText() {
     return {
       // for filter panel

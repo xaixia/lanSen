@@ -75,26 +75,42 @@ html {
           background-color: $background-color;
           flex-basis: auto;
           display: flex;
-          .header-info {
-            color: #fff;
-            display: inline-flex;
-            margin-right: 1rem;
-            .user-info {
-              display: inline-flex;
-              align-self: center;
-              list-style: none;
-              font-size: 80%;
-              font-weight: 500;
-              li {
-                display: inline-flex;
-                padding-left: 1.5rem;
-              }
+        }
+        .header-info {
+          color:$background-color;
+          background: $body-background-color;
+          display: flex;
+          margin-right: 1rem;
+          .breadcrumb {
+            align-items: center;
+            color: #000;
+            margin: 0;
+            padding: 0rem 1rem;
+            height: 2rem;
+            .breadcrumb-item+.breadcrumb-item::before {
+              content: ">";
             }
-            .header-mark {
-              font-size: 1.5rem;
+          }
+          .user-info {
+            display: inline-flex;
+            justify-content: flex-end;
+            list-style: none;
+            align-items: center;
+            font-size: 80%;
+            font-weight: 500;
+            li {
               display: inline-flex;
               padding-left: 1.5rem;
-              align-items: center;
+            }
+          }
+          .header-mark {
+            display: flex;
+            align-items: center;
+            padding-right:16px;
+            cursor: pointer;
+            .fa {
+              font-size: 1.5rem;
+              padding-right: 2px;
             }
           }
         }
@@ -124,6 +140,7 @@ html {
             .dropdown-menu {
               background-color: $background-color;
               color: #fff;
+              border-bottom: 1px solid var(--blue);
             }
           }
           >.dropdown-submenu {
@@ -159,15 +176,6 @@ html {
                 display: block;
               }
             }
-          }
-        }
-        .breadcrumb {
-          align-items: center;
-          margin: 0;
-          padding: 0rem 1rem;
-          height: 2rem;
-          .breadcrumb-item+.breadcrumb-item::before {
-            content: ">";
           }
         }
       }
@@ -278,6 +286,7 @@ html {
     margin: 0;
     display: flex;
     flex: 1 1 auto;
+    align-items: center;
     justify-content: space-between;
     .text-area {
       color: #fff;

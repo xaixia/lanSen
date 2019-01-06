@@ -2,13 +2,14 @@
   <div class="title-menu">
     <ul>
       <li class="dropdown-submenu">
-        <a href="/register">登录</a>
+        <a href="javascript:void(0);" (click)="onMenuClick('/register')">登录</a>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);">框架</a>
-      </li>
-      <li class="dropdown-submenu">
-        <a href="/index">首页</a>
+        <a href="javascript:void(0);" (click)="onMenuClick('/index')">首页</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/resetpwd')">修改密码</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">设置用户信息</a>
+        </div>
       </li>
       <li class="dropdown-submenu">
         <a href="javascript:void(0);">系统管理</a>
@@ -92,26 +93,37 @@
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/BU040D01')">用户等级</a>
         </div>
       </li>
+      <li class="dropdown-submenu">
+        <a href="javascript:void(0);">测试</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/SD10D07')">列表</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/design')">design</a>
+        </div>
+      </li>
     </ul>
-    <div class="header-info">
-      <ul class="user-info">
-        <li>admin</li>
-        <li>2018/12/04 12:50:56</li>
-      </ul>
-      <div class="header-mark"><i class="fa fa-arrow-left"></i></div>
-      <div class="header-mark"><i class="fa fa-question-circle"></i></div>
-    </div>
   </div>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">系统管理</li>
-    <li class="breadcrumb-item">用户管理</li>
-  </ol>
+  <div class="header-info">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">系统管理</li>
+      <li class="breadcrumb-item">用户管理</li>
+    </ol>
+    <ul class="user-info">
+      <li>IP:10.11.12.114</li>
+      <li>第128次登录</li>
+      <li>财务部</li>
+      <li>张三</li>
+      <li>2018/12/04 12:50:56</li>
+    </ul>
+    <a class="header-mark">
+      <i class="fa fa-user-circle"></i><span>退出</span>
+    </a>
+  </div>
 </div>
 
 <div class="main">
   <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
 
-  <div class="footer">
+  <div class="footer mt-3">
     <div class="copy-right">Copyright (c) Earth Environmental Service Co., Ltd. All Right Reserved.</div>
   </div>
 </div>
@@ -127,12 +139,12 @@
       <div class="form-group">
         <label for="UserCd">ユーザCD</label>
         <input type="text" class="form-control" id="UserCd" placeholder="ユーザCD" formControlName="NiceTanCd" appValidate
-               [validateFormControl]="loginForm.get('NiceTanCd')" [readonly]="loginStep == 1">
+          [validateFormControl]="loginForm.get('NiceTanCd')" [readonly]="loginStep == 1">
       </div>
       <div class="form-group" style="display:none;height:0px;opacity:0;" [@openClose]="loginStep == 1  ? 'open' : 'closed'">
         <label for="Pass">パスワード</label>
         <input type="password" class="form-control" id="Pass" placeholder="パスワード" formControlName="PwdWeb" appValidate
-               [validateFormControl]="loginForm.get('PwdWeb')">
+          [validateFormControl]="loginForm.get('PwdWeb')">
         <small class="form-text text-danger" *ngIf="isResetPass">初回ログインのため、パスワードを設定してください。</small>
       </div>
       <div class="btn-toolbar justify-content-between">

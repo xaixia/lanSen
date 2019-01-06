@@ -70,14 +70,20 @@ import { CashComponent } from './components/finaceManage/cash/cash.component';
 import { CardComponent } from './components/cardManage/card/card.component';
 import { CustomerMessageComponent } from './components/messageManage/customer-message/customer-message.component';
 import { SuggestionComponent } from './components/messageManage/suggestion/suggestion.component';
-import { IndexComponent } from './components/index/index.component';
+import { IndexComponent } from './components/indexManage/index/index.component';
 import { RegisterComponent } from './components/register/register.component';
 import { OrderCommentComponent } from './components/evaluateManagement/order-comment/order-comment.component';
 import { UserLevelComponent } from './components/evaluateManagement/user-level/user-level.component';
+import { PasswordComponent } from './components/indexManage/password/password.component';
+import { UserinfoComponent } from './components/indexManage/userinfo/userinfo.component';
 
 const appRoutes: Routes = [
+  { path: 'SD10D07', component: Sd010D07Component },
+  { path: 'design', component: DesignComponent },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: IndexComponent },
+  { path: 'resetpwd', component: PasswordComponent },
+  { path: 'userinfo', component: UserinfoComponent },
   { path: 'register', component: RegisterComponent },
 ];
 
@@ -131,7 +137,9 @@ const appRoutes: Routes = [
     CustomerMessageComponent,
     SuggestionComponent,
     OrderCommentComponent,
-    UserLevelComponent
+    UserLevelComponent,
+    PasswordComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,
