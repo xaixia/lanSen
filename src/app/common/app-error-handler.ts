@@ -1,17 +1,17 @@
-import { ErrorHandler } from '@angular/core';
-import { BaseService } from './base.service';
+import { ErrorHandler, Injectable, } from '@angular/core';
 import { MESSAGE_UTIL } from '../configuration/message.config';
 import { environment } from '../../environments/environment';
+import { Toast } from 'ng2-toastr';
 
 declare let $: any;
 
 export class AppErrorHandler implements ErrorHandler {
+
   // サーバーURL
   private server_url: string = environment.server;
-  private baseService: BaseService;
 
   handleError(error: Error) {
-    if (confirm(MESSAGE_UTIL.getMessage('E9996', []))) {
+    if (confirm(MESSAGE_UTIL.getMessage('E0009', []))) {
       this.uploadError(error);
     }
     console.error(error);
@@ -28,10 +28,10 @@ export class AppErrorHandler implements ErrorHandler {
       cache: false,
     }).done((result) => {
       if (result.MessageId.length > 0) {
-        this.baseService.showMessage(MESSAGE_UTIL.getMessage(result.MessageId, result.ParamList || []), '错误');
+        alert(MESSAGE_UTIL.getMessage(result.MessageId, result.ParamList || []));
       }
     }).fail(() => {
-      this.baseService.showMessage('出错啦', '错误');
+      // alert('出错啦！');
     });
   }
 

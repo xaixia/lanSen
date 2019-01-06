@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-$font-family: 'メイリオ', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $background-color: #337AB7;
 $sub-header-background-color: #7bb9ef;
 $font-size: 12px;
@@ -104,13 +104,21 @@ html {
             }
           }
           .header-mark {
-            display: flex;
-            align-items: center;
-            padding-right:16px;
-            cursor: pointer;
-            .fa {
-              font-size: 1.5rem;
-              padding-right: 2px;
+            display: inline-flex;
+            a{
+              display: flex;
+              margin-left:16px;
+              align-items: center;
+              padding-right:16px;
+              cursor: pointer;
+
+              .fa {
+                font-size: 1.5rem;
+                padding-right: 2px;
+              }
+            }
+            a:hover{
+              text-decoration: none;
             }
           }
         }

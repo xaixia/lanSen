@@ -8,33 +8,32 @@ import { AppValidators } from './common/app-validators';
 import { ConfirmWindowComponent } from './components/common/confirm-window/confirm-window.component';
 import { isFunction } from 'util';
 import { AppAnimations } from './common/app-animations';
+import { AppModalConfig } from './common/modal.directive';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [ AppAnimations.openClose ],
+  animations: [AppAnimations.openClose],
 })
 export class AppComponent implements OnInit {
 
   private modalRef: BsModalRef;
   private loginComp: (value?: boolean | PromiseLike<boolean>) => void;
   private subComponent: any;
-
-  @ViewChild('loginModalTemplate')
-  loginModalTemplate: TemplateRef<any>;
+  private isLogin = true;
 
   loginForm: FormGroup;
   loginStep: number;
   isResetPass: boolean;
   get loginButtonText() {
     if (this.loginStep === 0) {
-      return '次へ';
+      return '继续';
     } else {
       if (this.isResetPass) {
-        return 'パスワード設定';
+        return '参数设置';
       } else {
-        return 'ログイン';
+        return '登录';
       }
     }
   }
@@ -83,12 +82,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
 
+  logOut() {
+    this.isLogin = false;
   }
 
   isActive(cls: string): boolean {
     const url = this.router.routerState.snapshot.url;
-    return cls === url.substring(1, 3);
+    return url.indexOf(cls) !== -1;
   }
 
   onRouterOutletActivate(event: any) {
@@ -208,7 +210,7 @@ export class AppComponent implements OnInit {
               this.loginComp(true);
             });
           } else {
-            this.showLoginModal();
+            this.isLogin = false;
           }
         } else {
           this.loginComp(false);
@@ -235,18 +237,6 @@ export class AppComponent implements OnInit {
       if (result.MessageId.length === 0) {
         // myComponent.escoTntNm = result.EscoTntNm;
       }
-    });
-  }
-
-  private showLoginModal(): void {
-    this.loginStep = 0;
-    this.loginForm.controls.PwdWeb.reset();
-    if (this.modalRef) {
-      return;
-    }
-    this.modalRef = this.modalService.show(this.loginModalTemplate, {
-      keyboard: false,
-      ignoreBackdropClick: true
     });
   }
 }

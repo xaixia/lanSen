@@ -71,7 +71,6 @@ import { CardComponent } from './components/cardManage/card/card.component';
 import { CustomerMessageComponent } from './components/messageManage/customer-message/customer-message.component';
 import { SuggestionComponent } from './components/messageManage/suggestion/suggestion.component';
 import { IndexComponent } from './components/indexManage/index/index.component';
-import { RegisterComponent } from './components/register/register.component';
 import { OrderCommentComponent } from './components/evaluateManagement/order-comment/order-comment.component';
 import { UserLevelComponent } from './components/evaluateManagement/user-level/user-level.component';
 import { PasswordComponent } from './components/indexManage/password/password.component';
@@ -83,8 +82,17 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: IndexComponent },
   { path: 'resetpwd', component: PasswordComponent },
-  { path: 'userinfo', component: UserinfoComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'consumerinfo', component: UserinfoComponent },
+  { path: 'system', component: SystemComponent },
+  { path: 'log', component: UserLogComponent },
+  { path: 'query', component: QueryComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'business', component: BusinessOverviewComponent },
+  { path: 'news', component: NewsComponent },
+  { path: 'finace', component: OrderListComponent },
+  { path: 'card', component: CardComponent },
+  { path: 'massege', component: CustomerMessageComponent },
+  { path: 'lever', component: UserLevelComponent },
 ];
 
 @NgModule({
@@ -105,7 +113,6 @@ const appRoutes: Routes = [
     ModalDirective,
     PopwindowComponent,
     IndexComponent,
-    RegisterComponent,
     UserComponent,
     RoleComponent,
     JurisdictionComponent,
