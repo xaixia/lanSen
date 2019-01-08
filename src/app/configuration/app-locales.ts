@@ -7,17 +7,17 @@ export class AppLocales {
   private _ja = {
     COMMON: {
       MENU: {
-        AP: '承認',
-        CN: '見積・契約',
-        OP: '作業管理',
-        RF: '紹介料管理',
-        SD: '購買・在庫',
-        GM: '汎用計上',
-        AR: '請求',
-        SV: '月次契約管理',
-        BU: '業務マスター',
-        SY: 'システム管理',
-        CO: 'システム共通',
+        index: '首页',
+        system: '系统管理',
+        log: '日志管理',
+        query: '查询模块',
+        user: '用户管理',
+        business: '业务管理',
+        news: '新闻公告广告',
+        finance: '财务管理',
+        card: '卡券管理',
+        message: '消息信息管理',
+        level: '评价等级管理',
       }
     },
 

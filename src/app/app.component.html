@@ -5,9 +5,9 @@
         <a href="javascript:void(0);" (click)="onMenuClick('/index')" [class.active]="isActive('index')" (click)="onMenuClick('/index')">首页</a>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/system')" [class.active]="isActive('system')">系统管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('system')">系统管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP010D01')">用户管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/system')">用户管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">角色管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">权限列表</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AP020D01')">网站设置</a>
@@ -17,31 +17,31 @@
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/log')" [class.active]="isActive('log')">日志管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('log')">日志管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN010D17')">登录日志</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/log')">登录日志</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN010D19')">操作日志</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN020D01')">数据库日志</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/CN020D04')">用户端日志</a>
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/query')" [class.active]="isActive('query')">查询模块</a>
+        <a href="javascript:void(0);" [class.active]="isActive('query')">查询模块</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/OP010D02')">查询</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/query')">查询</a>
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/user')" [class.active]="isActive('user')">用户管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('user')">用户管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/RF010D01')">用户列表</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/userList')">用户列表</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/RF010D01')">雇工列表</a>
         </div>
       </li>
       <li class="dropdown-submenu ">
-        <a href="javascript:void(0);" (click)="onMenuClick('/business')" [class.active]="isActive('business')">业务管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('business')">业务管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);">工单列表</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/business')">工单列表</a>
           <a class="dropdown-item" href="javascript:void(0);">订单单位</a>
           <a class="dropdown-item" href="javascript:void(0);">价格方式</a>
           <a class="dropdown-item" href="javascript:void(0);">标签属性</a>
@@ -50,9 +50,9 @@
         </div>
       </li>
       <li class="dropdown-submenu ">
-        <a href="javascript:void(0);" (click)="onMenuClick('/news')" [class.active]="isActive('news')">新闻公告广告</a>
+        <a href="javascript:void(0);" [class.active]="isActive('news')">新闻公告广告</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM010D01')">新闻管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/news')">新闻管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM020D01')">公告管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM030D01')">广告管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/GM010D02')">合同管理</a>
@@ -60,29 +60,29 @@
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/finace')" [class.active]="isActive('finace')">财务管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('finace')">财务管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AR010D01')">业务概览</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/finace')">业务概览</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/AR0010D02')">提现处理</a>
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/card')" [class.active]="isActive('card')">卡券管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('card')">卡券管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);">卡券管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/card')">卡券管理</a>
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/message')" [class.active]="isActive('message')">消息信息管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('message')">消息信息管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);">客户留言</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/message')">客户留言</a>
           <a class="dropdown-item" href="javascript:void(0);">意见反馈</a>
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" (click)="onMenuClick('/level')" [class.active]="isActive('level')">评价等级管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('level')">评价等级管理</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/BU010D01')">订单评价</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/level')">订单评价</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/BU040D01')">用户等级</a>
         </div>
       </li>
@@ -97,8 +97,8 @@
   </div>
   <div class="header-info">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">系统管理</li>
-      <li class="breadcrumb-item">用户管理</li>
+      <li class="breadcrumb-item">优邦工站</li>
+      <li class="breadcrumb-item">首页</li>
     </ol>
     <ul class="user-info">
       <li>IP:10.11.12.114</li>
