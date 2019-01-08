@@ -86,7 +86,7 @@ const appRoutes: Routes = [
   { path: 'system', component: SystemComponent },
   { path: 'log', component: UserLogComponent },
   { path: 'query', component: QueryComponent },
-  { path: 'userList', component: UserComponent },
+  { path: 'userList', component: UserListComponent },
   { path: 'business', component: BusinessOverviewComponent },
   { path: 'news', component: NewsComponent },
   { path: 'finace', component: OrderListComponent },
