@@ -8,10 +8,11 @@ export class AppLocales {
     COMMON: {
       MENU: {
         index: '首页',
+        user: '用户管理',
+
         system: '系统管理',
         log: '日志管理',
         query: '查询模块',
-        user: '用户管理',
         business: '业务管理',
         news: '新闻公告广告',
         finance: '财务管理',
@@ -21,8 +22,16 @@ export class AppLocales {
       }
     },
 
-    AC010D01: {
-      title: '売上計上ロック処理'
+    userList: {
+      title: '系统用户管理'
+    },
+
+    roleList: {
+      title: '角色管理'
+    },
+
+    powerList: {
+      title: '权限管理'
     },
 
     AC010D02: {

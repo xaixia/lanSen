@@ -9,6 +9,7 @@ import { GridOptions, GridApi, ColDef, ColGroupDef } from 'ag-grid-community';
 import { AgGridColumn } from 'ag-grid-angular';
 import { PasswordComponent } from '../../indexManage/password/password.component';
 import { MESSAGE_UTIL } from '../../../configuration/message.config';
+import { UserinfoComponent } from '../../indexManage/userinfo/userinfo.component';
 
 declare let $: any;
 
@@ -28,6 +29,12 @@ export class UserListComponent implements OnInit {
     component: PasswordComponent,
     modalOptions: {
       class: 'app-modal-pwd'
+    }
+  };
+  userInfoModalConfig = <AppModalConfig>{
+    component: UserinfoComponent,
+    modalOptions: {
+      class: 'app-modal-user'
     }
   };
 
@@ -243,12 +250,7 @@ export class UserListComponent implements OnInit {
           const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-info-circle"></i> 编辑</button>`);
           const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-eraser"></i> 重置密码</button>`);
           editBtn.click(() => {
-            // this.baseService.showModal({
-            //   component: Ap010D02Component,
-            //   modalOptions: {
-            //     class: 'app-modal-xl'
-            //   }
-            // });
+            this.baseService.showModal(this.userInfoModalConfig);
           });
           resetBtn.click(() => {
             this.baseService.showModal(this.passwordModalConfig);

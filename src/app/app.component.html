@@ -32,9 +32,9 @@
         </div>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" [class.active]="isActive('user')">用户管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('user')">{{appLocales.COMMON.MENU.user}}</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/userList')">系统用户管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/userList')">{{appLocales.userList.title}}</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/RF010D01')">角色管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/RF010D01')">权限管理</a>
         </div>
@@ -99,7 +99,9 @@
   <div class="header-info">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">优邦工站</li>
-      <li class="breadcrumb-item">首页</li>
+      <li class="breadcrumb-item" *ngFor="let item of breadcrumbArray; let i = index">
+        <span>{{item}}</span>
+      </li>
     </ol>
     <ul class="user-info">
       <li>IP:10.11.12.114</li>
@@ -110,7 +112,7 @@
     </ul>
     <div class="header-mark">
       <a class="" href="javascript:void(0);" (click)="onMenuClick('/resetpwd')"><i class="fa fa-legal"></i>修改密码</a>
-      <a class="" href="javascript:void(0);" (click)="onMenuClick('/consumerinfo')"><i class="fa fa-address-book"></i>设置用户信息</a>
+      <a class="" href="javascript:void(0);" (click)="onMenuClick('/customerinfo')"><i class="fa fa-address-book"></i>设置用户信息</a>
       <a href="javascript:void(0);" (click)="logOut()"><i class="fa fa-user-circle"></i><span>退出</span></a>
     </div>
   </div>

@@ -8,7 +8,7 @@ import { AppValidators } from './common/app-validators';
 import { ConfirmWindowComponent } from './components/common/confirm-window/confirm-window.component';
 import { isFunction } from 'util';
 import { AppAnimations } from './common/app-animations';
-import { AppModalConfig } from './common/modal.directive';
+import { AppLocales } from './configuration/app-locales';
 
 @Component({
   selector: 'app-root',
@@ -50,10 +50,22 @@ export class AppComponent implements OnInit {
     return 0;
   }
 
+  get appLocales() {
+    return this.locales.ja;
+  }
+
   get breadcrumbArray(): string[] {
     const url = this.router.routerState.snapshot.url;
+    const breadArr = [];
     if (url.length > 1) {
-      return url.substring(1).split('/');
+      const temp = url.substring(1).split('/');
+      const firstMenu = temp[0];
+      breadArr.push(this.locales.ja.COMMON.MENU[firstMenu]);
+      if (temp.length > 1) {
+        const secondMenu = temp[1];
+        breadArr.push(this.locales.ja[secondMenu].title);
+      }
+      return breadArr;
     }
     return [];
   }
@@ -67,7 +79,8 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     private modalService: BsModalService,
     private fb: FormBuilder,
-    private el: ElementRef
+    private el: ElementRef,
+    public locales: AppLocales,
   ) {
     this.loginStep = 0;
     this.baseService.toastr.setRootViewContainerRef(this.vcr);
@@ -90,7 +103,7 @@ export class AppComponent implements OnInit {
 
   isActive(cls: string): boolean {
     const url = this.router.routerState.snapshot.url;
-    return url.indexOf(cls) !== -1;
+    return url.indexOf(cls + '/') !== -1;
   }
 
   onRouterOutletActivate(event: any) {
@@ -105,6 +118,7 @@ export class AppComponent implements OnInit {
 
   onMenuClick(path: string, param?: any): void {
     const url = this.router.routerState.snapshot.url;
+    console.log(this.breadcrumbArray);
     if (url !== path) {
       this.baseService.clearAllData();
       this.baseService.navigate(path, param);

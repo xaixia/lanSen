@@ -80,13 +80,15 @@ const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
   { path: 'design', component: DesignComponent },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: 'index', component: IndexComponent },
-  { path: 'resetpwd', component: PasswordComponent },
-  { path: 'consumerinfo', component: UserinfoComponent },
+  { path: 'index', component: IndexComponent }, // 首页
+  { path: 'resetpwd', component: PasswordComponent }, // 重置密码
+  { path: 'customerinfo', component: UserinfoComponent }, // 设置用户信息
+
+  { path: 'user/userList', component: UserListComponent }, // 系统用户管理
+
   { path: 'system', component: SystemComponent },
   { path: 'log', component: UserLogComponent },
   { path: 'query', component: QueryComponent },
-  { path: 'userList', component: UserListComponent },
   { path: 'business', component: BusinessOverviewComponent },
   { path: 'news', component: NewsComponent },
   { path: 'finace', component: OrderListComponent },
