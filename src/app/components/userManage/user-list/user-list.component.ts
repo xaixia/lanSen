@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { GridOptions, GridApi, ColDef, ColGroupDef } from 'ag-grid-community';
 import { AgGridColumn } from 'ag-grid-angular';
 import { PasswordComponent } from '../../indexManage/password/password.component';
+import { MESSAGE_UTIL } from '../../../configuration/message.config';
 
 declare let $: any;
 
@@ -159,20 +160,26 @@ export class UserListComponent implements OnInit {
     return [
       {
         headerName: '启用/禁用',
-        checkboxSelection: true,
         suppressFilter: true,
         suppressMenu: true,
         suppressResize: true,
         suppressMovable: true,
         suppressSorting: true,
-        headerCheckboxSelection: false,
         width: 100,
         pinned: 'left',
         editable: false,
         colId: 'checkbox',
-        onCellClicked: () => {
-          this.baseService.showMessage('error', '账号已禁用，请联系管理员', '错误');
-        }
+        cellRenderer: (params) => {
+          const root = $('<div/>');
+          // tslint:disable-next-line:max-line-length
+          const banBtn = $(`<input type="checkbox" name="ban" />`);
+          banBtn[0].onchange = (() => {
+            this.baseService.showMessage('error', MESSAGE_UTIL.getMessage('E0010', []), '错误');
+          });
+          console.log(banBtn);
+          root.append(banBtn);
+          return root[0];
+        },
       },
       {
         headerName: '编号',

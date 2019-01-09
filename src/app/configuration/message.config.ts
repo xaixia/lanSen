@@ -9,6 +9,7 @@ const Messages: Object = {
   E0007: '{0}失败',
   E0008: '您的登录信息已失效，请重新登录',
   E0009: '出错啦！',
+  E0010: '账号已禁用，请联系管理员'
 };
 
 class MessageUtil {
