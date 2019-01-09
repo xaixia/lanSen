@@ -183,7 +183,6 @@ export class UserListComponent implements OnInit {
           banBtn[0].onchange = (() => {
             this.baseService.showMessage('error', MESSAGE_UTIL.getMessage('E0010', []), '错误');
           });
-          console.log(banBtn);
           root.append(banBtn);
           return root[0];
         },

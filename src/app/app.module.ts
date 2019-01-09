@@ -41,7 +41,7 @@ import { PopwindowComponent } from './components/design/popwindow/popwindow.comp
 import { AppLocales } from './configuration/app-locales';
 
 import { UserComponent } from './components/systemManage/user/user.component';
-import { RoleComponent } from './components/systemManage/role/role.component';
+import { RoleListComponent } from './components/userManage/role-list/role-list.component';
 import { JurisdictionComponent } from './components/systemManage/jurisdiction/jurisdiction.component';
 import { WebsiteComponent } from './components/systemManage/website/website.component';
 import { SystemComponent } from './components/systemManage/system/system.component';
@@ -85,6 +85,7 @@ const appRoutes: Routes = [
   { path: 'customerinfo', component: UserinfoComponent }, // 设置用户信息
 
   { path: 'user/userList', component: UserListComponent }, // 系统用户管理
+  { path: 'user/roleList', component: RoleListComponent }, // 角色管理
 
   { path: 'system', component: SystemComponent },
   { path: 'log', component: UserLogComponent },
@@ -116,7 +117,7 @@ const appRoutes: Routes = [
     PopwindowComponent,
     IndexComponent,
     UserComponent,
-    RoleComponent,
+    RoleListComponent,
     JurisdictionComponent,
     WebsiteComponent,
     SystemComponent,
