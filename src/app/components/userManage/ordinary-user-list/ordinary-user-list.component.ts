@@ -14,13 +14,12 @@ import { UserinfoComponent } from '../../indexManage/userinfo/userinfo.component
 declare let $: any;
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss'],
+  selector: 'app-ordinary-user-list',
+  templateUrl: './ordinary-user-list.component.html',
+  styleUrls: ['./ordinary-user-list.component.scss'],
   animations: [AppAnimations.openClose],
 })
-export class UserListComponent implements OnInit {
-
+export class OrdinaryUserListComponent implements OnInit {
   searchFormOpend = true;
   status = 1;
   infoAreaOpend = true;
@@ -91,7 +90,7 @@ export class UserListComponent implements OnInit {
     this.gridOptions = <GridOptions>{};
     this.gridOptions.rowHeight = 24;
     this.gridOptions.headerHeight = 24;
-    this.gridOptions.animateRows = true;
+    this.gridOptions.domLayout = 'autoHeight';
 
     this.gridOptions.gridAutoHeight = true;
 
@@ -157,7 +156,8 @@ export class UserListComponent implements OnInit {
     for (let i = 0; i < 300; i++) {
       res.push(
         // tslint:disable-next-line:max-line-length
-        { number: index++, name: '张三', age: 28, address: '四川省自贡市檀木林大街', power: '管理员', deport: '开发部', ancount: '56475341324654765', time: '2019/01/01', phoneNum: '18899990000' },
+        { number: index++, name: '张三', authentication: '已认证', release: 10, resolve: 8 },
+        { number: index++, name: '李四', authentication: '未认证', release: 10, resolve: 8 },
       );
     }
     return res;
@@ -188,54 +188,32 @@ export class UserListComponent implements OnInit {
         },
       },
       {
-        headerName: '编号',
+        headerName: '账号',
         width: 100,
         field: 'number',
         suppressSorting: false,
       },
       {
         headerName: '姓名',
-        width: 80,
+        width: 100,
         field: 'name',
         suppressSorting: false,
       },
       {
-        headerName: '年龄',
-        width: 40,
-        field: 'age',
+        headerName: '实名认证',
+        width: 100,
+        field: 'authentication',
         suppressSorting: false,
       },
       {
-        headerName: '地址',
-        width: 250,
-        field: 'address',
-        suppressSorting: false,
-      },
-      {
-        headerName: '权限',
+        headerName: '已发布工单数',
         width: 100,
-        field: 'power',
+        field: 'release',
       },
       {
-        headerName: '所属部门',
+        headerName: '已完成工单数',
         width: 100,
-        field: 'deport',
-      },
-      {
-        headerName: '账号',
-        width: 200,
-        field: 'ancount',
-      },
-      {
-        headerName: '入职时间',
-        width: 100,
-        field: 'time',
-      },
-      {
-        headerName: '联系电话',
-        width: 100,
-        field: 'phoneNum',
-        cellClass: 'justify-content-center',
+        field: 'resolve',
       },
       {
         headerName: '编辑',
@@ -246,8 +224,8 @@ export class UserListComponent implements OnInit {
         cellRenderer: (param) => {
           const root = $('<div/>');
           // tslint:disable-next-line:max-line-length
-          const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-info-circle"></i> 编辑</button>`);
-          const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-eraser"></i> 重置密码</button>`);
+          const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 编辑</button>`);
+          const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-info-circle"></i> 详情</button>`);
           editBtn.click(() => {
             this.baseService.showModal(this.userInfoModalConfig);
           });

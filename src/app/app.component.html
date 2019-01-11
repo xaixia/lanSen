@@ -34,7 +34,8 @@
       <li class="dropdown-submenu">
         <a href="javascript:void(0);" [class.active]="isActive('user')">{{appLocales.COMMON.MENU.user}}</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/userList')">{{appLocales.userList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/systemUserList')">{{appLocales.systemUserList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/ordinaryUserList')">普通用户管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/roleList')">角色管理</a>
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/authorityList')">权限管理</a>
         </div>
@@ -124,7 +125,7 @@
   <!--<div class="footer mt-3">
     <div class="copy-right">Copyright (c) Earth Environmental Service Co., Ltd. All Right Reserved.</div>
   </div>
-</div>-->
+  </div>-->
   <ng4-loading-spinner *ngIf="isLogin"></ng4-loading-spinner>
   <div *ngIf="!isLogin" class="card">
     <div class="card-title">登录</div>

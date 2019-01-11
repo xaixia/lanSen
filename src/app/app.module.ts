@@ -52,7 +52,7 @@ import { OperationLogComponent } from './components/logManage/operation-log/oper
 import { DatabaseLogComponent } from './components/logManage/database-log/database-log.component';
 import { UserLogComponent } from './components/logManage/user-log/user-log.component';
 import { QueryComponent } from './components/queryManage/query/query.component';
-import { UserListComponent } from './components/userManage/user-list/user-list.component';
+import { SystemUserListComponent } from './components/userManage/system-user-list/system-user-list.component';
 import { EmployeListComponent } from './components/userManage/employe-list/employe-list.component';
 import { OrderListComponent } from './components/businessManage/order-list/order-list.component';
 import { OrderUnitComponent } from './components/businessManage/order-unit/order-unit.component';
@@ -78,6 +78,7 @@ import { UserinfoComponent } from './components/indexManage/userinfo/userinfo.co
 import { RoleEditComponent } from './components/userManage/role-edit/role-edit.component';
 import { AuthorityListComponent } from './components/userManage/authority-list/authority-list.component';
 import { AuthorityEditComponent } from './components/userManage/authority-edit/authority-edit.component';
+import { OrdinaryUserListComponent } from './components/userManage/ordinary-user-list/ordinary-user-list.component';
 
 const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
@@ -87,7 +88,8 @@ const appRoutes: Routes = [
   { path: 'resetpwd', component: PasswordComponent }, // 重置密码
   { path: 'customerinfo', component: UserinfoComponent }, // 设置用户信息
 
-  { path: 'user/userList', component: UserListComponent }, // 系统用户管理
+  { path: 'user/systemUserList', component: SystemUserListComponent }, // 系统用户管理
+  { path: 'user/ordinaryUserList', component: OrdinaryUserListComponent }, // 普通用户管理
   { path: 'user/roleList', component: RoleListComponent }, // 角色管理
   { path: 'user/authorityList', component: AuthorityListComponent }, // 权限管理
 
@@ -134,7 +136,7 @@ const appRoutes: Routes = [
     DatabaseLogComponent,
     UserLogComponent,
     QueryComponent,
-    UserListComponent,
+    SystemUserListComponent,
     EmployeListComponent,
     OrderListComponent,
     OrderUnitComponent,
@@ -157,6 +159,7 @@ const appRoutes: Routes = [
     RoleEditComponent,
     PasswordComponent,
     AuthorityListComponent,
+    OrdinaryUserListComponent,
     AuthorityEditComponent,
     UserinfoComponent,
   ],

@@ -53,7 +53,7 @@ export class AuthorityListComponent implements OnInit {
     this.gridOptions.headerHeight = 24;
     this.gridOptions.animateRows = true;
 
-    this.gridOptions.gridAutoHeight = true;
+    this.gridOptions.domLayout = 'autoHeight';
 
     this.gridOptions.defaultColDef = {
       menuTabs: ['filterMenuTab'],
@@ -119,7 +119,7 @@ export class AuthorityListComponent implements OnInit {
         cellRenderer: (param) => {
           const root = $('<div/>');
           // tslint:disable-next-line:max-line-length
-          const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-info-circle"></i> 编辑</button>`);
+          const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 编辑</button>`);
           editBtn.click(() => {
             this.baseService.showModal(this.authorityEditModalConfig);
           });
