@@ -32,16 +32,16 @@ const STORAGE_KEY_NAVIGATE = 'STORAGE_KEY_NAVIGATE';
 @Injectable()
 export class BaseService {
 
-  // サーバーURL
+  // server URL
   private server_url: string = environment.server;
 
-  // HTTPヘッダ
+  // HTTP  header
   private headers = new Headers();
 
-  // 遷移用パラメータを保持
+  // 页面跳转数据
   private navigateData: PageData;
 
-  // 画面のデータを保持
+  // 页面data
   private pageData: PageData;
 
   private spinnerCnt = 0;

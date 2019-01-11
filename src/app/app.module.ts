@@ -75,6 +75,9 @@ import { OrderCommentComponent } from './components/evaluateManagement/order-com
 import { UserLevelComponent } from './components/evaluateManagement/user-level/user-level.component';
 import { PasswordComponent } from './components/indexManage/password/password.component';
 import { UserinfoComponent } from './components/indexManage/userinfo/userinfo.component';
+import { RoleEditComponent } from './components/userManage/role-edit/role-edit.component';
+import { AuthorityListComponent } from './components/userManage/authority-list/authority-list.component';
+import { AuthorityEditComponent } from './components/userManage/authority-edit/authority-edit.component';
 
 const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
@@ -86,6 +89,7 @@ const appRoutes: Routes = [
 
   { path: 'user/userList', component: UserListComponent }, // 系统用户管理
   { path: 'user/roleList', component: RoleListComponent }, // 角色管理
+  { path: 'user/authorityList', component: AuthorityListComponent }, // 权限管理
 
   { path: 'system', component: SystemComponent },
   { path: 'log', component: UserLogComponent },
@@ -102,6 +106,8 @@ const appRoutes: Routes = [
   entryComponents: [
     ConfirmWindowComponent,
     PopwindowComponent,
+    RoleEditComponent,
+    AuthorityEditComponent,
   ],
   declarations: [
     ValidateDirective,
@@ -148,8 +154,11 @@ const appRoutes: Routes = [
     SuggestionComponent,
     OrderCommentComponent,
     UserLevelComponent,
+    RoleEditComponent,
     PasswordComponent,
-    UserinfoComponent
+    AuthorityListComponent,
+    AuthorityEditComponent,
+    UserinfoComponent,
   ],
   imports: [
     BrowserModule,

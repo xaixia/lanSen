@@ -195,13 +195,13 @@ export class UserListComponent implements OnInit {
       },
       {
         headerName: '姓名',
-        width: 100,
+        width: 80,
         field: 'name',
         suppressSorting: false,
       },
       {
         headerName: '年龄',
-        width: 100,
+        width: 40,
         field: 'age',
         suppressSorting: false,
       },
@@ -218,7 +218,7 @@ export class UserListComponent implements OnInit {
       },
       {
         headerName: '所属部门',
-        width: 150,
+        width: 100,
         field: 'deport',
       },
       {

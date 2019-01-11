@@ -30,7 +30,7 @@ export class AppLocales {
       title: '角色管理'
     },
 
-    powerList: {
+    authorityList: {
       title: '权限管理'
     },
 

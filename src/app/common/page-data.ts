@@ -1,16 +1,16 @@
 import { StorageService } from 'ngx-webstorage-service';
 
 export class PageData {
-  // ローカルデータ
+  // 本地数据
   private data: Map<string, any> = new Map<string, any>();
 
-  // セッションストレージキー
+  // session
   private storageKey: string;
 
-  // セッションストレージサービス
+  // 存储
   private storage: StorageService;
 
-  // 初期化
+  // 初始化
   constructor(storageKey: string, storage: StorageService) {
     this.storageKey = storageKey;
     this.storage = storage;
@@ -21,27 +21,27 @@ export class PageData {
     }
   }
 
-  // データを取得
+  // 取得data
   get(key: string): any {
     return this.data.get(key);
   }
 
-  // データを設定
+  // 设置data
   set(key: string, val: any) {
     this.data.set(key, val);
   }
 
-  // データを削除
+  // 删除data
   remove(key: string) {
     this.data.delete(key);
   }
 
-  // データをクリア
+  // 清除data
   clear() {
     this.data.clear();
   }
 
-  // セッションストレージに保持
+  // session的存储
   saveToSessionStorage() {
     this.storage.set(this.storageKey, Array.from(this.data));
   }

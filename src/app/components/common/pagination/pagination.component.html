@@ -2,7 +2,7 @@
     <div class="btn-toolbar" role="toolbar">
       <span *ngIf="!hideTotal" class="cnt">{{paginationInfo}}</span>
       <span *ngIf="!hideTotal" class="pageSize">
-        <label>1ページに:</label>
+        <label>每一页包含：</label>
         <select #perPageSize class="form-control" [ngModel]="itemsPerPage" (change)="changeItemsPerPage(perPageSize)">
           <option value="25">25</option>
           <option value="50">50</option>

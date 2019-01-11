@@ -7,7 +7,7 @@ declare let $: any;
 
 export class AppErrorHandler implements ErrorHandler {
 
-  // サーバーURL
+  // server-URL
   private server_url: string = environment.server;
 
   handleError(error: Error) {

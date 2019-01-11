@@ -40,7 +40,7 @@
       <div class="form-group width7 font-weight-bold">注册时间</div>
       <div class="form-group width30p">
         <div class="input-group">
-          <input type='text' class="form-control width13" appDatetimePicker />
+          <input type='text' class="form-control width10" appDatetimePicker />
           <span class="input-group-prepend">
             <span class="input-group-text">
               <span class="fa fa-calendar"></span>
@@ -49,7 +49,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text input-group-text-none">~</span>
           </div>
-          <input type='text' class="form-control width13" appDatetimePicker />
+          <input type='text' class="form-control width10" appDatetimePicker />
           <span class="input-group-prepend">
             <span class="input-group-text">
               <span class="fa fa-calendar"></span>
@@ -57,7 +57,7 @@
           </span>
         </div>
       </div>
-      <div class="form-group width7 font-weight-bold ml-5">角色</div>
+      <div class="form-group width7 font-weight-bold">角色</div>
       <div class="form-group width20p">
         <select name="" class="form-control width13" id="">
           <option value="">管理员</option>
@@ -72,9 +72,6 @@
         <button type="button" class="btn btn-primary" (click)="searchData()">
           <i class="fa fa-search"></i> 查询
         </button>
-        <button type="button" class="btn btn-info">
-          <i class="fa fa-plus"></i> 新增
-        </button>
         <button type="button" class="btn btn-warning">
           <i class="fa fa-eraser"></i> 清除
         </button>
@@ -86,8 +83,11 @@
   </div>
 </div>
 <div class="list">
-  <div class="pager">
+  <div class="pager mb-1">
     <div>
+      <button appModal [config]="userInfoModalConfig" type="button" class="btn btn-info">
+        <i class="fa fa-plus"></i> 新增
+      </button>
     </div>
     <app-pagination [gridApi]="gridApi"></app-pagination>
   </div>

@@ -1,27 +1,27 @@
-import { AppModalConfig } from '../../../common/modal.directive';
-import { BaseService } from '../../../common/base.service';
-import { PaginationApi } from '../../common/pagination/pagination.component';
-import { AppAnimations } from '../../../common/app-animations';
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { AppAnimations } from '../../../common/app-animations';
+import { AppModalConfig } from '../../../common/modal.directive';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { GridOptions, GridApi, ColDef, ColGroupDef } from 'ag-grid-community';
 import { AgGridColumn } from 'ag-grid-angular';
-import { RoleEditComponent } from '../role-edit/role-edit.component';
+import { GridOptions, GridApi, ColDef, ColGroupDef } from 'ag-grid-community';
+import { PaginationApi } from '../../common/pagination/pagination.component';
+import { BaseService } from '../../../common/base.service';
+import { AuthorityEditComponent } from '../authority-edit/authority-edit.component';
 
 declare let $: any;
 
 @Component({
-  selector: 'app-role',
-  templateUrl: './role-list.component.html',
-  styleUrls: ['./role-list.component.scss'],
+  selector: 'app-authority-list',
+  templateUrl: './authority-list.component.html',
+  styleUrls: ['./authority-list.component.scss'],
   animations: [AppAnimations.openClose],
 })
-export class RoleListComponent implements OnInit {
+export class AuthorityListComponent implements OnInit {
 
-  roleEditModalConfig = <AppModalConfig>{
-    component: RoleEditComponent,
+  authorityEditModalConfig = <AppModalConfig>{
+    component: AuthorityEditComponent,
     modalOptions: {
-      class: 'app-modal-role'
+      class: 'app-modal-authority'
     }
   };
 
@@ -93,32 +93,13 @@ export class RoleListComponent implements OnInit {
   getGridColumnDefs(): (ColDef | ColGroupDef)[] {
     return [
       {
-        headerName: '启用/禁用',
-        suppressFilter: true,
-        suppressMenu: true,
-        suppressResize: true,
-        suppressMovable: true,
-        suppressSorting: true,
-        width: 100,
-        pinned: 'left',
-        editable: false,
-        colId: 'checkbox',
-        cellRenderer: () => {
-          const root = $('<div/>');
-          const banBtn = $(`<input type="checkbox" name="ban" />`);
-          banBtn[0].onchange = (() => { });
-          root.append(banBtn);
-          return root[0];
-        },
-      },
-      {
         headerName: '编号',
         width: 100,
         field: 'number',
         suppressSorting: false,
       },
       {
-        headerName: '名称',
+        headerName: '权限名称',
         width: 100,
         field: 'name',
         suppressSorting: false,
@@ -140,7 +121,7 @@ export class RoleListComponent implements OnInit {
           // tslint:disable-next-line:max-line-length
           const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-info-circle"></i> 编辑</button>`);
           editBtn.click(() => {
-            this.baseService.showModal(this.roleEditModalConfig);
+            this.baseService.showModal(this.authorityEditModalConfig);
           });
           root.append(editBtn);
           return root[0];
