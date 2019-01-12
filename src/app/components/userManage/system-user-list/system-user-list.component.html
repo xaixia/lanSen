@@ -1,5 +1,9 @@
 <form [formGroup]="form" class="card search-form">
-  <div class="card-title">系统用户列表</div>
+  <div class="card-title">系统用户列表
+    <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea()">
+      <i class="fa" [class.fa-angle-up]="infoAreaOpend" [class.fa-angle-down]="!infoAreaOpend"></i>
+    </button>
+  </div>
   <div class="card-body" [@openClose]="searchFormOpend ? 'open' : 'closed'">
     <div class="form-inline">
       <div class="form-group width7 font-weight-bold">姓名</div>
@@ -35,7 +39,6 @@
           </div>
         </div>
       </div>
-
     </div>
     <div class="form-inline">
       <div class="form-group width7 font-weight-bold">注册时间</div>
@@ -80,9 +83,7 @@
         <button type="button" class="btn btn-warning">
           <i class="fa fa-eraser"></i> 清除
         </button>
-        <button type="button" class="btn btn btn-secondary" (click)="changeInfoArea()">
-          <i class="fa" [class.fa-angle-up]="infoAreaOpend" [class.fa-angle-down]="!infoAreaOpend"></i>
-        </button>
+
       </div>
     </div>
   </div>
