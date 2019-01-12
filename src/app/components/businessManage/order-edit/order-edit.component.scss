@@ -1,5 +1,6 @@
 .order-edit{
     width:70%;
+    float: left;
     .thumb{
         display: flex;
         align-items: center;
@@ -12,6 +13,45 @@
         .thumb-img{
             max-width: 100px;
             max-height: 100px;
+        }
+    }
+    textarea{
+        resize: none;
+    }
+}
+.wrap-right{
+    width: 25%;
+    margin-right:2.5%;
+    float: right;
+    padding: .4rem;
+    background: #fff;
+    ul.process-list{
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 60vh;
+        list-style: none;
+
+        .process{
+            min-height:.5rem;
+            margin: 20px 0;
+            width:100%;
+            border-left:1px solid #ccc;
+        }
+
+        li.active::before{
+            background: #7bb9ef;
+        }
+        li.process::before{
+            content: "";
+            display: flex;
+            position: relative;
+            left:-6px;
+            top:-18px;
+            width:8px;
+            height:8px;
+            background: #007bff;
+            border-radius: 50%;
+            box-shadow: 0 0 4px 3px #7bb9ef;
         }
     }
 }
