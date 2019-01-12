@@ -23,10 +23,10 @@
         <a href="javascript:void(0);" [class.active]="isActive('log')">数据统计</a>
       </li>
       <li class="dropdown-submenu">
-        <a href="javascript:void(0);" [class.active]="isActive('query')">业务管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('business')">{{appLocales.COMMON.MENU.business}}</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/query')">工单管理</a>
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/query')">业务管理</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('business/orderList')">{{appLocales.orderList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('business/billingList')">{{appLocales.billingList.title}}</a>
         </div>
       </li>
       <li class="dropdown-submenu">
@@ -37,7 +37,7 @@
         </div>
       </li>
       <li class="dropdown-submenu ">
-        <a href="javascript:void(0);" [class.active]="isActive('business')">内容管理</a>
+        <a href="javascript:void(0);" [class.active]="isActive('busines')">内容管理</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/business')">新闻管理</a>
           <a class="dropdown-item" href="javascript:void(0);">公告管理</a>

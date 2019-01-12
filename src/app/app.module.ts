@@ -42,6 +42,7 @@ import { AppLocales } from './configuration/app-locales';
 
 import { UserComponent } from './components/systemManage/user/user.component';
 import { RoleListComponent } from './components/userManage/role-list/role-list.component';
+import { BillingListComponent } from './components/businessManage/billing-list/billing-list.component';
 import { JurisdictionComponent } from './components/systemManage/jurisdiction/jurisdiction.component';
 import { WebsiteComponent } from './components/systemManage/website/website.component';
 import { SystemComponent } from './components/systemManage/system/system.component';
@@ -51,28 +52,17 @@ import { RegisterLogComponent } from './components/logManage/register-log/regist
 import { OperationLogComponent } from './components/logManage/operation-log/operation-log.component';
 import { DatabaseLogComponent } from './components/logManage/database-log/database-log.component';
 import { UserLogComponent } from './components/logManage/user-log/user-log.component';
-import { QueryComponent } from './components/queryManage/query/query.component';
 import { SystemUserListComponent } from './components/userManage/system-user-list/system-user-list.component';
 import { EmployeListComponent } from './components/staffManage/employe-list/employe-list.component';
 import { OrderListComponent } from './components/businessManage/order-list/order-list.component';
-import { OrderUnitComponent } from './components/businessManage/order-unit/order-unit.component';
-import { PriceUnitComponent } from './components/businessManage/price-unit/price-unit.component';
-import { LabelAttributeComponent } from './components/businessManage/label-attribute/label-attribute.component';
-import { BillingComponent } from './components/businessManage/billing/billing.component';
-import { BillingModuleComponent } from './components/businessManage/billing-module/billing-module.component';
 import { NewsComponent } from './components/newsAndNotice/news/news.component';
 import { NoticeComponent } from './components/newsAndNotice/notice/notice.component';
 import { AdComponent } from './components/newsAndNotice/ad/ad.component';
 import { ContractComponent } from './components/newsAndNotice/contract/contract.component';
 import { AgreementComponent } from './components/newsAndNotice/agreement/agreement.component';
-import { BusinessOverviewComponent } from './components/finaceManage/business-overview/business-overview.component';
-import { CashComponent } from './components/finaceManage/cash/cash.component';
-import { CardComponent } from './components/cardManage/card/card.component';
 import { CustomerMessageComponent } from './components/messageManage/customer-message/customer-message.component';
 import { SuggestionComponent } from './components/messageManage/suggestion/suggestion.component';
 import { IndexComponent } from './components/indexManage/index/index.component';
-import { OrderCommentComponent } from './components/evaluateManagement/order-comment/order-comment.component';
-import { UserLevelComponent } from './components/evaluateManagement/user-level/user-level.component';
 import { PasswordComponent } from './components/indexManage/password/password.component';
 import { UserinfoComponent } from './components/indexManage/userinfo/userinfo.component';
 import { RoleEditComponent } from './components/userManage/role-edit/role-edit.component';
@@ -80,6 +70,7 @@ import { AuthorityListComponent } from './components/userManage/authority-list/a
 import { AuthorityEditComponent } from './components/userManage/authority-edit/authority-edit.component';
 import { OrdinaryUserListComponent } from './components/staffManage/ordinary-user-list/ordinary-user-list.component';
 import { EmployeEditComponent } from './components/staffManage/employe-edit/employe-edit.component';
+import { OrderEditComponent } from './components/businessManage/order-edit/order-edit.component';
 
 const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
@@ -96,15 +87,15 @@ const appRoutes: Routes = [
   { path: 'user/ordinaryUserList', component: OrdinaryUserListComponent }, // 普通用户管理
   { path: 'user/employeList', component: EmployeListComponent }, // 雇工管理
 
+  { path: 'business/orderList', component: OrderListComponent }, // 工单列表
+  { path: 'business/orderEdit', component: OrderEditComponent }, // 工单详情
+  { path: 'business/billingList', component: BillingListComponent }, // 业务列表
+
   { path: 'system', component: SystemComponent },
   { path: 'log', component: UserLogComponent },
-  { path: 'query', component: QueryComponent },
-  { path: 'business', component: BusinessOverviewComponent },
   { path: 'news', component: NewsComponent },
   { path: 'finace', component: OrderListComponent },
-  { path: 'card', component: CardComponent },
   { path: 'message', component: CustomerMessageComponent },
-  { path: 'level', component: UserLevelComponent },
 ];
 
 @NgModule({
@@ -139,31 +130,22 @@ const appRoutes: Routes = [
     OperationLogComponent,
     DatabaseLogComponent,
     UserLogComponent,
-    QueryComponent,
     SystemUserListComponent,
     EmployeListComponent,
     OrderListComponent,
-    OrderUnitComponent,
-    PriceUnitComponent,
-    LabelAttributeComponent,
-    BillingComponent,
-    BillingModuleComponent,
+    BillingListComponent,
     NewsComponent,
     NoticeComponent,
     AdComponent,
     ContractComponent,
     AgreementComponent,
-    BusinessOverviewComponent,
-    CashComponent,
-    CardComponent,
     CustomerMessageComponent,
     SuggestionComponent,
-    OrderCommentComponent,
-    UserLevelComponent,
     RoleEditComponent,
     PasswordComponent,
     AuthorityListComponent,
     OrdinaryUserListComponent,
+    OrderEditComponent,
     EmployeEditComponent,
     AuthorityEditComponent,
     UserinfoComponent,

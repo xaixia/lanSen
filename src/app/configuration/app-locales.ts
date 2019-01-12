@@ -43,6 +43,18 @@ export class AppLocales {
       title: '普通用户管理'
     },
 
+    billingList: {
+      title: '业务管理'
+    },
+
+    orderList: {
+      title: '工单管理'
+    },
+
+    orderEdit: {
+      title: '工单详情'
+    },
+
 
   };
 }

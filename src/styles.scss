@@ -316,6 +316,9 @@ html {
     margin-top: .1rem;
     min-height: 2rem;
   }
+  .form-inline:not(:last-child) {
+    margin-bottom: .4rem;
+  }
 }
 
 .list {
