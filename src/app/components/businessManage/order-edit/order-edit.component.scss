@@ -1,0 +1,17 @@
+.order-edit{
+    width:70%;
+    .thumb{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-right:8px;
+        width:102px;
+        height:102px;
+        border:1px solid #333;
+    
+        .thumb-img{
+            max-width: 100px;
+            max-height: 100px;
+        }
+    }
+}
