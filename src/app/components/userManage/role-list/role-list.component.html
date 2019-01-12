@@ -1,5 +1,5 @@
 <form class="card search-form">
-    <div class="card-title">角色列表</div>
+  <div class="card-title">角色列表</div>
   <div class="card-body">
     <div class="list">
       <div class="pager mb-1">
@@ -8,13 +8,12 @@
             <i class="fa fa-plus"></i> 新增
           </button>
         </div>
-        <app-pagination [gridApi]="gridApi"></app-pagination>
       </div>
       <ag-grid-angular #agGrid [enableColResize]="true" class="ag-theme-balham" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)"
         [pagination]="true" [paginationPageSize]="25" [localeText]="localeText" [enableFilter]="true"
         [suppressPaginationPanel]="true" [enableRangeSelection]="true">
       </ag-grid-angular>
-      <div class="pager">
+      <div class="pager mb-1">
         <div>
         </div>
         <app-pagination [gridApi]="gridApi"></app-pagination>

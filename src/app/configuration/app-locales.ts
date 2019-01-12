@@ -8,7 +8,8 @@ export class AppLocales {
     COMMON: {
       MENU: {
         index: '首页',
-        user: '用户管理',
+        staff: '系统用户管理',
+        user: '前端用户管理',
 
         system: '系统管理',
         log: '日志管理',
@@ -23,11 +24,7 @@ export class AppLocales {
     },
 
     systemUserList: {
-      title: '系统用户管理'
-    },
-
-    ordinaryUserList: {
-      title: '普通用户管理'
+      title: '用户管理'
     },
 
     roleList: {
@@ -37,6 +34,15 @@ export class AppLocales {
     authorityList: {
       title: '权限管理'
     },
+
+    employeList: {
+      title: '雇工管理'
+    },
+
+    ordinaryUserList: {
+      title: '普通用户管理'
+    },
+
 
   };
 }

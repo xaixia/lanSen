@@ -38,7 +38,6 @@ export class OrdinaryUserListComponent implements OnInit {
   };
 
   public form: FormGroup;
-  // 受注目的
   public OrderPurposeKbnList = [];
   public SendKbnList = [];
   public ChangeBikoKbnList = [];
@@ -48,13 +47,9 @@ export class OrdinaryUserListComponent implements OnInit {
   @ViewChild('conditonPanel')
   public conditonPanel: ElementRef;
   public opencontraction = true;
-  // グリッド列Api
   private gridColumnApi: AgGridColumn;
-  // フォームを設定する
   public gridOptions: GridOptions;
-  // グリッドApi
   public gridApi: GridApi;
-  // ロケールテキスト
   public localeText;
   public style = {
     width: '100%',
@@ -92,8 +87,6 @@ export class OrdinaryUserListComponent implements OnInit {
     this.gridOptions.headerHeight = 24;
     this.gridOptions.domLayout = 'autoHeight';
 
-    this.gridOptions.gridAutoHeight = true;
-
     this.gridOptions.defaultColDef = {
       menuTabs: ['filterMenuTab'],
     };
@@ -121,7 +114,6 @@ export class OrdinaryUserListComponent implements OnInit {
     this.gridOptions.suppressContextMenu = true;
     this.localeText = this.baseService.getGridLocaleText();
     this.gridOptions.columnDefs = this.getGridColumnDefs();
-    this.conditionPanelOpenOrClose();
   }
 
   /**
@@ -129,19 +121,6 @@ export class OrdinaryUserListComponent implements OnInit {
    */
   createForm(): void {
     this.form = this.fb.group({});
-  }
-
-  /**
-   *
-   */
-  conditionPanelOpenOrClose() {
-    if (this.opencontraction) {
-      this.opencontraction = false;
-      this.SearcBtnContent = '検索条件+';
-    } else {
-      this.opencontraction = true;
-      this.SearcBtnContent = '検索条件-';
-    }
   }
 
   onGridReady(params) {
@@ -156,8 +135,13 @@ export class OrdinaryUserListComponent implements OnInit {
     for (let i = 0; i < 300; i++) {
       res.push(
         // tslint:disable-next-line:max-line-length
-        { number: index++, name: '张三', authentication: '已认证', release: 10, resolve: 8 },
-        { number: index++, name: '李四', authentication: '未认证', release: 10, resolve: 8 },
+        { number: index++, sName: '小飞猪', name: '张三', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '未上传', release: 10, resolve: 8 },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, sName: '小飞猪', name: '张三', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '待审核', release: 10, resolve: 8 },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, sName: '小飞猪', name: '李四', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '审核通过', release: 10, resolve: 8 },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, sName: '小飞猪', name: '李四', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '审核不通过', release: 10, resolve: 8 },
       );
     }
     return res;
@@ -188,32 +172,43 @@ export class OrdinaryUserListComponent implements OnInit {
         },
       },
       {
-        headerName: '账号',
+        headerName: 'id',
         width: 100,
         field: 'number',
         suppressSorting: false,
       },
       {
-        headerName: '姓名',
+        headerName: '昵称',
         width: 100,
-        field: 'name',
+        field: 'sName',
         suppressSorting: false,
       },
       {
-        headerName: '实名认证',
+        headerName: '电话',
+        width: 100,
+        field: 'tel',
+      },
+      {
+        headerName: '姓名',
+        width: 100,
+        field: 'name',
+      },
+      {
+        headerName: '实名状态',
         width: 100,
         field: 'authentication',
         suppressSorting: false,
       },
       {
-        headerName: '已发布工单数',
+        headerName: '账户余额',
         width: 100,
-        field: 'release',
+        field: 'money',
+        cellRenderer: (param) => param.value ? (param.value || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') : '0'
       },
       {
-        headerName: '已完成工单数',
+        headerName: '注册时间',
         width: 100,
-        field: 'resolve',
+        field: 'time',
       },
       {
         headerName: '编辑',
@@ -223,7 +218,6 @@ export class OrdinaryUserListComponent implements OnInit {
         suppressMenu: true,
         cellRenderer: (param) => {
           const root = $('<div/>');
-          // tslint:disable-next-line:max-line-length
           const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 编辑</button>`);
           const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-info-circle"></i> 详情</button>`);
           editBtn.click(() => {
@@ -245,10 +239,6 @@ export class OrdinaryUserListComponent implements OnInit {
     if (!this.baseService.hasError(this.el, this.form)) {
       if (this.gridApi) {
         this.gridApi.setRowData(this.createGridData());
-      }
-    } else {
-      if (!this.opencontraction) {
-        this.conditionPanelOpenOrClose();
       }
     }
   }

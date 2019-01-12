@@ -7,33 +7,25 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { GridOptions, GridApi, ColDef, ColGroupDef } from 'ag-grid-community';
 import { AgGridColumn } from 'ag-grid-angular';
-import { PasswordComponent } from '../../indexManage/password/password.component';
 import { MESSAGE_UTIL } from '../../../configuration/message.config';
-import { UserinfoComponent } from '../../indexManage/userinfo/userinfo.component';
-import { AppValidators } from '../../../common/app-validators';
+import { EmployeEditComponent } from '../employe-edit/employe-edit.component';
 
 declare let $: any;
 
 @Component({
-  selector: 'app-system-user-list',
-  templateUrl: './system-user-list.component.html',
-  styleUrls: ['./system-user-list.component.scss'],
+  selector: 'app-employe-list',
+  templateUrl: './employe-list.component.html',
+  styleUrls: ['./employe-list.component.scss'],
   animations: [AppAnimations.openClose],
 })
-export class SystemUserListComponent implements OnInit {
 
+export class EmployeListComponent implements OnInit {
   searchFormOpend = true;
   status = 1;
   infoAreaOpend = true;
   tabContentArea = false;
-  passwordModalConfig = <AppModalConfig>{
-    component: PasswordComponent,
-    modalOptions: {
-      class: 'app-modal-pwd'
-    }
-  };
-  userInfoModalConfig = <AppModalConfig>{
-    component: UserinfoComponent,
+  employeModalConfig = <AppModalConfig>{
+    component: EmployeEditComponent,
     modalOptions: {
       class: 'app-modal-user'
     }
@@ -50,13 +42,9 @@ export class SystemUserListComponent implements OnInit {
   @ViewChild('conditonPanel')
   public conditonPanel: ElementRef;
   public opencontraction = true;
-  // グリッド列Api
   private gridColumnApi: AgGridColumn;
-  // フォームを設定する
   public gridOptions: GridOptions;
-  // グリッドApi
   public gridApi: GridApi;
-  // ロケールテキスト
   public localeText;
   public style = {
     width: '100%',
@@ -92,8 +80,6 @@ export class SystemUserListComponent implements OnInit {
     this.gridOptions = <GridOptions>{};
     this.gridOptions.rowHeight = 24;
     this.gridOptions.headerHeight = 24;
-    this.gridOptions.animateRows = true;
-
     this.gridOptions.domLayout = 'autoHeight';
 
     this.gridOptions.defaultColDef = {
@@ -123,32 +109,13 @@ export class SystemUserListComponent implements OnInit {
     this.gridOptions.suppressContextMenu = true;
     this.localeText = this.baseService.getGridLocaleText();
     this.gridOptions.columnDefs = this.getGridColumnDefs();
-    this.conditionPanelOpenOrClose();
   }
 
   /**
    * createForm
    */
   createForm(): void {
-    this.form = this.fb.group({
-      // 账号
-      account: [null, [AppValidators.required('E0005', '账号')]],
-      // 姓名
-      name: ['', [AppValidators.required('E0005', '姓名')]],
-    });
-  }
-
-  /**
-   *
-   */
-  conditionPanelOpenOrClose() {
-    if (this.opencontraction) {
-      this.opencontraction = false;
-      this.SearcBtnContent = '検索条件+';
-    } else {
-      this.opencontraction = true;
-      this.SearcBtnContent = '検索条件-';
-    }
+    this.form = this.fb.group({});
   }
 
   onGridReady(params) {
@@ -163,7 +130,10 @@ export class SystemUserListComponent implements OnInit {
     for (let i = 0; i < 300; i++) {
       res.push(
         // tslint:disable-next-line:max-line-length
-        { number: index++, name: '张三', age: 28, address: '四川省自贡市檀木林大街', power: '管理员', deport: '开发部', ancount: '56475341324654765', time: '2019/01/01', phoneNum: '18899990000' },
+        { number: index++, name: '张三', authentication: '未上传', release: 10, resolve: 8 },
+        { number: index++, name: '张三', authentication: '待审核', release: 10, resolve: 8 },
+        { number: index++, name: '李四', authentication: '审核通过', release: 10, resolve: 8 },
+        { number: index++, name: '李四', authentication: '审核不通过', release: 10, resolve: 8 },
       );
     }
     return res;
@@ -194,54 +164,32 @@ export class SystemUserListComponent implements OnInit {
         },
       },
       {
-        headerName: '编号',
+        headerName: '账号',
         width: 100,
         field: 'number',
         suppressSorting: false,
       },
       {
         headerName: '姓名',
-        width: 80,
+        width: 100,
         field: 'name',
         suppressSorting: false,
       },
       {
-        headerName: '年龄',
-        width: 40,
-        field: 'age',
+        headerName: '实名认证',
+        width: 100,
+        field: 'authentication',
         suppressSorting: false,
       },
       {
-        headerName: '地址',
-        width: 250,
-        field: 'address',
-        suppressSorting: false,
-      },
-      {
-        headerName: '权限',
+        headerName: '已发布工单数',
         width: 100,
-        field: 'power',
+        field: 'release',
       },
       {
-        headerName: '所属部门',
+        headerName: '已完成工单数',
         width: 100,
-        field: 'deport',
-      },
-      {
-        headerName: '账号',
-        width: 200,
-        field: 'ancount',
-      },
-      {
-        headerName: '入职时间',
-        width: 100,
-        field: 'time',
-      },
-      {
-        headerName: '联系电话',
-        width: 100,
-        field: 'phoneNum',
-        cellClass: 'justify-content-center',
+        field: 'resolve',
       },
       {
         headerName: '编辑',
@@ -253,12 +201,12 @@ export class SystemUserListComponent implements OnInit {
           const root = $('<div/>');
           // tslint:disable-next-line:max-line-length
           const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 编辑</button>`);
-          const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-eraser"></i> 重置密码</button>`);
+          const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-info-circle"></i> 详情</button>`);
           editBtn.click(() => {
-            this.baseService.showModal(this.userInfoModalConfig);
+            this.baseService.showModal(this.employeModalConfig);
           });
           resetBtn.click(() => {
-            this.baseService.showModal(this.passwordModalConfig);
+            this.baseService.showModal(this.employeModalConfig);
           });
           root.append(editBtn);
           root.append(resetBtn);
@@ -274,10 +222,6 @@ export class SystemUserListComponent implements OnInit {
       if (this.gridApi) {
         this.gridApi.setRowData(this.createGridData());
       }
-    } else {
-      if (!this.opencontraction) {
-        this.conditionPanelOpenOrClose();
-      }
     }
   }
 
@@ -290,4 +234,5 @@ export class SystemUserListComponent implements OnInit {
     console.log(event);
   }
 }
+
 

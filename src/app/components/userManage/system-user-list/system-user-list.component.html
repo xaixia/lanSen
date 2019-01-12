@@ -1,11 +1,11 @@
-<form class="card search-form">
+<form [formGroup]="form" class="card search-form">
   <div class="card-title">系统用户列表</div>
   <div class="card-body" [@openClose]="searchFormOpend ? 'open' : 'closed'">
     <div class="form-inline">
       <div class="form-group width7 font-weight-bold">姓名</div>
       <div class="form-group width30p">
         <div class="input-group">
-          <input type="text" class="form-control width130">
+          <input type="text" class="form-control width130" formControlName="name" appValidate [validateFormControl]="form.get('name')">
           <div class="input-group-prepend">
             <button type="button" class="btn btn-default">
               <i class="fa fa-search"></i>
@@ -16,7 +16,7 @@
       <div class="form-group width7 font-weight-bold">账号</div>
       <div class="form-group width30p">
         <div class="input-group">
-          <input type="text" class="form-control width130">
+          <input type="text" class="form-control width130" formControlName="account" appValidate [validateFormControl]="form.get('account')">
           <div class="input-group-prepend">
             <button type="button" class="btn btn-default">
               <i class="fa fa-search"></i>
@@ -68,7 +68,11 @@
     </div>
 
     <div class="pager m-1">
-      <div></div>
+      <div>
+        <button appModal [config]="userInfoModalConfig" type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> 新增
+        </button>
+      </div>
       <div class="btn-area">
         <button type="button" class="btn btn-primary" (click)="searchData()">
           <i class="fa fa-search"></i> 查询
@@ -83,20 +87,12 @@
     </div>
   </div>
 </form>
-<div class="list">
-  <div class="pager mb-1">
-    <div>
-      <button appModal [config]="userInfoModalConfig" type="button" class="btn btn-info">
-        <i class="fa fa-plus"></i> 新增
-      </button>
-    </div>
-    <app-pagination [gridApi]="gridApi"></app-pagination>
-  </div>
+<div class="list auto-height">
   <ag-grid-angular #agGrid [enableColResize]="true" class="ag-theme-balham" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)"
     [pagination]="true" [paginationPageSize]="25" [localeText]="localeText" [enableFilter]="true"
     [suppressPaginationPanel]="true" [enableRangeSelection]="true">
   </ag-grid-angular>
-  <div class="pager">
+  <div class="pager m-1">
     <div>
     </div>
     <app-pagination [gridApi]="gridApi"></app-pagination>
