@@ -1,57 +1,74 @@
 .order-edit{
     width:70%;
     float: left;
-    .thumb{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        margin-right:8px;
-        width:102px;
-        height:102px;
-        border:1px solid #333;
-    
-        .thumb-img{
-            max-width: 100px;
-            max-height: 100px;
-        }
-    }
+   
     textarea{
         resize: none;
     }
 }
+.thumb{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:0 8px 0 0;
+    width:102px;
+    height:102px;
+    border:1px solid #333;
+
+    .thumb-img{
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
 .wrap-right{
-    width: 25%;
-    margin-right:2.5%;
+    width: 28%;
+    margin-right:0.5%;
     float: right;
-    padding: .4rem;
+    padding: 1.5rem;
     background: #fff;
+    
     ul.process-list{
         display: flex;
         flex-wrap: wrap;
+        padding:16px;
         min-height: 60vh;
         list-style: none;
+        box-shadow: 0 0 12px 7px #ccc;
 
         .process{
+            position: relative;
             min-height:.5rem;
-            margin: 20px 0;
             width:100%;
+            padding-left:1.5rem;
             border-left:1px solid #ccc;
+
+            p{
+                position: relative;
+                top:-13px;
+            }
         }
 
-        li.active::before{
-            background: #7bb9ef;
+        li.process.active::before{
+            background: #007bff;
+            box-shadow: 0 0 4px 3px #7bb9ef;
         }
         li.process::before{
             content: "";
             display: flex;
             position: relative;
-            left:-6px;
-            top:-18px;
+            left:-1.8rem;
             width:8px;
             height:8px;
-            background: #007bff;
             border-radius: 50%;
+            background:#7bb9ef;
             box-shadow: 0 0 4px 3px #7bb9ef;
         }
     }
+
+    .no-border{
+        border:none !important;
+    }
 }
+.modal .app-modal-commission{
+    width:80%;
+  }

@@ -71,6 +71,8 @@ import { AuthorityEditComponent } from './components/userManage/authority-edit/a
 import { OrdinaryUserListComponent } from './components/staffManage/ordinary-user-list/ordinary-user-list.component';
 import { EmployeEditComponent } from './components/staffManage/employe-edit/employe-edit.component';
 import { OrderEditComponent } from './components/businessManage/order-edit/order-edit.component';
+import { CommissionComponent } from './components/businessManage/commission/commission.component';
+import { OrderEndComponent } from './components/businessManage/order-end/order-end.component';
 
 const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
@@ -105,6 +107,8 @@ const appRoutes: Routes = [
     RoleEditComponent,
     AuthorityEditComponent,
     EmployeEditComponent,
+    CommissionComponent,
+    OrderEndComponent,
   ],
   declarations: [
     ValidateDirective,
@@ -145,7 +149,9 @@ const appRoutes: Routes = [
     PasswordComponent,
     AuthorityListComponent,
     OrdinaryUserListComponent,
+    CommissionComponent,
     OrderEditComponent,
+    OrderEndComponent,
     EmployeEditComponent,
     AuthorityEditComponent,
     UserinfoComponent,

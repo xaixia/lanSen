@@ -391,7 +391,7 @@ html {
       &>*.table-cell {
         display: flex;
       }
-      padding: 0 .5rem;
+      padding: .5rem;
       &:not(:first-child) {
         border-left: 1px solid #BDC3C7;
       }
@@ -402,6 +402,10 @@ html {
 .modal-dialog {
   &.app-modal-xl {
     max-width: 90%;
+
+    .card-body{
+      min-height: 300px;
+    }
   }
   &.app-modal-lg {
     max-width: 70%;

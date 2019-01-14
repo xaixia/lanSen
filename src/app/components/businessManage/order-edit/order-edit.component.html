@@ -202,10 +202,47 @@
   </div>
 </form>
 <div class="wrap-right">
+  <div class="pager mb-3">
+    <div></div>
+    <div class="btn-eara">
+      <button appModal [config]="commissionModalConfig" type="button" class="btn btn-primary">
+        <i class="fa fa-cny"></i> 佣金分配
+      </button>
+      <button type="button" class="btn btn-primary">
+        <i class="fa fa-random"></i> 更换工人
+      </button>
+      <button appModal [config]="orderEndModalConfig" type="button" class="btn btn-info">
+        <i class="fa fa-arrows-alt"></i> 结束订单
+      </button>
+    </div>
+    <div></div>
+  </div>
   <ul class="process-list">
-    <li class="process active">1</li>
-    <li class="process">2</li>
-    <li class="process">3</li>
-    <li class="process">4</li>
+    <li class="process">
+      <p>客户已经下单，正在等待工人师傅接单</p>
+    </li>
+    <li class="process">
+      <p>李师傅已接单，会尽快为您服务，请耐心等待</p>
+    </li>
+    <li class="process active">
+      <p>李师傅已上传现场施工图片请查看</p>
+      <p class="thumb">
+        <img class="thumb-img" src="http://image.uboworks.com/lunbo.png" alt="">
+      </p>
+    </li>
+    <li class="process">
+      <p>李师傅已经完成订单任务</p>
+    </li>
+    <li class="process no-border">
+      <p>客服介入了本次订单</p>
+    </li>
   </ul>
+  <div class="custom mt-5">
+    <div class="custom-content">
+      <p>客服已介入此订单</p>
+      <p>客服已介入此订单</p>
+      <p>客服已介入此订单</p>
+      <p>客服已介入此订单</p>
+    </div>
+  </div>
 </div>

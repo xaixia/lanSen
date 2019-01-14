@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppModalConfig } from '../../../common/modal.directive';
+import { CommissionComponent } from '../commission/commission.component';
+import { OrderEndComponent } from '../order-end/order-end.component';
 
 @Component({
   selector: 'app-order-edit',
@@ -6,6 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-edit.component.scss']
 })
 export class OrderEditComponent implements OnInit {
+
+  commissionModalConfig = <AppModalConfig>{
+    component: CommissionComponent,
+    modalOptions: {
+      class: 'app-modal-xl'
+    }
+  };
+
+  orderEndModalConfig = <AppModalConfig>{
+    component: OrderEndComponent,
+    modalOptions: {
+      class: 'app-modal-xl'
+    }
+  };
 
   constructor() { }
 
