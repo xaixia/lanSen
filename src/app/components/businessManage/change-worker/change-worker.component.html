@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-title">更换工人</div>
+  <div class="card-body">
+    <div class="worker-wrap d-flex mt-2">
+      <div class="col-5 d-inline-flex p-2 shadow">
+        <div class="col-5">
+          <div class="worker-img">
+            <img src="http://image.uboworks.com/12.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-7">
+          <p>姓名：<span>张师傅</span></p>
+          <p>工种：<span>装修工</span></p>
+          <p>工龄：<span>7年</span></p>
+          <p>联系电话：<span>18899990000</span></p>
+          <p>公司：<span>自贡市装的好装修公司</span></p>
+        </div>
+      </div>
+      <div class="col-2 align-items-center">
+        <div class="col-12 mt-5">
+          <button type="button" class="btn btn-primary">
+            <i class="fa fa-random"></i> 更换工人
+          </button>
+        </div>
+        <div class="col-12 mt-2">
+          <select (change)="changeWorker()" name="" id="" class="form-control">
+            <option value="">--请选择--</option>
+            <option value="">张师傅</option>
+            <option value="">李师傅</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="isChangeWorker" class="col-5 d-inline-flex p-2 shadow">
+        <div class="col-5">
+          <div class="worker-img">
+            <img src="http://image.uboworks.com/12.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-7">
+          <p>姓名：<span>张师傅</span></p>
+          <p>工种：<span>装修工</span></p>
+          <p>工龄：<span>7年</span></p>
+          <p>联系电话：<span>18899990000</span></p>
+          <p>公司：<span>自贡市装的好装修公司</span></p>
+          <p class="mt-2">
+            <button type="button" class="btn btn-success">
+              <i class="fa fa-random"></i> 点击更换工人
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

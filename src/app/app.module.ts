@@ -73,6 +73,7 @@ import { EmployeEditComponent } from './components/staffManage/employe-edit/empl
 import { OrderEditComponent } from './components/businessManage/order-edit/order-edit.component';
 import { CommissionComponent } from './components/businessManage/commission/commission.component';
 import { OrderEndComponent } from './components/businessManage/order-end/order-end.component';
+import { ChangeWorkerComponent } from './components/businessManage/change-worker/change-worker.component';
 
 const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
@@ -109,6 +110,7 @@ const appRoutes: Routes = [
     EmployeEditComponent,
     CommissionComponent,
     OrderEndComponent,
+    ChangeWorkerComponent,
   ],
   declarations: [
     ValidateDirective,
@@ -152,6 +154,7 @@ const appRoutes: Routes = [
     CommissionComponent,
     OrderEditComponent,
     OrderEndComponent,
+    ChangeWorkerComponent,
     EmployeEditComponent,
     AuthorityEditComponent,
     UserinfoComponent,
