@@ -21,7 +21,7 @@ export class RoleListComponent implements OnInit {
   roleEditModalConfig = <AppModalConfig>{
     component: RoleEditComponent,
     modalOptions: {
-      class: 'app-modal-role'
+      class: 'app-modal-xl'
     }
   };
 
@@ -82,9 +82,12 @@ export class RoleListComponent implements OnInit {
     const res = [];
     for (let i = 0; i < 300; i++) {
       res.push(
-        { number: 1, name: '超级管理员', power: '所有权限' },
-        { number: 2, name: '管理员', power: '高级权限' },
-        { number: 3, name: '用户', power: '普通权限' },
+        { number: 1, intro: '拥有全部权限，网站主要管理人员', name: '超级管理员', time: '2018/12/23 12:00:00' },
+        { number: 2, intro: '', name: '管理员', time: '2018/12/23 12:00:00' },
+        { number: 2, intro: '', name: '客服', time: '2018/12/23 12:00:00' },
+        { number: 2, intro: '', name: '工程师', time: '2018/12/23 12:00:00' },
+        { number: 2, intro: '', name: '测试', },
+        { number: 3, intro: '负责财务工作，处置财务事项', name: '财务', time: '2018/12/23 12:00:00' },
       );
     }
     return res;
@@ -118,31 +121,41 @@ export class RoleListComponent implements OnInit {
         suppressSorting: false,
       },
       {
-        headerName: '名称',
+        headerName: '角色名称',
         width: 100,
         field: 'name',
         suppressSorting: false,
       },
       {
-        headerName: '权限',
-        width: 100,
-        field: 'power',
+        headerName: '角色说明',
+        width: 250,
+        field: 'intro',
+        suppressSorting: false,
+      },
+      {
+        headerName: '时间',
+        width: 150,
+        field: 'time',
         suppressSorting: false,
       },
       {
         headerName: '编辑',
-        width: 90,
+        width: 170,
         suppressResize: true,
-        cellClass: 'justify-content-md-center',
+        cellClass: 'justify-content-around',
         suppressMenu: true,
         cellRenderer: (param) => {
           const root = $('<div/>');
-          // tslint:disable-next-line:max-line-length
           const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 编辑</button>`);
+          const deleteBtn = $(`<button type="button" class="btn btn-warning ml-10"><i class="fa fa-remove"></i> 削除</button>`);
           editBtn.click(() => {
             this.baseService.showModal(this.roleEditModalConfig);
           });
+          deleteBtn.click(() => {
+            this.gridApi.updateRowData({ remove: this.gridApi.getSelectedRows() });
+          });
           root.append(editBtn);
+          root.append(deleteBtn);
           return root[0];
         },
       },

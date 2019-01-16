@@ -1,29 +1,133 @@
 <form class="card search-form">
   <div class="card-body">
-    <div class="form-inline">
-      <div class="form-group width10 required-item font-weight-bold">角色姓名</div>
-      <div class="form-group width30p">
-        <div class="input-group">
-          <input type="text" name="roleName" class="form-control width15" />
-        </div>
-      </div>
-    </div>
-    <div class="form-inline">
-      <div class="form-group width10 required-item font-weight-bold">角色权限</div>
-      <div class="form-group width30p">
-        <div class="input-group">
-          <select name="" id="" class="form-control">
-            <option value="">超级管理员</option>
-            <option value="">管理员</option>
-            <option value="">用户</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="btn-eara">
-      <button type="button" class="btn btn-info">
-        <i class="fa fa-save"></i> 确定
-      </button>
+    <div id="content">
+      <dl id="dl">
+        <dt>修改控制角色</dt>
+        <dd>
+          <span class="dd_left">角色名称：</span>
+          <span class="dd_right"><input type="text" name="rolename" class="qtext" value="超级管理员">
+            <font>* 输入如：来宾用户</font>
+          </span>
+        </dd>
+        <dd>
+          <span class="dd_left">角色说明：</span>
+          <span class="dd_right"><textarea name="description" class="textarea">拥有全部权限，网站主要管理人员</textarea></span>
+        </dd>
+        <dt>权限分配</dt>
+        <dd>
+          <span class="dd_left">用户管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="2" checked=""> 用户列表</label><label><input type="checkbox"
+                class="comp" value="3" checked=""> 添加用户</label><label><input type="checkbox" class="comp" value="4"
+                checked=""> 修改用户</label><label><input type="checkbox" class="comp" value="5" checked=""> 删除用户</label>
+          </span>
+        </dd>
+        <dd>
+          <span class="dd_left">角色管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="7" checked=""> 浏览角色</label><label><input type="checkbox"
+                class="comp" value="8" checked=""> 添加角色</label><label><input type="checkbox" class="comp" value="9"
+                checked=""> 修改角色</label><label><input type="checkbox" class="comp" value="10" checked=""> 删除角色</label>
+          </span>
+        </dd>
+        <dd>
+          <span class="dd_left">权限列表：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="12" checked=""> 浏览权限</label><label><input type="checkbox"
+                class="comp" value="13" checked=""> 添加权限</label><label><input type="checkbox" class="comp" value="14"
+                checked=""> 修改权限</label><label><input type="checkbox" class="comp" value="15" checked=""> 删除权限</label>
+          </span>
+        </dd>
+        <dd>
+          <span class="dd_left">系统管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="21" checked=""> IP封禁管理</label><label><input type="checkbox"
+                class="comp" value="22" checked=""> 添加封禁IP</label><label><input type="checkbox" class="comp" value="23"
+                checked=""> 删除封禁IP</label><label><input type="checkbox" class="comp" value="24" checked=""> 清空缓存</label><label><input
+                type="checkbox" class="comp" value="25" checked=""> 模块管理</label><label><input type="checkbox" class="comp"
+                value="26" checked=""> 添加模块</label><label><input type="checkbox" class="comp" value="27" checked="">
+              修改模块</label><label><input type="checkbox" class="comp" value="28" checked=""> 删除模块</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">其它权限：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="18" checked=""> 修改资料</label><label><input type="checkbox"
+                class="comp" value="19" checked=""> 登录日志查看</label><label><input type="checkbox" class="comp" value="20"
+                checked=""> 删除登录日志</label><label><input type="checkbox" class="comp" value="82" checked=""> 操作日志</label><label><input
+                type="checkbox" class="comp" value="83" checked=""> 删除操作日志</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">系统配置：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="29" checked=""> 系统配置浏览</label><label><input type="checkbox"
+                class="comp" value="30" checked=""> 系统配置修改</label><label><input type="checkbox" class="comp" value="32"
+                checked=""> 核心配置</label><label><input type="checkbox" class="comp" value="33" checked=""> 核心配置修改</label><label><input
+                type="checkbox" class="comp" value="52" checked=""> 网站配置浏览</label><label><input type="checkbox" class="comp"
+                value="53" checked=""> 网站配置修改</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">下拉菜单：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="60" checked=""> 浏览下拉菜单</label><label><input type="checkbox"
+                class="comp" value="61" checked=""> 添加下拉菜单</label><label><input type="checkbox" class="comp" value="62"
+                checked=""> 修改下拉菜单</label><label><input type="checkbox" class="comp" value="63" checked=""> 删除下拉菜单</label>
+          </span>
+        </dd>
+        <dd>
+          <span class="dd_left">工单管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="87" checked=""> 工单列表</label><label><input type="checkbox"
+                class="comp" value="88" checked=""> 添加工单</label><label><input type="checkbox" class="comp" value="89"
+                checked=""> 修改工单</label><label><input type="checkbox" class="comp" value="90" checked=""> 删除工单</label><label><input
+                type="checkbox" class="comp" value="91" checked=""> 确认工单</label><label><input type="checkbox" class="comp"
+                value="92" checked=""> 执行工单</label><label><input type="checkbox" class="comp" value="93" checked="">
+              完成工单</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">工程师管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="97" checked=""> 工人管理</label><label><input type="checkbox"
+                class="comp" value="98" checked=""> 业务分类</label><label><input type="checkbox" class="comp" value="103"
+                checked=""> 工作分类</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">新工单管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="96" checked=""> 工单列表</label><label><input type="checkbox"
+                class="comp" value="109" checked=""> 企业付款</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">新闻公告管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="101" checked=""> 新闻公告</label><label><input type="checkbox"
+                class="comp" value="102" checked=""> 分类管理</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">优惠券管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="105" checked=""> 优惠券列表</label><label><input type="checkbox"
+                class="comp" value="106" checked=""> 优惠券分类</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">个人用户管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="108" checked=""> 用户列表</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">企业用户管理：</span>
+          <span class="dd_right" style="width:590px;">
+            <label><input type="checkbox" class="comp" value="111"> 企业权限管理</label><label><input type="checkbox" class="comp"
+                value="112"> 企业账户管理</label> </span>
+        </dd>
+        <dd>
+          <span class="dd_left">状态：</span>
+          <span class="dd_right"><label><input type="radio" name="status" class="status" value="0" checked=""> 正常</label><label><input
+                type="radio" name="status" class="status" value="1"> 锁定</label>
+            <font>* 提示：如果没有修改任何信息，则会提示“数据修改失败”</font>
+          </span>
+        </dd><input type="hidden" value="1">
+        <dd><input type="button" class="button" value="提 交"></dd>
+      </dl>
     </div>
   </div>
 </form>

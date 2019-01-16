@@ -163,7 +163,13 @@ export class SystemUserListComponent implements OnInit {
     for (let i = 0; i < 300; i++) {
       res.push(
         // tslint:disable-next-line:max-line-length
-        { number: index++, name: '张三', age: 28, address: '四川省自贡市檀木林大街', power: '管理员', deport: '开发部', ancount: '56475341324654765', time: '2019/01/01', phoneNum: '18899990000' },
+        { number: index++, role: '超级管理员', name: '张三', email: '23789234@qq.com', status: '在线', count: 12, address: '四川省自贡市檀木林大街', resIp: '10.11.12.119', time: '2019/01/01 12:00:00', phoneNum: '18899990000' },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, role: '管理员', name: '李四', email: '23789234@qq.com', status: '不在线', count: 22, address: '四川省自贡市檀木林大街', resIp: '10.11.12.119', time: '2019/01/01 12:00:00', phoneNum: '18899990000' },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, role: '客服', name: '王二', email: '23789234@qq.com', status: '在线', count: 17, address: '四川省自贡市檀木林大街', resIp: '10.11.12.119', time: '2019/01/01 12:00:00', phoneNum: '18899990000' },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, role: '财务', name: '罗五', email: '23789234@qq.com', status: '在线', count: 34, address: '四川省自贡市檀木林大街', resIp: '10.11.12.119', time: '2019/01/01 12:00:00', phoneNum: '18899990000' },
       );
     }
     return res;
@@ -200,41 +206,49 @@ export class SystemUserListComponent implements OnInit {
         suppressSorting: false,
       },
       {
-        headerName: '姓名',
+        headerName: '用户角色',
+        width: 100,
+        field: 'role',
+        suppressSorting: false,
+      },
+      {
+        headerName: '用户名',
         width: 80,
         field: 'name',
         suppressSorting: false,
       },
       {
-        headerName: '年龄',
-        width: 40,
-        field: 'age',
+        headerName: '邮箱',
+        width: 130,
+        field: 'email',
         suppressSorting: false,
       },
       {
-        headerName: '地址',
+        headerName: '状态',
+        width: 80,
+        field: 'status',
+        suppressSorting: false,
+      },
+      {
+        headerName: '登录次数',
+        width: 120,
+        field: 'count',
+        suppressSorting: false,
+      },
+      {
+        headerName: '登录地点',
         width: 250,
         field: 'address',
         suppressSorting: false,
       },
       {
-        headerName: '权限',
+        headerName: '登录IP',
         width: 100,
-        field: 'power',
+        field: 'resIp',
       },
       {
-        headerName: '所属部门',
-        width: 100,
-        field: 'deport',
-      },
-      {
-        headerName: '账号',
-        width: 200,
-        field: 'ancount',
-      },
-      {
-        headerName: '入职时间',
-        width: 100,
+        headerName: '日期',
+        width: 150,
         field: 'time',
       },
       {
@@ -244,7 +258,7 @@ export class SystemUserListComponent implements OnInit {
         cellClass: 'justify-content-center',
       },
       {
-        headerName: '编辑',
+        headerName: '操作',
         width: 180,
         suppressResize: true,
         cellClass: 'justify-content-md-center',
