@@ -4,7 +4,7 @@
     <div class="list">
       <div class="pager mb-1">
         <div>
-          <button appModal [config]="roleEditModalConfig" type="button" class="btn btn-info">
+          <button type="button" class="btn btn-info">
             <i class="fa fa-plus"></i> 新增
           </button>
         </div>
@@ -14,8 +14,7 @@
         [suppressPaginationPanel]="true" [enableRangeSelection]="true">
       </ag-grid-angular>
       <div class="pager mb-1">
-        <div>
-        </div>
+        <div></div>
         <app-pagination [gridApi]="gridApi"></app-pagination>
       </div>
     </div>
