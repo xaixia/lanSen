@@ -21,7 +21,7 @@ export class RoleListComponent implements OnInit {
   roleEditModalConfig = <AppModalConfig>{
     component: RoleEditComponent,
     modalOptions: {
-      class: 'app-modal-xl'
+      class: 'app-modal-lg'
     }
   };
 
