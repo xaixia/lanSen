@@ -54,6 +54,7 @@ export class RoleListComponent implements OnInit {
     this.gridOptions.animateRows = true;
 
     this.gridOptions.domLayout = 'autoHeight';
+    // this.gridOptions.rowSelection = 'multiple';
 
     this.gridOptions.defaultColDef = {
       menuTabs: ['filterMenuTab'],
@@ -80,14 +81,15 @@ export class RoleListComponent implements OnInit {
 
   createGridData(): any[] {
     const res = [];
-    for (let i = 0; i < 300; i++) {
+    let index = 1000;
+    for (let i = 0; i < 30; i++) {
       res.push(
-        { number: 1, intro: '拥有全部权限，网站主要管理人员', name: '超级管理员', time: '2018/12/23 12:00:00' },
-        { number: 2, intro: '', name: '管理员', time: '2018/12/23 12:00:00' },
-        { number: 2, intro: '', name: '客服', time: '2018/12/23 12:00:00' },
-        { number: 2, intro: '', name: '工程师', time: '2018/12/23 12:00:00' },
-        { number: 2, intro: '', name: '测试', },
-        { number: 3, intro: '负责财务工作，处置财务事项', name: '财务', time: '2018/12/23 12:00:00' },
+        { number: index++, intro: '拥有全部权限，网站主要管理人员', name: '超级管理员', time: '2018/12/23 12:00:00' },
+        { number: index++, intro: '', name: '管理员', time: '2018/12/23 12:00:00' },
+        { number: index++, intro: '', name: '客服', time: '2018/12/23 12:00:00' },
+        { number: index++, intro: '', name: '工程师', time: '2018/12/23 12:00:00' },
+        { number: index++, intro: '', name: '测试', time: '2018/12/23 12:00:00' },
+        { number: index++, intro: '负责财务工作，处置财务事项', name: '财务', time: '2018/12/23 12:00:00' },
       );
     }
     return res;
@@ -140,6 +142,7 @@ export class RoleListComponent implements OnInit {
       },
       {
         headerName: '编辑',
+        field: 'number',
         width: 170,
         suppressResize: true,
         cellClass: 'justify-content-around',
@@ -151,8 +154,17 @@ export class RoleListComponent implements OnInit {
           editBtn.click(() => {
             this.baseService.showModal(this.roleEditModalConfig);
           });
-          deleteBtn.click(() => {
-            this.gridApi.updateRowData({ remove: this.gridApi.getSelectedRows() });
+          deleteBtn.click((e) => {
+            let flag = false;
+            const rowData = this.gridApi.getRenderedNodes().map(function (rowNode) {
+              if (rowNode.data.number === param.value) {
+                flag = true;
+                return rowNode.data;
+              }
+            });
+            if (flag) {
+              this.gridApi.updateRowData({ remove: rowData });
+            }
           });
           root.append(editBtn);
           root.append(deleteBtn);
