@@ -62,7 +62,8 @@ export class AppComponent implements OnInit {
       const firstMenu = temp[0];
       breadArr.push(this.locales.ja.COMMON.MENU[firstMenu]);
       if (temp.length > 1) {
-        const secondMenu = temp[1];
+        // 把下划线命名的URL（二级菜单）转为驼峰命名
+        const secondMenu = temp[1].replace(/-([a-z])/g, function (all, letter) { return letter.toUpperCase(); });
         breadArr.push(this.locales.ja[secondMenu].title);
       }
       return breadArr;
@@ -118,7 +119,6 @@ export class AppComponent implements OnInit {
 
   onMenuClick(path: string, param?: any): void {
     const url = this.router.routerState.snapshot.url;
-    console.log(this.breadcrumbArray);
     if (url !== path) {
       this.baseService.clearAllData();
       this.baseService.navigate(path, param);

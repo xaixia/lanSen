@@ -40,18 +40,10 @@ import { ModalDirective } from './common/modal.directive';
 import { PopwindowComponent } from './components/design/popwindow/popwindow.component';
 import { AppLocales } from './configuration/app-locales';
 
-import { UserComponent } from './components/systemManage/user/user.component';
 import { RoleListComponent } from './components/userManage/role-list/role-list.component';
 import { BillingListComponent } from './components/businessManage/billing-list/billing-list.component';
-import { JurisdictionComponent } from './components/systemManage/jurisdiction/jurisdiction.component';
-import { WebsiteComponent } from './components/systemManage/website/website.component';
-import { SystemComponent } from './components/systemManage/system/system.component';
-import { CoreComponent } from './components/systemManage/core/core.component';
-import { ModuleManageComponent } from './components/systemManage/module-manage/module-manage.component';
-import { RegisterLogComponent } from './components/logManage/register-log/register-log.component';
-import { OperationLogComponent } from './components/logManage/operation-log/operation-log.component';
-import { DatabaseLogComponent } from './components/logManage/database-log/database-log.component';
-import { UserLogComponent } from './components/logManage/user-log/user-log.component';
+import { RegisterLogComponent } from './components/systemManage/register-log/register-log.component';
+import { OperationLogComponent } from './components/systemManage/operation-log/operation-log.component';
 import { SystemUserListComponent } from './components/userManage/system-user-list/system-user-list.component';
 import { EmployeListComponent } from './components/staffManage/employe-list/employe-list.component';
 import { OrderListComponent } from './components/businessManage/order-list/order-list.component';
@@ -81,21 +73,22 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: IndexComponent }, // 首页
   { path: 'resetpwd', component: PasswordComponent }, // 重置密码
-  { path: 'customerinfo', component: UserinfoComponent }, // 设置用户信息
+  { path: 'customer-info', component: UserinfoComponent }, // 设置用户信息
 
-  { path: 'staff/systemUserList', component: SystemUserListComponent }, // 系统用户管理
-  { path: 'staff/roleList', component: RoleListComponent }, // 角色管理
-  { path: 'staff/authorityList', component: AuthorityListComponent }, // 权限管理
+  { path: 'staff/system-user-list', component: SystemUserListComponent }, // 系统用户管理
+  { path: 'staff/role-list', component: RoleListComponent }, // 角色管理
+  { path: 'staff/authority-list', component: AuthorityListComponent }, // 权限管理
 
-  { path: 'user/ordinaryUserList', component: OrdinaryUserListComponent }, // 普通用户管理
-  { path: 'user/employeList', component: EmployeListComponent }, // 雇工管理
+  { path: 'system/system-register-log', component: RegisterLogComponent }, // 登录日志
+  { path: 'system/system-operation-log', component: OperationLogComponent }, // 操作日志
 
-  { path: 'business/orderList', component: OrderListComponent }, // 工单列表
-  { path: 'business/orderEdit', component: OrderEditComponent }, // 工单详情
-  { path: 'business/billingList', component: BillingListComponent }, // 业务列表
+  { path: 'user/ordinary-user-list', component: OrdinaryUserListComponent }, // 普通用户管理
+  { path: 'user/employe-list', component: EmployeListComponent }, // 雇工管理
 
-  { path: 'system', component: SystemComponent },
-  { path: 'log', component: UserLogComponent },
+  { path: 'business/order-list', component: OrderListComponent }, // 工单列表
+  { path: 'business/order-edit', component: OrderEditComponent }, // 工单详情
+  { path: 'business/billing-list', component: BillingListComponent }, // 业务列表
+
   { path: 'news', component: NewsComponent },
   { path: 'finace', component: OrderListComponent },
   { path: 'message', component: CustomerMessageComponent },
@@ -125,17 +118,9 @@ const appRoutes: Routes = [
     ModalDirective,
     PopwindowComponent,
     IndexComponent,
-    UserComponent,
     RoleListComponent,
-    JurisdictionComponent,
-    WebsiteComponent,
-    SystemComponent,
-    CoreComponent,
-    ModuleManageComponent,
     RegisterLogComponent,
     OperationLogComponent,
-    DatabaseLogComponent,
-    UserLogComponent,
     SystemUserListComponent,
     EmployeListComponent,
     OrderListComponent,

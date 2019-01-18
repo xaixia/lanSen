@@ -55,6 +55,12 @@ export class AppLocales {
       title: '工单详情'
     },
 
+    systemRegisterLog: {
+      title: '登录日志'
+    },
 
+    systemOperationLog: {
+      title: '登录日志'
+    },
   };
 }

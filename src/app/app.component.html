@@ -7,16 +7,17 @@
       <li class="dropdown-submenu">
         <a href="javascript:void(0);" [class.active]="isActive('staff')">{{appLocales.COMMON.MENU.staff}}</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/staff/systemUserList')">{{appLocales.systemUserList.title}}</a>
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/staff/roleList')">{{appLocales.roleList.title}}</a>
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/staff/authorityList')">{{appLocales.authorityList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/staff/system-user-list')">{{appLocales.systemUserList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/staff/role-list')">{{appLocales.roleList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/staff/authority-list')">{{appLocales.authorityList.title}}</a>
         </div>
       </li>
 
       <li class="dropdown-submenu">
         <a href="javascript:void(0);" [class.active]="isActive('system')">系统功能</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/system')">操作日志</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('system/system-register-log')">登录日志</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('system/system-operation-log')">操作日志</a>
         </div>
       </li>
       <li class="dropdown-submenu">
@@ -25,15 +26,15 @@
       <li class="dropdown-submenu">
         <a href="javascript:void(0);" [class.active]="isActive('business')">{{appLocales.COMMON.MENU.business}}</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('business/orderList')">{{appLocales.orderList.title}}</a>
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('business/billingList')">{{appLocales.billingList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('business/order-list')">{{appLocales.orderList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('business/billing-list')">{{appLocales.billingList.title}}</a>
         </div>
       </li>
       <li class="dropdown-submenu">
         <a href="javascript:void(0);" [class.active]="isActive('user')">{{appLocales.COMMON.MENU.user}}</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/employeList')">{{appLocales.employeList.title}}</a>
-          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/ordinaryUserList')">{{appLocales.ordinaryUserList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/employe-list')">{{appLocales.employeList.title}}</a>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="onMenuClick('/user/ordinary-user-list')">{{appLocales.ordinaryUserList.title}}</a>
         </div>
       </li>
       <li class="dropdown-submenu ">
@@ -117,7 +118,7 @@
     </ul>
     <div class="header-mark">
       <a class="" href="javascript:void(0);" (click)="onMenuClick('/resetpwd')"><i class="fa fa-legal"></i>修改密码</a>
-      <a class="" href="javascript:void(0);" (click)="onMenuClick('/customerinfo')"><i class="fa fa-address-book"></i>设置用户信息</a>
+      <a class="" href="javascript:void(0);" (click)="onMenuClick('/customer-info')"><i class="fa fa-address-book"></i>设置用户信息</a>
       <a href="javascript:void(0);" (click)="logOut()"><i class="fa fa-user-circle"></i><span>退出</span></a>
     </div>
   </div>
