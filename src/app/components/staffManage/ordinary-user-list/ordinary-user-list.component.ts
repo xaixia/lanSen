@@ -212,21 +212,16 @@ export class OrdinaryUserListComponent implements OnInit {
       },
       {
         headerName: '编辑',
-        width: 180,
+        width: 90,
         suppressResize: true,
         cellClass: 'justify-content-md-center',
         suppressMenu: true,
         cellRenderer: (param) => {
           const root = $('<div/>');
-          const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 编辑</button>`);
           const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-info-circle"></i> 详情</button>`);
-          editBtn.click(() => {
-            this.baseService.showModal(this.userInfoModalConfig);
-          });
           resetBtn.click(() => {
             this.baseService.showModal(this.passwordModalConfig);
           });
-          root.append(editBtn);
           root.append(resetBtn);
           return root[0];
         },
