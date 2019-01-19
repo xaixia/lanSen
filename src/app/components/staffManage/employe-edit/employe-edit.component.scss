@@ -1,0 +1,19 @@
+.employe-edit{
+    textarea{
+        resize: none;
+    }
+}
+.thumb{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:0 8px 0 0;
+    width:242px;
+    height:152px;
+    border:1px solid #333;
+
+    .thumb-img{
+        width: 240px;
+        height: 150px;
+    }
+}

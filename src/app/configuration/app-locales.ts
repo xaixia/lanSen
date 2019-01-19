@@ -39,6 +39,10 @@ export class AppLocales {
       title: '雇工管理'
     },
 
+    employeEdit: {
+      title: '雇工详情'
+    },
+
     ordinaryUserList: {
       title: '普通用户管理'
     },

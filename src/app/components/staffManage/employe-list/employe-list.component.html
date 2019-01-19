@@ -2,11 +2,6 @@
   <div class="card-title">普通用户列表</div>
   <div class="card-body">
     <div class="list">
-      <div class="pager mb-1">
-        <div>
-        </div>
-        <app-pagination [gridApi]="gridApi"></app-pagination>
-      </div>
       <ag-grid-angular #agGrid [enableColResize]="true" class="ag-theme-balham" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)"
         [pagination]="true" [paginationPageSize]="25" [localeText]="localeText" [enableFilter]="true"
         [suppressPaginationPanel]="true" [enableRangeSelection]="true">

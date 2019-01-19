@@ -66,6 +66,7 @@ import { OrderEditComponent } from './components/businessManage/order-edit/order
 import { CommissionComponent } from './components/businessManage/commission/commission.component';
 import { OrderEndComponent } from './components/businessManage/order-end/order-end.component';
 import { ChangeWorkerComponent } from './components/businessManage/change-worker/change-worker.component';
+import { RefuseModalComponent } from './components/staffManage/refuse-modal/refuse-modal.component';
 
 const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
@@ -84,6 +85,7 @@ const appRoutes: Routes = [
 
   { path: 'user/ordinary-user-list', component: OrdinaryUserListComponent }, // 普通用户管理
   { path: 'user/employe-list', component: EmployeListComponent }, // 雇工管理
+  { path: 'user/employe-edit', component: EmployeEditComponent }, // 雇工详情
 
   { path: 'business/order-list', component: OrderListComponent }, // 工单列表
   { path: 'business/order-edit', component: OrderEditComponent }, // 工单详情
@@ -104,6 +106,7 @@ const appRoutes: Routes = [
     CommissionComponent,
     OrderEndComponent,
     ChangeWorkerComponent,
+    RefuseModalComponent,
   ],
   declarations: [
     ValidateDirective,
@@ -139,6 +142,7 @@ const appRoutes: Routes = [
     CommissionComponent,
     OrderEditComponent,
     OrderEndComponent,
+    RefuseModalComponent,
     ChangeWorkerComponent,
     EmployeEditComponent,
     AuthorityEditComponent,

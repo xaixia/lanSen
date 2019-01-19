@@ -8,7 +8,6 @@
             <i class="fa fa-plus"></i> 新增
           </button>
         </div>
-        <app-pagination [gridApi]="gridApi"></app-pagination>
       </div>
       <ag-grid-angular #agGrid [enableColResize]="true" class="ag-theme-balham" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)"
         [pagination]="true" [paginationPageSize]="25" [localeText]="localeText" [enableFilter]="true"

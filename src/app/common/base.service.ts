@@ -329,6 +329,11 @@ export class BaseService {
     return MESSAGE_UTIL.getMessage(messageId, params);
   }
 
+  insert(path: string, param?: any) {
+    this.clearAllData();
+    this.navigate(path, param);
+  }
+
   getLocaleText(key: string): string {
     if (!key) {
       return key;

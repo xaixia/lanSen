@@ -24,12 +24,6 @@ export class EmployeListComponent implements OnInit {
   status = 1;
   infoAreaOpend = true;
   tabContentArea = false;
-  employeModalConfig = <AppModalConfig>{
-    component: EmployeEditComponent,
-    modalOptions: {
-      class: 'app-modal-user'
-    }
-  };
 
   public form: FormGroup;
   // 受注目的
@@ -193,23 +187,18 @@ export class EmployeListComponent implements OnInit {
       },
       {
         headerName: '编辑',
-        width: 180,
+        width: 90,
         suppressResize: true,
         cellClass: 'justify-content-md-center',
         suppressMenu: true,
         cellRenderer: (param) => {
           const root = $('<div/>');
           // tslint:disable-next-line:max-line-length
-          const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 编辑</button>`);
-          const resetBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-info-circle"></i> 详情</button>`);
+          const editBtn = $(`<button type="button" class="btn btn-info ml-3"> <i class="fa fa-info-circle"></i> 详情</button>`);
           editBtn.click(() => {
-            this.baseService.showModal(this.employeModalConfig);
-          });
-          resetBtn.click(() => {
-            this.baseService.showModal(this.employeModalConfig);
+            this.baseService.insert('user/employe-edit');
           });
           root.append(editBtn);
-          root.append(resetBtn);
           return root[0];
         },
       },

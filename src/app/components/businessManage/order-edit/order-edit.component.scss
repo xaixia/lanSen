@@ -31,12 +31,13 @@
         display: flex;
         flex-wrap: wrap;
         padding:16px;
-        min-height: 60vh;
+        height: 80vh;
+        overflow-y: auto;
         list-style: none;
 
         .process{
             position: relative;
-            min-height:.5rem;
+            height:4rem;
             width:100%;
             padding-left:1.5rem;
             border-left:1px solid #ccc;
@@ -55,7 +56,7 @@
             content: "";
             display: flex;
             position: relative;
-            left:-1.8rem;
+            left:-1.85rem;
             width:8px;
             height:8px;
             border-radius: 50%;

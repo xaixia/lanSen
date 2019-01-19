@@ -168,8 +168,7 @@ export class OrderListComponent implements OnInit {
           // tslint:disable-next-line:max-line-length
           const editBtn = $(`<button type="button" class="btn btn-primary"> <i class="fa fa-cogs"></i> 操作</button>`);
           editBtn.click(() => {
-            this.baseService.clearAllData();
-            this.baseService.navigate('business/orderEdit');
+            this.baseService.insert('business/order-edit');
           });
           root.append(editBtn);
           return root[0];
