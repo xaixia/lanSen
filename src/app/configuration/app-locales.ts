@@ -10,16 +10,8 @@ export class AppLocales {
         index: '首页',
         staff: '系统用户管理',
         user: '前端用户管理',
-
+        content: '内容管理',
         system: '系统管理',
-        log: '日志管理',
-        query: '查询模块',
-        business: '业务管理',
-        news: '新闻公告广告',
-        finance: '财务管理',
-        card: '卡券管理',
-        message: '消息信息管理',
-        level: '评价等级管理',
       }
     },
 
@@ -66,5 +58,13 @@ export class AppLocales {
     systemOperationLog: {
       title: '登录日志'
     },
+
+    newsList: {
+      title: '新闻列表'
+    },
+
+    newsEdit: {
+      title: '新闻编辑'
+    }
   };
 }

@@ -22,6 +22,8 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 
+import { QuillModule } from 'ngx-quill';
+
 import { BaseService, AppCanActivate, CanDeactivateGuard } from './common/base.service';
 import { ValidateDirective } from './common/validate.directive';
 import { PaginationComponent } from './components/common/pagination/pagination.component';
@@ -47,13 +49,6 @@ import { OperationLogComponent } from './components/systemManage/operation-log/o
 import { SystemUserListComponent } from './components/userManage/system-user-list/system-user-list.component';
 import { EmployeListComponent } from './components/staffManage/employe-list/employe-list.component';
 import { OrderListComponent } from './components/businessManage/order-list/order-list.component';
-import { NewsComponent } from './components/newsAndNotice/news/news.component';
-import { NoticeComponent } from './components/newsAndNotice/notice/notice.component';
-import { AdComponent } from './components/newsAndNotice/ad/ad.component';
-import { ContractComponent } from './components/newsAndNotice/contract/contract.component';
-import { AgreementComponent } from './components/newsAndNotice/agreement/agreement.component';
-import { CustomerMessageComponent } from './components/messageManage/customer-message/customer-message.component';
-import { SuggestionComponent } from './components/messageManage/suggestion/suggestion.component';
 import { IndexComponent } from './components/indexManage/index/index.component';
 import { PasswordComponent } from './components/indexManage/password/password.component';
 import { UserinfoComponent } from './components/indexManage/userinfo/userinfo.component';
@@ -67,6 +62,8 @@ import { CommissionComponent } from './components/businessManage/commission/comm
 import { OrderEndComponent } from './components/businessManage/order-end/order-end.component';
 import { ChangeWorkerComponent } from './components/businessManage/change-worker/change-worker.component';
 import { RefuseModalComponent } from './components/staffManage/refuse-modal/refuse-modal.component';
+import { NewsEditComponent } from './components/contentManage/news-edit/news-edit.component';
+import { NewsListComponent } from './components/contentManage/news-list/news-list.component';
 
 const appRoutes: Routes = [
   { path: 'SD10D07', component: Sd010D07Component },
@@ -91,9 +88,8 @@ const appRoutes: Routes = [
   { path: 'business/order-edit', component: OrderEditComponent }, // 工单详情
   { path: 'business/billing-list', component: BillingListComponent }, // 业务列表
 
-  { path: 'news', component: NewsComponent },
-  { path: 'finace', component: OrderListComponent },
-  { path: 'message', component: CustomerMessageComponent },
+  { path: 'content/news-list', component: NewsListComponent }, // 新闻列表
+  { path: 'content/news-edit', component: NewsEditComponent }, // 新闻编辑
 ];
 
 @NgModule({
@@ -128,13 +124,6 @@ const appRoutes: Routes = [
     EmployeListComponent,
     OrderListComponent,
     BillingListComponent,
-    NewsComponent,
-    NoticeComponent,
-    AdComponent,
-    ContractComponent,
-    AgreementComponent,
-    CustomerMessageComponent,
-    SuggestionComponent,
     RoleEditComponent,
     PasswordComponent,
     AuthorityListComponent,
@@ -147,6 +136,9 @@ const appRoutes: Routes = [
     EmployeEditComponent,
     AuthorityEditComponent,
     UserinfoComponent,
+    NewsListComponent,
+    NewsEditComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -172,7 +164,8 @@ const appRoutes: Routes = [
         enableTracing: !environment.production
       } // <-- debugging purposes only
     ),
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    QuillModule
   ],
   providers: [
     AppLocales,
