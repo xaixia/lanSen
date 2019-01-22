@@ -239,85 +239,25 @@ export class BaseService {
     return `${this.server_url}/${action}`;
   }
 
-  post(action: string, data?: any | PostInfo): Promise<any> {
+  post(action: string, data?: any): Promise<any> {
     const url = this.getPostUrl(action);
-    if (data && data.isUpload && (<PostInfo>data).isUpload()) {
-      this.headers = new Headers({ 'Accept': 'application/json' });
-    } else {
-      this.headers = new Headers({ 'Content-Type': 'application/json' });
-    }
-    const settings: PostInfo = PostInfo.convertor(data);
 
-    if (settings.messageId) {
-      this.showMessage(this.getMessageLevel(settings.messageId), this.getMessage(settings.messageId));
-      return Promise.resolve({ MessageId: settings.messageId });
-    }
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
 
-    if (settings.spinner) {
-      this.spinnerShow();
-    }
-
-    return this.http
-      .post(url, settings.data instanceof FormData ? settings.data : JSON.stringify(settings.data), {
-        headers: this.headers,
-        withCredentials: true,
-        responseType: settings.isDownload ? ResponseContentType.Blob : null
-      })
-      // .get(url)
-      .toPromise()
+    return this.http.post(url, {
+      headers: this.headers,
+      withCredentials: true,
+      params: JSON.stringify(data)
+    }).toPromise()
       .then((res) => {
-        if (settings.spinner) {
+        if (res) {
           this.spinnerHide();
-        }
-        if (!settings.isDownload) {
-          data = res.json();
-          if (data.MessageId.length > 0) {
-            this.showMessage(this.getMessageLevel(data.MessageId), MESSAGE_UTIL.getMessage(data.MessageId, data.ParamList || []));
-          }
-          if (data.MessageId === 'E9998') {
-            this.loginFunc(true);
-          }
-          return data;
-        } else {
-          if (res.headers.get('Content-Type').includes('application/json')) {
-            return new Promise<any>((resolve, reject) => {
-              const reader = new FileReader();
-              reader.onloadend = () => {
-                data = JSON.parse((reader.result as string));
-                if (data.MessageId.length > 0) {
-                  this.showMessage(this.getMessageLevel(data.MessageId), MESSAGE_UTIL.getMessage(data.MessageId, data.ParamList || []));
-                }
-                if (data.MessageId === 'E9998') {
-                  this.loginFunc(true);
-                }
-                resolve(data);
-              };
-              reader.readAsBinaryString(res.blob());
-            });
-          } else {
-            if ('msSaveOrOpenBlob' in navigator) {
-              window.navigator.msSaveOrOpenBlob(res.blob(), settings.downloadFileName);
-            } else {
-              const fileURL = URL.createObjectURL(res.blob());
-              const link = $('<a />').attr('style', 'display:none').attr('download', settings.downloadFileName).attr('href', fileURL);
-              $(window.document.body).append(link);
-              link[0].click();
-              link.remove();
-              setTimeout(() => {
-                URL.revokeObjectURL(fileURL);
-              }, 1000);
-            }
-            return Promise.resolve({ MessageId: '' });
-          }
         }
       })
       .catch((error) => {
-        if (settings.spinner) {
-          this.spinnerHide();
-        }
+        this.spinnerHide();
         console.error('An error occurred', error);
         this.showMessage('error', this.getMessage('E9999'));
-        return Promise.resolve({ MessageId: 'E9999' });
       });
   }
 
@@ -474,68 +414,6 @@ export class BaseService {
     return result;
   }
 
-}
-
-export class PostInfo {
-  private static MAX_UPLOAD_FILE_SIZE = 1048576000 - (1024 * 1024);
-
-  public spinner?: boolean;
-  public data?: any;
-  public uploaders?: FileUploader[];
-  public isDownload: boolean;
-  public downloadFileName: string;
-  public postFormData: boolean;
-  public messageId: string;
-
-  private constructor() { }
-
-  public isUpload(): boolean {
-    if (this.postFormData) { return true; }
-    let cnt = 0;
-    if (this.uploaders && this.uploaders.length > 0) {
-      this.uploaders.forEach(uploader => {
-        cnt += uploader.queue.length;
-      });
-    }
-    return cnt > 0;
-  }
-
-  // tslint:disable-next-line:member-ordering
-  static convertor(obj: any): PostInfo {
-    if (obj instanceof PostInfo) {
-      obj.data = obj.data || {};
-      if (obj.isUpload()) {
-        let sizeCnt = 0;
-        obj.data = toFormData(obj.data, true);
-        obj.uploaders.forEach(uploader => {
-          uploader.queue.forEach(val => {
-            (<FormData>obj.data).append(val.alias || 'file', val.file.rawFile);
-            sizeCnt += val.file.size;
-            if (sizeCnt > PostInfo.MAX_UPLOAD_FILE_SIZE) {
-              obj.messageId = 'E9004';
-              return false;
-            }
-          });
-        });
-      }
-      return obj;
-    } else {
-      const result: PostInfo = PostInfo.default();
-      result.data = obj || {};
-      return result;
-    }
-  }
-
-  // tslint:disable-next-line:member-ordering
-  static default(): PostInfo {
-    const result = new PostInfo();
-    result.spinner = true;
-    result.data = {};
-    result.uploaders = [];
-    result.isDownload = false;
-    result.postFormData = false;
-    return result;
-  }
 }
 
 @Injectable()

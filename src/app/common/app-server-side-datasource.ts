@@ -1,6 +1,6 @@
 // tslint:disable-next-line:max-line-length
 import { IServerSideDatasource, IServerSideGetRowsParams, IServerSideGetRowsRequest, GridApi, ColumnApi, SetFilterValuesFuncParams, IFilterComp, ColDef } from 'ag-grid-community';
-import { PostInfo, BaseService } from './base.service';
+import { BaseService } from './base.service';
 import { isFunction, isNullOrUndefined } from 'util';
 import { AppUtils } from './app-utils';
 import { SetFilter } from 'ag-grid-enterprise';
@@ -9,7 +9,6 @@ export class AppServerSideDatasourceInfo {
     public baseService: BaseService;
     public dataUrl: string;
     public filterValuesUrl: string;
-    public postParam?: PostInfo | any;
     public postCallbackFunc?: (result: any) => void;
     public gridApi: GridApi;
     public columnApi: ColumnApi;
@@ -42,7 +41,7 @@ export class AppServerSideDatasource implements IServerSideDatasource {
                     let isSelectAll = false;
                     (this.info.gridApi.getRangeSelections() || []).forEach(val => {
                         if (val.end.rowIndex > this.info.gridApi.getLastDisplayedRow() ||
-                        val.start.rowIndex < this.info.gridApi.getFirstDisplayedRow()) {
+                            val.start.rowIndex < this.info.gridApi.getFirstDisplayedRow()) {
                             isSelectAll = true;
                         }
                     });
@@ -89,13 +88,13 @@ export class AppServerSideDatasource implements IServerSideDatasource {
             params.successCallback([], this.total = Number.MAX_SAFE_INTEGER);
             this.setting = [];
             if (!AppUtils.equals(state.filterModel, this.info.gridApi.getFilterModel())) {
-                this.setting.push([ 'setFilterModel', state.filterModel ]);
+                this.setting.push(['setFilterModel', state.filterModel]);
             }
             if (!AppUtils.equals(state.sortModel, this.info.gridApi.getSortModel())) {
-                this.setting.push([ 'setSortModel', state.sortModel ]);
+                this.setting.push(['setSortModel', state.sortModel]);
             }
             if (state.currentPage !== this.info.gridApi.paginationGetCurrentPage()) {
-                this.setting.push([ 'paginationGoToPage', state.currentPage ]);
+                this.setting.push(['paginationGoToPage', state.currentPage]);
             }
             if (this.setting.length === 0) {
                 this.setting = null;
@@ -212,20 +211,7 @@ export class AppServerSideDatasource implements IServerSideDatasource {
             return;
         }
 
-        let postData = {};
-        if (this.info.postParam instanceof PostInfo) {
-            const postParam = <PostInfo>this.info.postParam;
-            postParam.data = Object.assign({}, this.convertRequest(params.request), {
-                SearchCondition: postParam.data
-            });
-            postData = postParam;
-        } else {
-            postData = Object.assign({}, this.convertRequest(params.request), {
-                SearchCondition: this.info.postParam
-            });
-        }
-
-        return this.info.baseService.post(this.info.dataUrl, postData).then((result) => {
+        return this.info.baseService.post(this.info.dataUrl, params.request).then((result) => {
             if (result.MessageId.length === 0) {
                 this.total = result.Total;
                 params.successCallback(result.Data, this.total);
@@ -241,7 +227,7 @@ export class AppServerSideDatasource implements IServerSideDatasource {
     }
 
     private _getFilterValues(params: SetFilterValuesFuncParams[]): Promise<any> {
-        if (!params || params.length === 0) { return Promise.resolve({MessageId: ''}); }
+        if (!params || params.length === 0) { return Promise.resolve({ MessageId: '' }); }
 
         const colIdList = [];
         params.forEach(val => {
@@ -255,28 +241,9 @@ export class AppServerSideDatasource implements IServerSideDatasource {
             }
         });
 
-        if (colIdList.length === 0) { return Promise.resolve({MessageId: ''}); }
+        if (colIdList.length === 0) { return Promise.resolve({ MessageId: '' }); }
 
-        let postData: any = {};
-        if (this.info.postParam instanceof PostInfo) {
-            const postParam = <PostInfo>this.info.postParam;
-            postParam.data = Object.assign({}, {
-                SearchCondition: postParam.data,
-                ColIdList: colIdList
-            });
-            postParam.spinner = false;
-            postData = postParam;
-        } else {
-          const postParam = PostInfo.default();
-          postParam.spinner = false;
-          postParam.data = Object.assign({}, {
-            SearchCondition: this.info.postParam,
-            ColIdList: colIdList
-          });
-          postData = postParam;
-        }
-
-        return this.info.baseService.post(this.info.filterValuesUrl, postData).then((result) => {
+        return this.info.baseService.post(this.info.filterValuesUrl, params).then((result) => {
             params.forEach(val => {
                 const colId = val.colDef.colId || val.colDef.field;
                 if (colId) {
@@ -387,7 +354,7 @@ export class AppServerSideDatasource implements IServerSideDatasource {
     }
 
     private convertFilterInfo(filterInfo: any): any {
-        const result = { Values: [] , Type: ''};
+        const result = { Values: [], Type: '' };
         switch (filterInfo.filterType) {
             case 'date':
                 if (filterInfo.dateFrom) { result.Values.push(filterInfo.dateFrom); }

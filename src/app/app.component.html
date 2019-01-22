@@ -133,12 +133,13 @@
   <div class="card-body">
     <div class="card">
       <div class="card-body">
-        <form action="">
+        <form [formGroup]="loginForm" action="">
           <div class="form-inline">
             <div class="form-group width10 required-item font-weight-bold">用户名</div>
             <div class="form-group width30p">
               <div class="input-group">
-                <input type="text" name="" class="form-control width15" />
+                <input type="text" name="username" class="form-control width15" formControlName="username" appValidate
+                  [validateFormControl]="loginForm.get('username')" />
               </div>
             </div>
           </div>
@@ -146,12 +147,13 @@
             <div class="form-group width10 required-item font-weight-bold">密码</div>
             <div class="form-group width30p">
               <div class="input-group">
-                <input type="password" class="form-control width15" />
+                <input type="password" name="password" class="form-control width15" formControlName="password"
+                  appValidate [validateFormControl]="loginForm.get('password')" />
               </div>
             </div>
           </div>
           <div class="btn-eara">
-            <button (click)="isLogin=true" type="button" class="btn btn-info">
+            <button (click)="_login()" type="button" class="btn btn-info">
               <i class="fa fa-check-square"></i> 登录
             </button>
           </div>

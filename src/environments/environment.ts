@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  server: 'http://localhost:51582'
+  server: 'http://192.168.2.19:9001'
 };

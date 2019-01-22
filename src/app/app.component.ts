@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   private loginComp: (value?: boolean | PromiseLike<boolean>) => void;
   private subComponent: any;
   private isLogin = true;
-
   loginForm: FormGroup;
   loginStep: number;
   isResetPass: boolean;
@@ -173,26 +172,26 @@ export class AppComponent implements OnInit {
 
   private _login() {
     const postData = Object.assign({}, this.loginForm.value);
-    this.baseService.post('Common/Login', postData).then((result) => {
-      if (result.MessageId.length === 0) {
-        this.modalRef.hide();
-        this.modalRef = null;
-        this.loadUserInfo().then(() => {
-          this.loginComp(true);
-        });
-      }
+    console.log(postData);
+    this.baseService.post('login', postData).then((result) => {
+      console.log(typeof postData);
+      console.log(result);
+      // if (result.MessageId.length === 0) {
+      //   this.modalRef.hide();
+      //   this.modalRef = null;
+      //   this.loadUserInfo().then(() => {
+      //     this.loginComp(true);
+      //   });
+      // }
     });
   }
 
   private createForm(): void {
     this.loginForm = this.fb.group({
-      NiceTanCd: ['', [AppValidators.required()]],
-      PwdWeb: ['', [AppValidators.other(c => {
-        if (this.loginStep === 1 && !c.value) {
-          return this.baseService.getMessage('E0001');
-        }
-        return '';
-      })]]
+      // 用户名
+      username: [null, [AppValidators.required('E0005', '用户名')]],
+      // 密码
+      password: [null, [AppValidators.required('E0005', '密码')]],
     });
   }
 

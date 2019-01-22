@@ -12,6 +12,7 @@ export class AppLocales {
         user: '前端用户管理',
         content: '内容管理',
         system: '系统管理',
+        business: '业务管理',
       }
     },
 
