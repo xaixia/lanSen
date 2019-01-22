@@ -200,6 +200,16 @@ export class OrdinaryUserListComponent implements OnInit {
         suppressSorting: false,
       },
       {
+        headerName: '已发布工单数',
+        width: 100,
+        field: 'release',
+      },
+      {
+        headerName: '已完成工单数',
+        width: 100,
+        field: 'resolve',
+      },
+      {
         headerName: '账户余额',
         width: 100,
         field: 'money',

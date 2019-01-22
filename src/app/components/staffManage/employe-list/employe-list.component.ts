@@ -124,10 +124,13 @@ export class EmployeListComponent implements OnInit {
     for (let i = 0; i < 300; i++) {
       res.push(
         // tslint:disable-next-line:max-line-length
-        { number: index++, name: '张三', authentication: '未上传', release: 10, resolve: 8 },
-        { number: index++, name: '张三', authentication: '待审核', release: 10, resolve: 8 },
-        { number: index++, name: '李四', authentication: '审核通过', release: 10, resolve: 8 },
-        { number: index++, name: '李四', authentication: '审核不通过', release: 10, resolve: 8 },
+        { number: index++, sName: '小飞猪', name: '张三', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '未上传', release: 10, resolve: 8 },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, sName: '小飞猪', name: '张三', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '待审核', release: 10, resolve: 8 },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, sName: '小飞猪', name: '李四', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '审核通过', release: 10, resolve: 8 },
+        // tslint:disable-next-line:max-line-length
+        { number: index++, sName: '小飞猪', name: '李四', tel: '18899990000', money: '1035472', time: '2019/01/12', authentication: '审核不通过', release: 10, resolve: 8 },
       );
     }
     return res;
@@ -158,19 +161,29 @@ export class EmployeListComponent implements OnInit {
         },
       },
       {
-        headerName: '账号',
+        headerName: 'id',
         width: 100,
         field: 'number',
         suppressSorting: false,
       },
       {
-        headerName: '姓名',
+        headerName: '昵称',
         width: 100,
-        field: 'name',
+        field: 'sName',
         suppressSorting: false,
       },
       {
-        headerName: '实名认证',
+        headerName: '电话',
+        width: 100,
+        field: 'tel',
+      },
+      {
+        headerName: '姓名',
+        width: 100,
+        field: 'name',
+      },
+      {
+        headerName: '实名状态',
         width: 100,
         field: 'authentication',
         suppressSorting: false,
@@ -184,6 +197,17 @@ export class EmployeListComponent implements OnInit {
         headerName: '已完成工单数',
         width: 100,
         field: 'resolve',
+      },
+      {
+        headerName: '账户余额',
+        width: 100,
+        field: 'money',
+        cellRenderer: (param) => param.value ? (param.value || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') : '0'
+      },
+      {
+        headerName: '注册时间',
+        width: 100,
+        field: 'time',
       },
       {
         headerName: '编辑',
