@@ -21,21 +21,11 @@ export class AppComponent implements OnInit {
   private modalRef: BsModalRef;
   private loginComp: (value?: boolean | PromiseLike<boolean>) => void;
   private subComponent: any;
-  private isLogin = true;
+  private isLogin = false;
+  private token = 'TOKEN';
   loginForm: FormGroup;
   loginStep: number;
   isResetPass: boolean;
-  get loginButtonText() {
-    if (this.loginStep === 0) {
-      return '继续';
-    } else {
-      if (this.isResetPass) {
-        return '参数设置';
-      } else {
-        return '登录';
-      }
-    }
-  }
 
   title: string;
 
@@ -85,19 +75,18 @@ export class AppComponent implements OnInit {
     this.loginStep = 0;
     this.baseService.toastr.setRootViewContainerRef(this.vcr);
     this.createForm();
-    this.loadLoginFunc();
     this.loadShowConfirmFunc();
-    this.loadReflashUserInfoFunc();
   }
 
   @HostListener('window:beforeunload') beforeunload() {
-    this.baseService.saveData();
+    console.log(this.router.routerState.snapshot.url);
   }
 
   ngOnInit(): void {
   }
 
   logOut() {
+    this.baseService.clearAllData();
     this.isLogin = false;
   }
 
@@ -125,65 +114,19 @@ export class AppComponent implements OnInit {
   }
 
   login(): void {
-    if (!this.baseService.hasError(this.el, this.loginForm)) {
-      if (this.loginStep === 1) {
-        if (this.isResetPass) {
-          this.resetPass();
-        } else {
-          this._login();
-        }
-      } else {
-        this.checkUserStatus();
+    const postData = Object.assign({}, this.loginForm.value);
+    this.baseService.post('login', postData).then((result) => {
+      if (result.ok) {
+        const data = result._body;
+        this.baseService.setPageData(this.token, data.access_token);
+        this.isLogin = true;
       }
-    }
+    });
   }
 
   backForLogin(): void {
     this.loginStep = 0;
     this.isResetPass = false;
-  }
-
-  private checkUserStatus() {
-    const postData = Object.assign({}, {
-      NiceTanCd: this.loginForm.value.NiceTanCd
-    });
-    this.baseService.post('Common/GetUserStatus', postData).then(result => {
-      if (result.MessageId.length === 0) {
-        this.loginStep = 1;
-        if (result.PasswordStatus === 2) {
-          this.isResetPass = true;
-        }
-      }
-    });
-  }
-
-  private resetPass() {
-    const postData = Object.assign({}, this.loginForm.value);
-    this.baseService.post('Common/SetUserPass', postData).then(result => {
-      if (result.MessageId.length === 0) {
-        this._login();
-      } else {
-        this.loginStep = 0;
-        this.isResetPass = false;
-        this.loginForm.reset();
-      }
-    });
-  }
-
-  private _login() {
-    const postData = Object.assign({}, this.loginForm.value);
-    console.log(postData);
-    this.baseService.post('login', postData).then((result) => {
-      console.log(typeof postData);
-      console.log(result);
-      // if (result.MessageId.length === 0) {
-      //   this.modalRef.hide();
-      //   this.modalRef = null;
-      //   this.loadUserInfo().then(() => {
-      //     this.loginComp(true);
-      //   });
-      // }
-    });
   }
 
   private createForm(): void {
@@ -212,45 +155,6 @@ export class AppComponent implements OnInit {
       });
       return result;
     };
-  }
-
-  private loadLoginFunc(): void {
-    this.baseService.loginFunc = (noRouter?: boolean) => {
-      this.baseService.post('Common/IsLogin').then((result) => {
-        if (result.MessageId.length === 0) {
-          if (result.EscoTntId) {
-            this.loadUserInfo().then(() => {
-              this.loginComp(true);
-            });
-          } else {
-            this.isLogin = false;
-          }
-        } else {
-          this.loginComp(false);
-        }
-      });
-      if (!noRouter) {
-
-        return new Promise<boolean>((paramResolve, paramReject) => {
-          this.loginComp = paramResolve;
-        });
-      }
-    };
-  }
-
-  private loadReflashUserInfoFunc(): void {
-    this.baseService.reflashUserInfoFunc = () => {
-      this.loadUserInfo();
-    };
-  }
-
-  private loadUserInfo(changeUserFlg?: boolean): Promise<any> {
-    const myComponent = this;
-    return this.baseService.getUserInfo().then((result) => {
-      if (result.MessageId.length === 0) {
-        // myComponent.escoTntNm = result.EscoTntNm;
-      }
-    });
   }
 }
 

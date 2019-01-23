@@ -1,48 +1,37 @@
-import { StorageService } from 'ngx-webstorage-service';
-
 export class PageData {
-  // 本地数据
-  private data: Map<string, any> = new Map<string, any>();
+  public localStorage: any;
 
-  // session
-  private storageKey: string;
-
-  // 存储
-  private storage: StorageService;
-
-  // 初始化
-  constructor(storageKey: string, storage: StorageService) {
-    this.storageKey = storageKey;
-    this.storage = storage;
-
-    if (this.storage.get(this.storageKey)) {
-      this.data = new Map<string, any>(this.storage.get(this.storageKey)) || new Map<string, any>();
-      this.storage.remove(this.storageKey);
+  constructor() {
+    if (!localStorage) {
+      throw new Error('Current browser does not support Local Storage');
     }
+    this.localStorage = localStorage;
   }
 
-  // 取得data
-  get(key: string): any {
-    return this.data.get(key);
+  public set(key: string, value: string): void {
+    this.localStorage[key] = value;
   }
 
-  // 设置data
-  set(key: string, val: any) {
-    this.data.set(key, val);
+  public get(key: string): string {
+    return this.localStorage[key] || false;
   }
 
-  // 删除data
-  remove(key: string) {
-    this.data.delete(key);
+  public setArr(key: string, value: Array<any>): void {
+    this.localStorage[key] = value;
   }
 
-  // 清除data
-  clear() {
-    this.data.clear();
+  public setObject(key: string, value: any): void {
+    this.localStorage[key] = JSON.stringify(value);
   }
 
-  // session的存储
-  saveToSessionStorage() {
-    this.storage.set(this.storageKey, Array.from(this.data));
+  public getObject(key: string): any {
+    return JSON.parse(this.localStorage[key] || '{}');
+  }
+
+  public remove(key: string): any {
+    this.localStorage.removeItem(key);
+  }
+  public removeAll(): any {
+    this.localStorage.clear();
   }
 }

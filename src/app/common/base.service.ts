@@ -38,17 +38,12 @@ export class BaseService {
   // HTTP  header
   private headers = new Headers();
 
-  // 页面跳转数据
-  private navigateData: PageData;
-
-  // 页面data
+  // 页面数据
   private pageData: PageData;
 
   private spinnerCnt = 0;
 
   public loginFunc: ((noRouter?: boolean) => Promise<boolean>);
-
-  public reflashUserInfoFunc: (() => void);
 
   public showConfirm: ((state: {
     title?: string,
@@ -67,8 +62,7 @@ export class BaseService {
     private modalService: BsModalService,
     private appLocales: AppLocales,
   ) {
-    this.navigateData = new PageData(STORAGE_KEY_NAVIGATE, storage);
-    this.pageData = new PageData(STORAGE_KEY_PAGE, storage);
+    this.pageData = new PageData();
   }
 
   back(): void {
@@ -88,49 +82,25 @@ export class BaseService {
   }
 
   navigate(path: string, data?: any): void {
-    const navData = data || {};
-    this.navigateData.set(path, navData);
     this.toastr.clearAllToasts();
     this.router.navigate([path]);
   }
 
-  getNavigateData(): any {
-    const url = this.router.routerState.snapshot.url;
-    return this.navigateData.get(url);
+  setPageData(key: any, val: any): void {
+    this.pageData.set(key, val);
   }
 
-  setPageData(data: any, extend: boolean = false): void {
-    const url = this.router.routerState.snapshot.url;
-    let pageData = data || {};
-    if (extend) {
-      pageData = Object.assign(this.pageData.get(url), pageData);
-    }
-    this.pageData.set(url, pageData);
+  removePageData(key: string) {
+    this.pageData.remove(key);
   }
 
-  clearPageData() {
-    const url = this.router.routerState.snapshot.url;
-    this.pageData.remove(url);
+  getPageData(key: string): any {
+    return this.pageData.get(key);
   }
 
-  clearNavigateData() {
-    const url = this.router.routerState.snapshot.url;
-    this.navigateData.remove(url);
-  }
-
-  getPageData(): any {
-    const url = this.router.routerState.snapshot.url;
-    return this.pageData.get(url);
-  }
-
-  hasPageData(): boolean {
-    const pageData = this.getPageData();
+  hasPageData(key: string): boolean {
+    const pageData = this.getPageData(key);
     return pageData != null && typeof (pageData) !== undefined;
-  }
-
-  saveData(): void {
-    this.navigateData.saveToSessionStorage();
-    this.pageData.saveToSessionStorage();
   }
 
   public getKarteUrl(url): string {
@@ -146,8 +116,7 @@ export class BaseService {
   }
 
   clearAllData(): void {
-    this.navigateData.clear();
-    this.pageData.clear();
+    this.pageData.removeAll();
   }
 
   getGridState(gridApi: GridApi, gridColumnApi: ColumnApi): any {
@@ -240,18 +209,30 @@ export class BaseService {
   }
 
   post(action: string, data?: any): Promise<any> {
+    this.spinnerShow();
     const url = this.getPostUrl(action);
 
-    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    if (url.indexOf('login') === -1) {
+      const token = this.getPageData('access_token');
+      if (token) {
+        this.headers.append('access_token', token);
+      } else {
+        this.navigate('index', { isLogin: false });
+      }
+    }
 
-    return this.http.post(url, {
+    return this.http.post(url, data, {
       headers: this.headers,
       withCredentials: true,
-      params: JSON.stringify(data)
-    }).toPromise()
+      responseType: 1,
+    })
+      .toPromise()
       .then((res) => {
         if (res) {
           this.spinnerHide();
+          return res;
         }
       })
       .catch((error) => {
@@ -270,7 +251,6 @@ export class BaseService {
   }
 
   insert(path: string, param?: any) {
-    this.clearAllData();
     this.navigate(path, param);
   }
 
